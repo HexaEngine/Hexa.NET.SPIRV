@@ -14,7 +14,7 @@ namespace HexaEngine.SPIRVCross
 {
 	public unsafe partial class SPIRVCross
 	{
-		internal const string LibName = "shaderc_shared";
+		internal const string LibName = "spirv-cross-c-shared";
 
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_get_version")]
 		public static extern void SpvcGetVersion(uint* major, uint* minor, uint* patch);

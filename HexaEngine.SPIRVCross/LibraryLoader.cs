@@ -33,19 +33,19 @@
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return LoadLocalLibrary("shaderc_shared");
+                return LoadLocalLibrary("spriv-cross-c-shared");
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                return LoadLocalLibrary("libshaderc_shared");
+                return LoadLocalLibrary("libspriv-cross-c-shared");
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                return LoadLocalLibrary("libshaderc_shared");
+                return LoadLocalLibrary("libspriv-cross-c-shared");
             }
             else
             {
-                return LoadLocalLibrary("libshaderc_shared");
+                return LoadLocalLibrary("libspriv-cross-c-shared");
             }
         }
 

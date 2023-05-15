@@ -46,7 +46,7 @@
 
             using (writer.PushBlock($"public unsafe partial class SPIRVCross"))
             {
-                writer.WriteLine("internal const string LibName = \"shaderc_shared\";\n");
+                writer.WriteLine("internal const string LibName = \"spirv-cross-c-shared\";\n");
                 foreach (KeyValuePair<string, CppFunction> command in commands)
                 {
                     CppFunction cppFunction = command.Value;
