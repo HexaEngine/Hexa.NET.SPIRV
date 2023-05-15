@@ -33,19 +33,19 @@
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return LoadLocalLibrary("spriv-cross-c-shared");
+                return LoadLocalLibrary("spirv-cross-c-shared");
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                return LoadLocalLibrary("libspriv-cross-c-shared");
+                return LoadLocalLibrary("libspirv-cross-c-shared");
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                return LoadLocalLibrary("libspriv-cross-c-shared");
+                return LoadLocalLibrary("libspirv-cross-c-shared");
             }
             else
             {
-                return LoadLocalLibrary("libspriv-cross-c-shared");
+                return LoadLocalLibrary("libspirv-cross-c-shared");
             }
         }
 
