@@ -44,7 +44,7 @@
                 }
             }
 
-            using (writer.PushBlock($"public unsafe partial class SPIRVCross"))
+            using (writer.PushBlock($"public unsafe partial class SPIRV"))
             {
                 writer.WriteLine("internal const string LibName = \"spirv-cross-c-shared\";\n");
                 foreach (KeyValuePair<string, CppFunction> command in commands)

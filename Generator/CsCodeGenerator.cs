@@ -136,7 +136,7 @@
             if (type is CppTypedef typedef)
             {
                 var typeDefCsName = GetCsCleanName(typedef.Name);
-                if (typedef.ElementType.TypeKind == CppTypeKind.Pointer)
+                if (isPointer)
                     return typeDefCsName + "*";
 
                 return typeDefCsName;
