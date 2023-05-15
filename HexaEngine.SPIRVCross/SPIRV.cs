@@ -1,7 +1,5 @@
-namespace HexaEngine.Shaderc
+namespace HexaEngine.SPIRVCross
 {
-    using HexaEngine.SPIRVCross;
-
     public static unsafe partial class SPIRV
     {
         static SPIRV()
