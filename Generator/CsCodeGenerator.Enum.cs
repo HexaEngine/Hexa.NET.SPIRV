@@ -9,21 +9,21 @@
 
     public static partial class CsCodeGenerator
     {
-        private static readonly Dictionary<string, string> s_knownEnumValueNames = new Dictionary<string, string>
+        private static readonly Dictionary<string, string> s_knownEnumValueNames = new()
         {
             {  "", "" },
         };
 
-        private static readonly Dictionary<string, string> s_knownEnumPrefixes = new Dictionary<string, string>
+        private static readonly Dictionary<string, string> s_knownEnumPrefixes = new()
         {
         };
 
-        private static readonly HashSet<string> s_ignoredParts = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        private static readonly HashSet<string> s_ignoredParts = new(StringComparer.OrdinalIgnoreCase)
         {
             "bit",
         };
 
-        private static readonly HashSet<string> s_preserveCaps = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        private static readonly HashSet<string> s_preserveCaps = new(StringComparer.OrdinalIgnoreCase)
         {
             "",
         };
@@ -145,7 +145,7 @@
                 return knownValue;
             }
 
-            List<string> parts = new List<string>(4);
+            List<string> parts = new(4);
             int chunkStart = 0;
             for (int i = 0; i < typeName.Length; i++)
             {

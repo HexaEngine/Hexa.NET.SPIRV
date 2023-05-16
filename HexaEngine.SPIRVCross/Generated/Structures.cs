@@ -21,7 +21,7 @@ namespace HexaEngine.SPIRVCross
 		public uint Id;
 		public uint BaseTypeId;
 		public uint TypeId;
-		public unsafe sbyte* Name;
+		public unsafe byte* Name;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -39,7 +39,7 @@ namespace HexaEngine.SPIRVCross
 	public partial struct SpvcEntryPoint
 	{
 		public SpvExecutionModel ExecutionModel;
-		public unsafe sbyte* Name;
+		public unsafe byte* Name;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -93,7 +93,7 @@ namespace HexaEngine.SPIRVCross
 	public partial struct SpvcHlslVertexAttributeRemap
 	{
 		public uint Location;
-		public unsafe sbyte* Semantic;
+		public unsafe byte* Semantic;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

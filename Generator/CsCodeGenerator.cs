@@ -5,7 +5,7 @@
 
     public static partial class CsCodeGenerator
     {
-        private static readonly HashSet<string> s_keywords = new HashSet<string>
+        private static readonly HashSet<string> s_keywords = new()
         {
             "object",
             "event",
@@ -48,26 +48,6 @@
         public static void AddCsMapping(string typeName, string csTypeName)
         {
             s_csNameMappings[typeName] = csTypeName;
-        }
-
-        private static void GenerateConstants(CppCompilation compilation, string outputPath)
-        {
-        }
-
-        private static string NormalizeFieldName(string name)
-        {
-            var parts = name.Split('_', StringSplitOptions.RemoveEmptyEntries);
-            StringBuilder sb = new();
-            for (int i = 0; i < parts.Length; i++)
-            {
-                sb.Append(char.ToUpper(parts[i][0]));
-                sb.Append(parts[i][1..]);
-            }
-            name = sb.ToString();
-            if (s_keywords.Contains(name))
-                return "@" + name;
-
-            return name;
         }
 
         private static string GetCsCleanName(string name)
@@ -172,7 +152,7 @@
                     return isPointer ? "void*" : "void";
 
                 case CppPrimitiveKind.Char:
-                    return isPointer ? "sbyte*" : "sbyte";
+                    return isPointer ? "byte*" : "byte";
 
                 case CppPrimitiveKind.Bool:
                     return isPointer ? "bool*" : "bool";
@@ -245,7 +225,153 @@
                 return GetCsTypeName(qualifiedType.ElementType, true);
             }
 
+            if (pointerType.ElementType is CppPointerType subPointer)
+            {
+                return GetCsTypeName(subPointer) + "*";
+            }
+
             return GetCsTypeName(pointerType.ElementType, true);
+        }
+
+        private static string GetCsWrapperTypeName(CppType? type, bool isPointer = false)
+        {
+            if (type is CppPrimitiveType primitiveType)
+            {
+                return GetCsWrapperTypeName(primitiveType, isPointer);
+            }
+
+            if (type is CppQualifiedType qualifiedType)
+            {
+                return GetCsWrapperTypeName(qualifiedType.ElementType, isPointer);
+            }
+
+            if (type is CppEnum enumType)
+            {
+                var enumCsName = GetCsCleanName(enumType.Name);
+                if (isPointer)
+                    return "ref " + enumCsName;
+
+                return enumCsName;
+            }
+
+            if (type is CppTypedef typedef)
+            {
+                var typeDefCsName = GetCsCleanName(typedef.Name);
+                if (isPointer)
+                    return "ref " + typeDefCsName;
+
+                return typeDefCsName;
+            }
+
+            if (type is CppClass @class)
+            {
+                var className = GetCsCleanName(@class.Name);
+                if (isPointer)
+                    return "ref " + className;
+
+                return className;
+            }
+
+            if (type is CppPointerType pointerType)
+            {
+                return GetCsWrapperTypeName(pointerType);
+            }
+
+            if (type is CppArrayType arrayType)
+            {
+                return GetCsWrapperTypeName(arrayType.ElementType, true);
+            }
+
+            return string.Empty;
+        }
+
+        private static string GetCsWrapperTypeName(CppPrimitiveType primitiveType, bool isPointer)
+        {
+            switch (primitiveType.Kind)
+            {
+                case CppPrimitiveKind.Void:
+                    return isPointer ? "void*" : "void";
+
+                case CppPrimitiveKind.Char:
+                    return isPointer ? "ref byte" : "byte";
+
+                case CppPrimitiveKind.Bool:
+                    return isPointer ? "ref bool" : "bool";
+
+                case CppPrimitiveKind.WChar:
+                    return isPointer ? "ref char" : "char";
+
+                case CppPrimitiveKind.Short:
+                    return isPointer ? "ref short" : "short";
+
+                case CppPrimitiveKind.Int:
+                    return isPointer ? "ref int" : "int";
+
+                case CppPrimitiveKind.LongLong:
+                    break;
+
+                case CppPrimitiveKind.UnsignedChar:
+                    return isPointer ? "ref byte" : "byte";
+
+                case CppPrimitiveKind.UnsignedShort:
+                    return isPointer ? "ref ushort" : "ushort";
+
+                case CppPrimitiveKind.UnsignedInt:
+                    return isPointer ? "ref uint" : "uint";
+
+                case CppPrimitiveKind.UnsignedLongLong:
+                    break;
+
+                case CppPrimitiveKind.Float:
+                    return isPointer ? "ref float" : "float";
+
+                case CppPrimitiveKind.Double:
+                    return isPointer ? "ref double" : "double";
+
+                case CppPrimitiveKind.LongDouble:
+                    break;
+
+                default:
+                    return string.Empty;
+            }
+
+            return string.Empty;
+        }
+
+        private static string GetCsWrapperTypeName(CppPointerType pointerType)
+        {
+            if (pointerType.ElementType is CppQualifiedType qualifiedType)
+            {
+                if (qualifiedType.ElementType is CppPrimitiveType primitiveType)
+                {
+                    return GetCsWrapperTypeName(primitiveType, true);
+                }
+                else if (qualifiedType.ElementType is CppClass @classType)
+                {
+                    return GetCsWrapperTypeName(@classType, true);
+                }
+                else if (qualifiedType.ElementType is CppPointerType subPointerType)
+                {
+                    return GetCsWrapperTypeName(subPointerType, true) + "*";
+                }
+                else if (qualifiedType.ElementType is CppTypedef typedef)
+                {
+                    return GetCsWrapperTypeName(typedef, true);
+                }
+                else if (qualifiedType.ElementType is CppEnum @enum)
+                {
+                    return GetCsWrapperTypeName(@enum, true);
+                }
+
+                return GetCsWrapperTypeName(qualifiedType.ElementType, true);
+            }
+
+            if (pointerType.ElementType is CppPointerType subPointer)
+            {
+                return GetCsWrapperTypeName(subPointer) + "*";
+            }
+
+            return GetCsWrapperTypeName(pointerType.ElementType, true);
         }
 
         private static bool WriteCsSummary(CppComment? comment, CodeWriter writer)
@@ -280,6 +406,15 @@
             }
 
             throw new NotImplementedException();
+        }
+
+        internal static uint Count(this ManagedWrapperFlags flags)
+        {
+            uint v = (uint)flags;
+            v -= (v >> 1) & 0x55555555; // reuse input as temporary
+            v = (v & 0x33333333) + ((v >> 2) & 0x33333333); // temp
+            uint c = ((v + (v >> 4) & 0xF0F0F0F) * 0x1010101) >> 24; // count
+            return c;
         }
     }
 }

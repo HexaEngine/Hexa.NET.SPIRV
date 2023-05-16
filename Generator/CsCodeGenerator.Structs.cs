@@ -6,7 +6,7 @@
 
     public static partial class CsCodeGenerator
     {
-        private static bool generateSizeOfStructs = false;
+        private static readonly bool generateSizeOfStructs = false;
 
         private static void GenerateStructAndUnions(CppCompilation compilation, string outputPath)
         {
@@ -138,6 +138,22 @@
 
                 writer.WriteLine($"public {fieldPrefix}{csFieldType} {csFieldName};");
             }
+        }
+
+        private static string NormalizeFieldName(string name)
+        {
+            var parts = name.Split('_', StringSplitOptions.RemoveEmptyEntries);
+            StringBuilder sb = new();
+            for (int i = 0; i < parts.Length; i++)
+            {
+                sb.Append(char.ToUpper(parts[i][0]));
+                sb.Append(parts[i][1..]);
+            }
+            name = sb.ToString();
+            if (s_keywords.Contains(name))
+                return "@" + name;
+
+            return name;
         }
     }
 }

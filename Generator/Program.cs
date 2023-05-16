@@ -2,7 +2,7 @@
 {
     using CppAst;
 
-    internal class Program
+    internal unsafe class Program
     {
         private static int Main(string[] args)
         {
