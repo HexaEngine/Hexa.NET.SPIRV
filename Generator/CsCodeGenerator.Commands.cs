@@ -3,6 +3,7 @@
     using CppAst;
     using System.Collections.Generic;
     using System.IO;
+    using System.Numerics;
     using System.Text;
 
     public static partial class CsCodeGenerator
@@ -60,100 +61,13 @@
                     writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = \"{cppFunction.Name}\")]");
                     writer.WriteLine($"public static extern {returnCsName} {command.Key}({argumentsString});");
                     writer.WriteLine();
-
+                    Console.WriteLine(command.Key + ":");
+                    Console.WriteLine(argumentsString);
                     var sigs = GetManagedWrapperParameterSignatures(cppFunction.Parameters, argumentsString, canUseOut);
                     GenerateManagedWrapperForSignatures(cppFunction, command.Key, argumentsString, sigs, writer);
+                    Console.WriteLine();
                 }
             }
-        }
-
-        [Flags]
-        public enum ManagedWrapperFlags
-        {
-            None = 0,
-            Refs = 1,
-            StringOut = 2,
-            StringIn = 4,
-            StringInOut = StringOut | StringIn,
-        }
-
-        [Flags]
-        public enum SignatureFlags
-        {
-            None,
-            Pointer,
-            String,
-        }
-
-        private static SignatureFlags Classify(IList<CppParameter> parameters)
-        {
-            SignatureFlags flags = SignatureFlags.None;
-
-            for (int i = 0; i < parameters.Count; i++)
-            {
-                var param = parameters[i];
-                if (IsString(param.Type))
-                {
-                    flags |= SignatureFlags.String;
-                }
-                if (IsPointer(param.Type))
-                {
-                    flags |= SignatureFlags.Pointer;
-                }
-            }
-
-            return flags;
-        }
-
-        public static void GenerateManagedWrapperRefs(CppFunction cppFunction, string command, string signature, CodeWriter writer)
-        {
-            bool voidReturn = IsVoid(cppFunction.ReturnType);
-            string returnCsName = GetCsTypeName(cppFunction.ReturnType, false);
-            bool canUseOut = s_outReturnFunctions.Contains(cppFunction.Name);
-            var argumentsString = GetManagedWrapperParameterSignature(cppFunction, canUseOut);
-
-            if (argumentsString == signature)
-                return;
-
-            int stacks = 0;
-            WriteCsSummary(cppFunction.Comment, writer);
-            using (writer.PushBlock($"public static {returnCsName} {command}({argumentsString})"))
-            {
-                StringBuilder sb = new();
-                if (!voidReturn)
-                {
-                    sb.Append("return ");
-                }
-                sb.Append($"{command}(");
-                for (int i = 0; i < cppFunction.Parameters.Count; i++)
-                {
-                    var cppParameter = cppFunction.Parameters[i];
-                    var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
-                    var paramCsName = GetParameterName(cppParameter.Type, cppParameter.Name);
-                    if (IsPointer(cppParameter.Type))
-                    {
-                        writer.BeginBlock($"fixed ({paramCsTypeName} p{paramCsName} = &{paramCsName})");
-                        stacks++;
-                        sb.Append($"p{paramCsName}");
-                    }
-                    else
-                    {
-                        sb.Append(paramCsName);
-                    }
-                    if (i != cppFunction.Parameters.Count - 1)
-                        sb.Append(", ");
-                }
-
-                sb.Append(");");
-                writer.WriteLine(sb.ToString());
-                while (stacks > 0)
-                {
-                    stacks--;
-                    writer.EndBlock();
-                }
-            }
-
-            writer.WriteLine();
         }
 
         public static void GenerateManagedWrapperForSignatures(CppFunction cppFunction, string command, string nativeSignature, List<string> signatures, CodeWriter writer)
@@ -199,7 +113,7 @@
                 StringBuilder sb = new();
                 if (!voidReturn)
                 {
-                    sb.Append($"{returnCsName} result = ");
+                    sb.Append($"{returnCsName} ret = ");
                 }
 
                 if (stringReturn)
@@ -251,7 +165,7 @@
                 }
 
                 if (!voidReturn)
-                    writer.WriteLine("return result;");
+                    writer.WriteLine("return ret;");
 
                 while (stacks > 0)
                 {
@@ -268,11 +182,6 @@
             return GetParameterSignature(cppFunction.Parameters, canUseOut);
         }
 
-        public static string GetManagedWrapperParameterSignature(CppFunction cppFunction, bool canUseOut)
-        {
-            return GetManagedWrapperParameterSignature(cppFunction.Parameters, canUseOut);
-        }
-
         private static bool IsVoid(CppType cppType)
         {
             if (cppType is CppPrimitiveType type)
@@ -280,11 +189,6 @@
                 return type.Kind == CppPrimitiveKind.Void;
             }
             return false;
-        }
-
-        private static bool IsPointer(CppType cppType)
-        {
-            return cppType.TypeKind == CppTypeKind.Pointer;
         }
 
         private static bool IsString(CppType cppType, bool isPointer = false)
@@ -382,106 +286,85 @@
             return argumentBuilder.ToString();
         }
 
-        private static string GetManagedWrapperParameterSignature(IList<CppParameter> parameters, bool canUseOut)
-        {
-            var argumentBuilder = new StringBuilder();
-            int index = 0;
-
-            foreach (CppParameter cppParameter in parameters)
-            {
-                string direction = string.Empty;
-                var paramCsTypeName = GetCsWrapperTypeName(cppParameter.Type, false);
-                var paramCsName = GetParameterName(cppParameter.Type, cppParameter.Name);
-
-                if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
-                {
-                    argumentBuilder.Append("out ");
-                    paramCsTypeName = GetCsWrapperTypeName(cppTypeDeclaration, false);
-                }
-
-                argumentBuilder.Append(paramCsTypeName).Append(' ').Append(paramCsName);
-                if (index < parameters.Count - 1)
-                {
-                    argumentBuilder.Append(", ");
-                }
-
-                index++;
-            }
-
-            return argumentBuilder.ToString();
-        }
-
         private static List<string> GetManagedWrapperParameterSignatures(IList<CppParameter> parameters, string originalSig, bool canUseOut)
         {
             List<string> result = new();
             StringBuilder argumentBuilder = new();
-            var flags = Classify(parameters);
-            for (int ix = 0; ix < parameters.Count; ix++)
+
+            for (long ix = 0; ix < Math.Pow(2, parameters.Count); ix++)
             {
-                for (int iy = 0; iy < parameters.Count; iy++)
+                int index = 0;
+                for (int j = 0; j < parameters.Count; j++)
                 {
-                    int index = 0;
-                    for (int j = 0; j < parameters.Count; j++)
+                    var bit = (ix & (1 << j - 64)) != 0;
+                    CppParameter cppParameter = parameters[j];
+                    string paramCsTypeName;
+                    if (bit)
+                        paramCsTypeName = GetCsWrapperTypeName(cppParameter.Type, false);
+                    else
+                        paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+
+                    var paramCsName = GetParameterName(cppParameter.Type, cppParameter.Name);
+
+                    if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
                     {
-                        CppParameter cppParameter = parameters[j];
-                        string paramCsTypeName;
-                        if (j == iy || j == ix)
-                            paramCsTypeName = GetCsWrapperTypeName(cppParameter.Type, false);
-                        else
-                            paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
-
-                        var paramCsName = GetParameterName(cppParameter.Type, cppParameter.Name);
-
-                        if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
-                        {
-                            argumentBuilder.Append("out ");
-                            paramCsTypeName = GetCsWrapperTypeName(cppTypeDeclaration, false);
-                        }
-
-                        argumentBuilder.Append(paramCsTypeName).Append(' ').Append(paramCsName);
-                        if (index < parameters.Count - 1)
-                        {
-                            argumentBuilder.Append(", ");
-                        }
-
-                        index++;
+                        argumentBuilder.Append("out ");
+                        paramCsTypeName = GetCsWrapperTypeName(cppTypeDeclaration, false);
                     }
-                    string sig = argumentBuilder.ToString();
-                    if (!result.Contains(sig) && sig != originalSig)
-                        result.Add(sig);
-                    argumentBuilder.Clear();
-                    index = 0;
-                    for (int j = 0; j < parameters.Count; j++)
+
+                    argumentBuilder.Append(paramCsTypeName).Append(' ').Append(paramCsName);
+                    if (index < parameters.Count - 1)
                     {
-                        CppParameter cppParameter = parameters[j];
-
-                        string paramCsTypeName;
-                        if (j == iy || j == ix)
-                            paramCsTypeName = IsString(cppParameter.Type) ? "string" : GetCsWrapperTypeName(cppParameter.Type, false);
-                        else
-                            paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
-
-                        var paramCsName = GetParameterName(cppParameter.Type, cppParameter.Name);
-
-                        if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
-                        {
-                            argumentBuilder.Append("out ");
-                            paramCsTypeName = GetCsWrapperTypeName(cppTypeDeclaration, false);
-                        }
-
-                        argumentBuilder.Append(paramCsTypeName).Append(' ').Append(paramCsName);
-                        if (index < parameters.Count - 1)
-                        {
-                            argumentBuilder.Append(", ");
-                        }
-
-                        index++;
+                        argumentBuilder.Append(", ");
                     }
-                    sig = argumentBuilder.ToString();
-                    if (!result.Contains(sig) && sig != originalSig)
-                        result.Add(sig);
-                    argumentBuilder.Clear();
+
+                    index++;
                 }
+                string sig = argumentBuilder.ToString();
+                if (!result.Contains(sig) && sig != originalSig)
+                {
+                    result.Add(sig);
+                    Console.WriteLine(sig);
+                }
+
+                argumentBuilder.Clear();
+
+                index = 0;
+                for (int j = 0; j < parameters.Count; j++)
+                {
+                    var bit = (ix & (1 << j - 1)) != 0;
+                    CppParameter cppParameter = parameters[j];
+
+                    string paramCsTypeName;
+                    if (bit)
+                        paramCsTypeName = IsString(cppParameter.Type) ? "string" : GetCsWrapperTypeName(cppParameter.Type, false);
+                    else
+                        paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+
+                    var paramCsName = GetParameterName(cppParameter.Type, cppParameter.Name);
+
+                    if (canUseOut && CanBeUsedAsOutput(cppParameter.Type, out CppTypeDeclaration? cppTypeDeclaration))
+                    {
+                        argumentBuilder.Append("out ");
+                        paramCsTypeName = GetCsWrapperTypeName(cppTypeDeclaration, false);
+                    }
+
+                    argumentBuilder.Append(paramCsTypeName).Append(' ').Append(paramCsName);
+                    if (index < parameters.Count - 1)
+                    {
+                        argumentBuilder.Append(", ");
+                    }
+
+                    index++;
+                }
+                sig = argumentBuilder.ToString();
+                if (!result.Contains(sig) && sig != originalSig)
+                {
+                    result.Add(sig);
+                    Console.WriteLine(sig);
+                }
+
+                argumentBuilder.Clear();
             }
 
             return result;
