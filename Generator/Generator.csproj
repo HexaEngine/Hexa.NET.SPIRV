@@ -15,6 +15,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="generator.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="SPIRV-Cross\spirv.h">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>

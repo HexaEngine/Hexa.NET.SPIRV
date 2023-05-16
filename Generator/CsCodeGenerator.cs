@@ -5,37 +5,6 @@
 
     public static partial class CsCodeGenerator
     {
-        private static readonly HashSet<string> s_keywords = new()
-        {
-            "object",
-            "event",
-        };
-
-        private static readonly Dictionary<string, string> s_csNameMappings = new()
-        {
-            { "uint8_t", "byte" },
-            { "uint16_t", "ushort" },
-            { "uint32_t", "uint" },
-            { "uint64_t", "ulong" },
-            { "int8_t", "sbyte" },
-            { "int32_t", "int" },
-            { "int16_t", "short" },
-            { "int64_t", "long" },
-            { "int64_t*", "long*" },
-            { "unsigned char", "byte" },
-            { "signed char", "sbyte" },
-            { "char", "byte" },
-            { "size_t", "nuint" },
-
-            { "spvc_bool", "bool" },
-            { "spvc_constant_id", "uint" },
-            { "spvc_variable_id", "uint" },
-            { "spvc_type_id", "uint" },
-            { "spvc_hlsl_binding_flags", "uint" },
-            { "spvc_msl_shader_input", "SpvcMslShaderInterfaceVar" },
-            { "spvc_msl_vertex_format", "SpvcMslShaderVariableFormat" }
-        };
-
         public static void Generate(CppCompilation compilation, string outputPath)
         {
             GenerateConstants(compilation, outputPath);
@@ -47,12 +16,12 @@
 
         public static void AddCsMapping(string typeName, string csTypeName)
         {
-            s_csNameMappings[typeName] = csTypeName;
+            CsCodeGeneratorSettings.Default.NameMappings.Add(typeName, csTypeName);
         }
 
         private static string GetCsCleanName(string name)
         {
-            if (s_csNameMappings.TryGetValue(name, out string? mappedName))
+            if (CsCodeGeneratorSettings.Default.NameMappings.TryGetValue(name, out string? mappedName))
             {
                 return mappedName;
             }

@@ -9,25 +9,6 @@
 
     public static partial class CsCodeGenerator
     {
-        private static readonly Dictionary<string, string> s_knownEnumValueNames = new()
-        {
-            {  "", "" },
-        };
-
-        private static readonly Dictionary<string, string> s_knownEnumPrefixes = new()
-        {
-        };
-
-        private static readonly HashSet<string> s_ignoredParts = new(StringComparer.OrdinalIgnoreCase)
-        {
-            "bit",
-        };
-
-        private static readonly HashSet<string> s_preserveCaps = new(StringComparer.OrdinalIgnoreCase)
-        {
-            "",
-        };
-
         public static void GenerateEnums(CppCompilation compilation, string outputPath)
         {
             using var writer = new CodeWriter(Path.Combine(outputPath, "Enumerations.cs"), "System");
@@ -140,7 +121,7 @@
 
         public static string GetEnumNamePrefix(string typeName)
         {
-            if (s_knownEnumPrefixes.TryGetValue(typeName, out string? knownValue))
+            if (CsCodeGeneratorSettings.Default.KnownEnumPrefixes.TryGetValue(typeName, out string? knownValue))
             {
                 return knownValue;
             }
@@ -193,7 +174,7 @@
 
         private static string GetPrettyEnumName(string value, string enumPrefix)
         {
-            if (s_knownEnumValueNames.TryGetValue(value, out string? knownName))
+            if (CsCodeGeneratorSettings.Default.KnownEnumValueNames.TryGetValue(value, out string? knownName))
             {
                 return knownName;
             }
@@ -206,7 +187,7 @@
             for (int i = 0; i < parts.Length; i++)
             {
                 string part = parts[i];
-                if (s_ignoredParts.Contains(part) || (prefixParts.Contains(part, StringComparer.InvariantCultureIgnoreCase) && !capture))
+                if (CsCodeGeneratorSettings.Default.IgnoredParts.Contains(part, StringComparer.InvariantCultureIgnoreCase) || (prefixParts.Contains(part, StringComparer.InvariantCultureIgnoreCase) && !capture))
                 {
                     continue;
                 }

@@ -1,12 +1,9 @@
 ﻿namespace Generator
 {
+    using CppAst;
     using System.Collections.Generic;
     using System.IO;
-    using System.Reflection;
-    using System.Runtime.InteropServices;
-    using System.Security.Cryptography;
     using System.Text;
-    using CppAst;
 
     public static partial class CsCodeGenerator
     {
@@ -48,9 +45,9 @@
                 }
             }
 
-            using (writer.PushBlock($"public unsafe partial class SPIRV"))
+            using (writer.PushBlock($"public unsafe partial class {CsCodeGeneratorSettings.Default.ApiName}"))
             {
-                writer.WriteLine("internal const string LibName = \"spirv-cross-c-shared\";\n");
+                writer.WriteLine($"internal const string LibName = \"{CsCodeGeneratorSettings.Default.LibName}\";\n");
                 foreach (KeyValuePair<string, CppFunction> command in commands)
                 {
                     CppFunction cppFunction = command.Value;
@@ -570,7 +567,7 @@
                 }
             }
             name = sb.ToString();
-            if (s_keywords.Contains(name))
+            if (CsCodeGeneratorSettings.Default.Keywords.Contains(name))
                 return "@" + name;
 
             return name;

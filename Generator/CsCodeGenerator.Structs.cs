@@ -2,12 +2,11 @@
 {
     using CppAst;
     using System.IO;
+    using System.Linq;
     using System.Text;
 
     public static partial class CsCodeGenerator
     {
-        private static readonly bool generateSizeOfStructs = false;
-
         private static void GenerateStructAndUnions(CppCompilation compilation, string outputPath)
         {
             // Generate Structures
@@ -44,7 +43,7 @@
                 WriteCsSummary(cppClass.Comment, writer);
                 using (writer.PushBlock($"public {modifier} struct {csName}"))
                 {
-                    if (generateSizeOfStructs && cppClass.SizeOf > 0)
+                    if (CsCodeGeneratorSettings.Default.GenerateSizeOfStructs && cppClass.SizeOf > 0)
                     {
                         writer.WriteLine("/// <summary>");
                         writer.WriteLine($"/// The size of the <see cref=\"{csName}\"/> type, in bytes.");
@@ -150,7 +149,7 @@
                 sb.Append(parts[i][1..]);
             }
             name = sb.ToString();
-            if (s_keywords.Contains(name))
+            if (CsCodeGeneratorSettings.Default.Keywords.Contains(name))
                 return "@" + name;
 
             return name;

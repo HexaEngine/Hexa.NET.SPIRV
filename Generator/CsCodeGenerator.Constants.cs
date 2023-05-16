@@ -8,11 +8,6 @@
 
     public partial class CsCodeGenerator
     {
-        private static readonly Dictionary<string, string> s_knownConstantNames = new()
-        {
-            {  "", "" },
-        };
-
         private static void GenerateConstants(CppCompilation compilation, string outputPath)
         {
             /*
@@ -62,7 +57,7 @@
 
         private static string GetPrettyConstantName(string value)
         {
-            if (s_knownConstantNames.TryGetValue(value, out string? knownName))
+            if (CsCodeGeneratorSettings.Default.KnownConstantNames.TryGetValue(value, out string? knownName))
             {
                 return knownName;
             }
@@ -74,7 +69,7 @@
             for (int i = 0; i < parts.Length; i++)
             {
                 string part = parts[i];
-                if (s_ignoredParts.Contains(part))
+                if (CsCodeGeneratorSettings.Default.IgnoredParts.Contains(part))
                 {
                     continue;
                 }
