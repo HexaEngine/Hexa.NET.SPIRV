@@ -13,6 +13,9 @@ using System.Runtime.InteropServices;
 namespace HexaEngine.SPIRVCross
 {
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// See C++ API. 
+	/// </summary>
 	public partial struct SpvcReflectedResource
 	{
 		public uint Id;
@@ -30,6 +33,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// See C++ API. 
+	/// </summary>
 	public partial struct SpvcEntryPoint
 	{
 		public SpvExecutionModel ExecutionModel;
@@ -37,6 +43,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// See C++ API. 
+	/// </summary>
 	public partial struct SpvcCombinedImageSampler
 	{
 		public uint CombinedId;
@@ -45,6 +54,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// See C++ API. 
+	/// </summary>
 	public partial struct SpvcSpecializationConstant
 	{
 		public uint Id;
@@ -52,6 +64,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// See C++ API. 
+	/// </summary>
 	public partial struct SpvcBufferRange
 	{
 		public uint Index;
@@ -60,6 +75,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// See C++ API. 
+	/// </summary>
 	public partial struct SpvcHlslRootConstants
 	{
 		public uint Start;
@@ -69,6 +87,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// See C++ API. 
+	/// </summary>
 	public partial struct SpvcHlslVertexAttributeRemap
 	{
 		public uint Location;
@@ -76,18 +97,36 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// Maps to C++ API. Deprecated; use spvc_msl_shader_interface_var. 
+	/// </summary>
 	public partial struct SpvcMslVertexAttribute
 	{
 		public uint Location;
+		/// <summary>
+		/// Obsolete, do not use. Only lingers on for ABI compatibility. 
+		/// </summary>
 		public uint MslBuffer;
+		/// <summary>
+		/// Obsolete, do not use. Only lingers on for ABI compatibility. 
+		/// </summary>
 		public uint MslOffset;
+		/// <summary>
+		/// Obsolete, do not use. Only lingers on for ABI compatibility. 
+		/// </summary>
 		public uint MslStride;
+		/// <summary>
+		/// Obsolete, do not use. Only lingers on for ABI compatibility. 
+		/// </summary>
 		public bool PerInstance;
 		public SpvcMslShaderVariableFormat Format;
 		public SpvBuiltIn Builtin;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// Maps to C++ API. Deprecated; use spvc_msl_shader_interface_var_2. 
+	/// </summary>
 	public partial struct SpvcMslShaderInterfaceVar
 	{
 		public uint Location;
@@ -97,6 +136,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public partial struct SpvcMslShaderInterfaceVar2
 	{
 		public uint Location;
@@ -107,6 +149,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public partial struct SpvcMslResourceBinding
 	{
 		public SpvExecutionModel Stage;
@@ -118,6 +163,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public partial struct SpvcMslConstexprSampler
 	{
 		public SpvcMslSamplerCoord Coord;
@@ -138,6 +186,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// Maps to the sampler Y'CbCr conversion-related portions of MSLConstexprSampler. See C++ API for defaults and details. 
+	/// </summary>
 	public partial struct SpvcMslSamplerYcbcrConversion
 	{
 		public uint Planes;
@@ -155,6 +206,9 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public partial struct SpvcHlslResourceBindingMapping
 	{
 		public uint RegisterSpace;

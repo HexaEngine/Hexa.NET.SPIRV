@@ -41,6 +41,7 @@
                 bool isReadOnly = false;
                 string modifier = "partial";
 
+                WriteCsSummary(cppClass.Comment, writer);
                 using (writer.PushBlock($"public {modifier} struct {csName}"))
                 {
                     if (generateSizeOfStructs && cppClass.SizeOf > 0)
@@ -65,7 +66,7 @@
         private static void WriteField(CodeWriter writer, CppField field, bool isUnion = false, bool isReadOnly = false)
         {
             string csFieldName = NormalizeFieldName(field.Name);
-
+            WriteCsSummary(field.Comment, writer);
             if (isUnion)
             {
                 writer.WriteLine("[FieldOffset(0)]");

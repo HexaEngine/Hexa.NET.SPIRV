@@ -48,6 +48,7 @@
                 createdEnums.Add(csName, cppEnum.Name);
 
                 bool noneAdded = false;
+                WriteCsSummary(cppEnum.Comment, writer);
                 using (writer.PushBlock($"public enum {csName}"))
                 {
                     foreach (var enumItem in cppEnum.Items)
@@ -64,6 +65,7 @@
                             continue;
                         }
 
+                        var commentWritten = WriteCsSummary(enumItem.Comment, writer);
                         if (enumItem.ValueExpression is CppRawExpression rawExpression)
                         {
                             string enumValueName = GetEnumItemName(cppEnum, rawExpression.Text, enumNamePrefix);
@@ -89,6 +91,9 @@
                         {
                             writer.WriteLine($"{enumItemName} = unchecked({enumItem.Value}),");
                         }
+
+                        if (commentWritten)
+                            writer.WriteLine();
                     }
                 }
 

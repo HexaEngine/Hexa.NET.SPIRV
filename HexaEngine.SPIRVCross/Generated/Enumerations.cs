@@ -1893,32 +1893,99 @@ namespace HexaEngine.SPIRVCross
 
 	public enum SpvcResult
 	{
+		/// <summary>
+		/// Success. 
+		/// </summary>
 		Success = unchecked(0),
+
+		/// <summary>
+		/// The SPIR-V is invalid. Should have been caught by validation ideally. 
+		/// </summary>
 		ErrorInvalidSpirv = unchecked(-1),
+
+		/// <summary>
+		/// The SPIR-V might be valid or invalid, but SPIRV-Cross currently cannot correctly translate this to your target language. 
+		/// </summary>
 		ErrorUnsupportedSpirv = unchecked(-2),
+
+		/// <summary>
+		/// If for some reason we hit this, new or malloc failed. 
+		/// </summary>
 		ErrorOutOfMemory = unchecked(-3),
+
+		/// <summary>
+		/// Invalid API argument. 
+		/// </summary>
 		ErrorInvalidArgument = unchecked(-4),
+
+		/// <summary>
+		/// Invalid API argument. 
+		/// </summary>
 		ErrorIntMax = unchecked(2147483647),
+
 	}
 
 	public enum SpvcCaptureMode
 	{
+		/// <summary>
+		/// The Parsed IR payload will be copied, and the handle can be reused to create other compiler instances. 
+		/// </summary>
 		Copy = unchecked(0),
+
+		/// <summary>
+		/// The payload will now be owned by the compiler.
+		/// parsed_ir should now be considered a dead blob and must not be used further.
+		/// This is optimal for performance and should be the go-to option.
+		/// </summary>
 		TakeOwnership = unchecked(1),
+
+		/// <summary>
+		/// The payload will now be owned by the compiler.
+		/// parsed_ir should now be considered a dead blob and must not be used further.
+		/// This is optimal for performance and should be the go-to option.
+		/// </summary>
 		IntMax = unchecked(2147483647),
+
 	}
 
 	public enum SpvcBackend
 	{
+		/// <summary>
+		/// This backend can only perform reflection, no compiler options are supported. Maps to spirv_cross::Compiler. 
+		/// </summary>
 		None = unchecked(0),
+
+		/// <summary>
+		/// spirv_cross::CompilerGLSL 
+		/// </summary>
 		Glsl = unchecked(1),
+
+		/// <summary>
+		/// CompilerHLSL 
+		/// </summary>
 		Hlsl = unchecked(2),
+
+		/// <summary>
+		/// CompilerMSL 
+		/// </summary>
 		Msl = unchecked(3),
+
+		/// <summary>
+		/// CompilerCPP 
+		/// </summary>
 		Cpp = unchecked(4),
+
+		/// <summary>
+		/// CompilerReflection w/ JSON backend 
+		/// </summary>
 		Json = unchecked(5),
+
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcResourceType
 	{
 		Unknown = unchecked(0),
@@ -1947,6 +2014,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to spirv_cross::SPIRType::BaseType. 
+	/// </summary>
 	public enum SpvcBasetype
 	{
 		Unknown = unchecked(0),
@@ -1972,6 +2042,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslPlatform
 	{
 		Ios = unchecked(0),
@@ -1979,6 +2052,9 @@ namespace HexaEngine.SPIRVCross
 		MaxInt = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslIndexType
 	{
 		None = unchecked(0),
@@ -1987,6 +2063,9 @@ namespace HexaEngine.SPIRVCross
 		MaxInt = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslShaderVariableFormat
 	{
 		Other = unchecked(0),
@@ -1994,17 +2073,56 @@ namespace HexaEngine.SPIRVCross
 		Uint16 = unchecked(2),
 		Any16 = unchecked(3),
 		Any32 = unchecked(4),
+		/// <summary>
+		/// Deprecated names. 
+		/// </summary>
 		VertexFormatOther = Other,
+
+		/// <summary>
+		/// Deprecated names. 
+		/// </summary>
 		VertexFormatUint8 = Uint8,
+
+		/// <summary>
+		/// Deprecated names. 
+		/// </summary>
 		VertexFormatUint16 = Uint16,
+
+		/// <summary>
+		/// Deprecated names. 
+		/// </summary>
 		InputFormatOther = Other,
+
+		/// <summary>
+		/// Deprecated names. 
+		/// </summary>
 		InputFormatUint8 = Uint8,
+
+		/// <summary>
+		/// Deprecated names. 
+		/// </summary>
 		InputFormatUint16 = Uint16,
+
+		/// <summary>
+		/// Deprecated names. 
+		/// </summary>
 		InputFormatAny16 = Any16,
+
+		/// <summary>
+		/// Deprecated names. 
+		/// </summary>
 		InputFormatAny32 = Any32,
+
+		/// <summary>
+		/// Deprecated names. 
+		/// </summary>
 		InputFormatIntMax = unchecked(2147483647),
+
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslShaderVariableRate
 	{
 		PerVertex = unchecked(0),
@@ -2013,6 +2131,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslSamplerCoord
 	{
 		Normalized = unchecked(0),
@@ -2020,6 +2141,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslSamplerFilter
 	{
 		Nearest = unchecked(0),
@@ -2027,6 +2151,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslSamplerMipFilter
 	{
 		None = unchecked(0),
@@ -2035,6 +2162,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslSamplerAddress
 	{
 		ClampToZero = unchecked(0),
@@ -2045,6 +2175,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslSamplerCompareFunc
 	{
 		Never = unchecked(0),
@@ -2058,6 +2191,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslSamplerBorderColor
 	{
 		TransparentBlack = unchecked(0),
@@ -2066,6 +2202,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslFormatResolution
 	{
 		Resolution444 = unchecked(0),
@@ -2074,6 +2213,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslChromaLocation
 	{
 		CositedEven = unchecked(0),
@@ -2081,6 +2223,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslComponentSwizzle
 	{
 		Identity = unchecked(0),
@@ -2093,6 +2238,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcMslSamplerYcbcrModelConversion
 	{
 		RgbIdentity = unchecked(0),
@@ -2103,6 +2251,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C+ API. 
+	/// </summary>
 	public enum SpvcMslSamplerYcbcrRange
 	{
 		ItuFull = unchecked(0),
@@ -2110,6 +2261,9 @@ namespace HexaEngine.SPIRVCross
 		IntMax = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to C++ API. 
+	/// </summary>
 	public enum SpvcHlslBindingFlagBits
 	{
 		AutoNone = unchecked(0),
@@ -2121,6 +2275,9 @@ namespace HexaEngine.SPIRVCross
 		AutoAll = unchecked(2147483647),
 	}
 
+	/// <summary>
+	/// Maps to the various spirv_cross::Compiler*::Option structures. See C++ API for defaults and details. 
+	/// </summary>
 	public enum SpvcCompilerOption
 	{
 		Unknown = unchecked(0),
@@ -2142,76 +2299,356 @@ namespace HexaEngine.SPIRVCross
 		HlslSupportNonzeroBaseVertexBaseInstance = unchecked(67108880),
 		MslVersion = unchecked(134217745),
 		MslTexelBufferTextureWidth = unchecked(134217746),
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslAuxBufferIndex = unchecked(134217747),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslSwizzleBufferIndex = unchecked(134217747),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslIndirectParamsBufferIndex = unchecked(134217748),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslShaderOutputBufferIndex = unchecked(134217749),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslShaderPatchOutputBufferIndex = unchecked(134217750),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslShaderTessFactorOutputBufferIndex = unchecked(134217751),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslShaderInputWorkgroupIndex = unchecked(134217752),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslEnablePointSizeBuiltin = unchecked(134217753),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslDisableRasterization = unchecked(134217754),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslCaptureOutputToBuffer = unchecked(134217755),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslSwizzleTextureSamples = unchecked(134217756),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslPadFragmentOutputComponents = unchecked(134217757),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslTessDomainOriginLowerLeft = unchecked(134217758),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslPlatform = unchecked(134217759),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslArgumentBuffers = unchecked(134217760),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		GlslEmitPushConstantAsUniformBuffer = unchecked(33554465),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslTextureBufferNative = unchecked(134217762),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		GlslEmitUniformBufferAsPlainUniforms = unchecked(33554467),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslBufferSizeBufferIndex = unchecked(134217764),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		EmitLineDirectives = unchecked(16777253),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslMultiview = unchecked(134217766),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslViewMaskBufferIndex = unchecked(134217767),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslDeviceIndex = unchecked(134217768),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslViewIndexFromDeviceIndex = unchecked(134217769),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslDispatchBase = unchecked(134217770),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslDynamicOffsetsBufferIndex = unchecked(134217771),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslTexture1DAs2D = unchecked(134217772),
+
+		/// <summary>
+		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. 
+		/// </summary>
 		MslEnableBaseIndexZero = unchecked(134217773),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslIosFramebufferFetchSubpass = unchecked(134217774),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslFramebufferFetchSubpass = unchecked(134217774),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslInvariantFpMath = unchecked(134217775),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslEmulateCubemapArray = unchecked(134217776),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslEnableDecorationBinding = unchecked(134217777),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslForceActiveArgumentBufferResources = unchecked(134217778),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslForceNativeArrays = unchecked(134217779),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		EnableStorageImageQualifierDeduction = unchecked(16777268),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		HlslForceStorageBufferAsUav = unchecked(67108917),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		ForceZeroInitializedVariables = unchecked(16777270),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		HlslNonwritableUavTextureAsSrv = unchecked(67108919),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslEnableFragOutputMask = unchecked(134217784),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslEnableFragDepthBuiltin = unchecked(134217785),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslEnableFragStencilRefBuiltin = unchecked(134217786),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslEnableClipDistanceUserVarying = unchecked(134217787),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		HlslEnable16Types = unchecked(67108924),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslMultiPatchWorkgroup = unchecked(134217789),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslShaderInputBufferIndex = unchecked(134217790),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslShaderIndexBufferIndex = unchecked(134217791),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslVertexForTessellation = unchecked(134217792),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslVertexIndexType = unchecked(134217793),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		GlslForceFlattenedIoBlocks = unchecked(33554498),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslMultiviewLayeredRendering = unchecked(134217795),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslArrayedSubpassInput = unchecked(134217796),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslR32UiLinearTextureAlignment = unchecked(134217797),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslR32UiAlignmentConstantId = unchecked(134217798),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		HlslFlattenMatrixVertexInputSemantics = unchecked(67108935),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslIosUseSimdgroupFunctions = unchecked(134217800),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslEmulateSubgroups = unchecked(134217801),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslFixedSubgroupSize = unchecked(134217802),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslForceSampleRateShading = unchecked(134217803),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslIosSupportBaseVertexInstance = unchecked(134217804),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		GlslOvrMultiviewViewCount = unchecked(33554509),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		RelaxNanChecks = unchecked(16777294),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslRawBufferTeseInput = unchecked(134217807),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslShaderPatchInputBufferIndex = unchecked(134217808),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslManualHelperInvocationUpdates = unchecked(134217809),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslCheckDiscardedFragStores = unchecked(134217810),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		GlslEnableRowMajorLoadWorkaround = unchecked(33554515),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslArgumentBuffersTier = unchecked(134217812),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		MslSampleDrefLodArrayAsGrad = unchecked(134217813),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. 
+		/// </summary>
 		IntMax = unchecked(2147483647),
+
 	}
 
 }

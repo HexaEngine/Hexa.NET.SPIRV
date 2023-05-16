@@ -16,78 +16,158 @@ namespace HexaEngine.SPIRVCross
 	{
 		internal const string LibName = "spirv-cross-c-shared";
 
+		/// <summary>
+		/// Gets the SPVC_C_API_VERSION_* used to build this library.
+		/// Can be used to check for ABI mismatch if so-versioning did not catch it.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_get_version")]
 		public static extern void SpvcGetVersion(uint* major, uint* minor, uint* patch);
 
+		/// <summary>
+		/// Gets a human readable version string to identify which commit a particular binary was created from. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_get_commit_revision_and_timestamp")]
 		public static extern sbyte* SpvcGetCommitRevisionAndTimestamp();
 
+		/// <summary>
+		/// Initializes the vertex attribute struct.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_msl_vertex_attribute_init")]
 		public static extern void SpvcMslVertexAttributeInit(SpvcMslVertexAttribute* attr);
 
+		/// <summary>
+		/// Initializes the shader input struct.
+		/// Deprecated. Use spvc_msl_shader_interface_var_init_2().
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_msl_shader_interface_var_init")]
 		public static extern void SpvcMslShaderInterfaceVarInit(SpvcMslShaderInterfaceVar* var);
 
+		/// <summary>
+		/// Deprecated. Use spvc_msl_shader_interface_var_init_2().
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_msl_shader_input_init")]
 		public static extern void SpvcMslShaderInputInit(SpvcMslShaderInterfaceVar* input);
 
+		/// <summary>
+		/// Initializes the shader interface variable struct.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_msl_shader_interface_var_init_2")]
 		public static extern void SpvcMslShaderInterfaceVarInit2(SpvcMslShaderInterfaceVar2* var);
 
+		/// <summary>
+		/// Initializes the resource binding struct.
+		/// The defaults are non-zero.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_msl_resource_binding_init")]
 		public static extern void SpvcMslResourceBindingInit(SpvcMslResourceBinding* binding);
 
+		/// <summary>
+		/// Runtime check for incompatibility. Obsolete. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_msl_get_aux_buffer_struct_version")]
 		public static extern uint SpvcMslGetAuxBufferStructVersion();
 
+		/// <summary>
+		/// Initializes the constexpr sampler struct.
+		/// The defaults are non-zero.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_msl_constexpr_sampler_init")]
 		public static extern void SpvcMslConstexprSamplerInit(SpvcMslConstexprSampler* sampler);
 
+		/// <summary>
+		/// Initializes the constexpr sampler struct.
+		/// The defaults are non-zero.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_msl_sampler_ycbcr_conversion_init")]
 		public static extern void SpvcMslSamplerYcbcrConversionInit(SpvcMslSamplerYcbcrConversion* conv);
 
+		/// <summary>
+		/// Initializes the resource binding struct.
+		/// The defaults are non-zero.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_hlsl_resource_binding_init")]
 		public static extern void SpvcHlslResourceBindingInit(SpvcHlslResourceBinding* binding);
 
+		/// <summary>
+		/// Context is the highest-level API construct.
+		/// The context owns all memory allocations made by its child object hierarchy, including various non-opaque structs and strings.
+		/// This means that the API user only has to care about one "destroy" call ever when using the C API.
+		/// All pointers handed out by the APIs are only valid as long as the context
+		/// is alive and spvc_context_release_allocations has not been called.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_context_create")]
 		public static extern SpvcResult SpvcContextCreate(SpvcContext* context);
 
+		/// <summary>
+		/// Frees all memory allocations and objects associated with the context and its child objects. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_context_destroy")]
 		public static extern void SpvcContextDestroy(SpvcContext context);
 
+		/// <summary>
+		/// Frees all memory allocations and objects associated with the context and its child objects, but keeps the context alive. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_context_release_allocations")]
 		public static extern void SpvcContextReleaseAllocations(SpvcContext context);
 
+		/// <summary>
+		/// Get the string for the last error which was logged. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_context_get_last_error_string")]
 		public static extern sbyte* SpvcContextGetLastErrorString(SpvcContext context);
 
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_context_set_error_callback")]
 		public static extern void SpvcContextSetErrorCallback(SpvcContext context, SpvcErrorCallback cb, void* userdata);
 
+		/// <summary>
+		/// SPIR-V parsing interface. Maps to Parser which then creates a ParsedIR, and that IR is extracted into the handle. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_context_parse_spirv")]
 		public static extern SpvcResult SpvcContextParseSpirv(SpvcContext context, SpvId* spirv, nuint word_count, SpvcParsedIr* parsed_ir);
 
+		/// <summary>
+		/// Create a compiler backend. Capture mode controls if we construct by copy or move semantics.
+		/// It is always recommended to use SPVC_CAPTURE_MODE_TAKE_OWNERSHIP if you only intend to cross-compile the IR once.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_context_create_compiler")]
 		public static extern SpvcResult SpvcContextCreateCompiler(SpvcContext context, SpvcBackend backend, SpvcParsedIr parsed_ir, SpvcCaptureMode mode, SpvcCompiler* compiler);
 
+		/// <summary>
+		/// Maps directly to C++ API. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_current_id_bound")]
 		public static extern uint SpvcCompilerGetCurrentIdBound(SpvcCompiler compiler);
 
+		/// <summary>
+		/// Create compiler options, which will initialize defaults. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_create_compiler_options")]
 		public static extern SpvcResult SpvcCompilerCreateCompilerOptions(SpvcCompiler compiler, SpvcCompilerOptions* options);
 
+		/// <summary>
+		/// Override options. Will return error if e.g. MSL options are used for the HLSL backend, etc. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_options_set_bool")]
 		public static extern SpvcResult SpvcCompilerOptionsSetBool(SpvcCompilerOptions options, SpvcCompilerOption option, bool value);
 
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_options_set_uint")]
 		public static extern SpvcResult SpvcCompilerOptionsSetUint(SpvcCompilerOptions options, SpvcCompilerOption option, uint value);
 
+		/// <summary>
+		/// Set compiler options. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_install_compiler_options")]
 		public static extern SpvcResult SpvcCompilerInstallCompilerOptions(SpvcCompiler compiler, SpvcCompilerOptions options);
 
+		/// <summary>
+		/// Compile IR into a string. *source is owned by the context, and caller must not free it themselves. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_compile")]
 		public static extern SpvcResult SpvcCompilerCompile(SpvcCompiler compiler, sbyte* source);
 
+		/// <summary>
+		/// Maps to C++ API. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_add_header_line")]
 		public static extern SpvcResult SpvcCompilerAddHeaderLine(SpvcCompiler compiler, sbyte* line);
 
@@ -106,6 +186,10 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_mask_stage_output_by_builtin")]
 		public static extern SpvcResult SpvcCompilerMaskStageOutputByBuiltin(SpvcCompiler compiler, SpvBuiltIn builtin);
 
+		/// <summary>
+		/// HLSL specifics.
+		/// Maps to C++ API.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_hlsl_set_root_constants_layout")]
 		public static extern SpvcResult SpvcCompilerHlslSetRootConstantsLayout(SpvcCompiler compiler, SpvcHlslRootConstants* constant_info, nuint count);
 
@@ -124,9 +208,16 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_hlsl_is_resource_used")]
 		public static extern bool SpvcCompilerHlslIsResourceUsed(SpvcCompiler compiler, SpvExecutionModel model, uint set, uint binding);
 
+		/// <summary>
+		/// MSL specifics.
+		/// Maps to C++ API.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_is_rasterization_disabled")]
 		public static extern bool SpvcCompilerMslIsRasterizationDisabled(SpvcCompiler compiler);
 
+		/// <summary>
+		/// Obsolete. Renamed to needs_swizzle_buffer. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_needs_aux_buffer")]
 		public static extern bool SpvcCompilerMslNeedsAuxBuffer(SpvcCompiler compiler);
 
@@ -151,12 +242,18 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_add_resource_binding")]
 		public static extern SpvcResult SpvcCompilerMslAddResourceBinding(SpvcCompiler compiler, SpvcMslResourceBinding* binding);
 
+		/// <summary>
+		/// Deprecated; use spvc_compiler_msl_add_shader_input_2(). 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_add_shader_input")]
 		public static extern SpvcResult SpvcCompilerMslAddShaderInput(SpvcCompiler compiler, SpvcMslShaderInterfaceVar* input);
 
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_add_shader_input_2")]
 		public static extern SpvcResult SpvcCompilerMslAddShaderInput2(SpvcCompiler compiler, SpvcMslShaderInterfaceVar2* input);
 
+		/// <summary>
+		/// Deprecated; use spvc_compiler_msl_add_shader_output_2(). 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_add_shader_output")]
 		public static extern SpvcResult SpvcCompilerMslAddShaderOutput(SpvcCompiler compiler, SpvcMslShaderInterfaceVar* output);
 
@@ -169,6 +266,9 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_set_argument_buffer_device_address_space")]
 		public static extern SpvcResult SpvcCompilerMslSetArgumentBufferDeviceAddressSpace(SpvcCompiler compiler, uint desc_set, bool device_address);
 
+		/// <summary>
+		/// Obsolete, use is_shader_input_used. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_is_vertex_attribute_used")]
 		public static extern bool SpvcCompilerMslIsVertexAttributeUsed(SpvcCompiler compiler, uint location);
 
@@ -214,6 +314,10 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_get_combined_sampler_suffix")]
 		public static extern sbyte* SpvcCompilerMslGetCombinedSamplerSuffix(SpvcCompiler compiler);
 
+		/// <summary>
+		/// Reflect resources.
+		/// Maps almost 1:1 to C++ API.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_active_interface_variables")]
 		public static extern SpvcResult SpvcCompilerGetActiveInterfaceVariables(SpvcCompiler compiler, SpvcSet* set);
 
@@ -232,6 +336,10 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_resources_get_builtin_resource_list_for_type")]
 		public static extern SpvcResult SpvcResourcesGetBuiltinResourceListForType(SpvcResources resources, SpvcBuiltinResourceType type, SpvcReflectedBuiltinResource* resource_list, nuint* resource_size);
 
+		/// <summary>
+		/// Decorations.
+		/// Maps to C++ API.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_set_decoration")]
 		public static extern void SpvcCompilerSetDecoration(SpvcCompiler compiler, SpvId id, SpvDecoration decoration, uint argument);
 
@@ -280,6 +388,10 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_member_name")]
 		public static extern sbyte* SpvcCompilerGetMemberName(SpvcCompiler compiler, uint id, uint member_index);
 
+		/// <summary>
+		/// Entry points.
+		/// Maps to C++ API.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_entry_points")]
 		public static extern SpvcResult SpvcCompilerGetEntryPoints(SpvcCompiler compiler, SpvcEntryPoint* entry_points, nuint* num_entry_points);
 
@@ -319,9 +431,19 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_has_active_builtin")]
 		public static extern bool SpvcCompilerHasActiveBuiltin(SpvcCompiler compiler, SpvBuiltIn builtin, SpvStorageClass storage);
 
+		/// <summary>
+		/// Type query interface.
+		/// Maps to C++ API, except it's read-only.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_type_handle")]
 		public static extern SpvcType SpvcCompilerGetTypeHandle(SpvcCompiler compiler, uint id);
 
+		/// <summary>
+		/// Pulls out SPIRType::self. This effectively gives the type ID without array or pointer qualifiers.
+		/// This is necessary when reflecting decoration/name information on members of a struct,
+		/// which are placed in the base type, not the qualified type.
+		/// This is similar to spvc_reflected_resource::base_type_id. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_get_base_type_id")]
 		public static extern uint SpvcTypeGetBaseTypeId(SpvcType type);
 
@@ -355,6 +477,9 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_get_storage_class")]
 		public static extern SpvStorageClass SpvcTypeGetStorageClass(SpvcType type);
 
+		/// <summary>
+		/// Image type query. 
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_get_image_sampled_type")]
 		public static extern uint SpvcTypeGetImageSampledType(SpvcType type);
 
@@ -379,6 +504,10 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_get_image_access_qualifier")]
 		public static extern SpvAccessQualifier SpvcTypeGetImageAccessQualifier(SpvcType type);
 
+		/// <summary>
+		/// Buffer layout query.
+		/// Maps to C++ API.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_declared_struct_size")]
 		public static extern SpvcResult SpvcCompilerGetDeclaredStructSize(SpvcCompiler compiler, SpvcType struct_type, nuint* size);
 
@@ -397,6 +526,10 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_type_struct_member_matrix_stride")]
 		public static extern SpvcResult SpvcCompilerTypeStructMemberMatrixStride(SpvcCompiler compiler, SpvcType type, uint index, uint* stride);
 
+		/// <summary>
+		/// Workaround helper functions.
+		/// Maps to C++ API.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_build_dummy_sampler_for_combined_images")]
 		public static extern SpvcResult SpvcCompilerBuildDummySamplerForCombinedImages(SpvcCompiler compiler, uint* id);
 
@@ -406,6 +539,10 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_combined_image_samplers")]
 		public static extern SpvcResult SpvcCompilerGetCombinedImageSamplers(SpvcCompiler compiler, SpvcCombinedImageSampler* samplers, nuint* num_samplers);
 
+		/// <summary>
+		/// Constants
+		/// Maps to C++ API.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_specialization_constants")]
 		public static extern SpvcResult SpvcCompilerGetSpecializationConstants(SpvcCompiler compiler, SpvcSpecializationConstant* constants, nuint* num_constants);
 
@@ -415,9 +552,19 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_work_group_size_specialization_constants")]
 		public static extern uint SpvcCompilerGetWorkGroupSizeSpecializationConstants(SpvcCompiler compiler, SpvcSpecializationConstant* x, SpvcSpecializationConstant* y, SpvcSpecializationConstant* z);
 
+		/// <summary>
+		/// Buffer ranges
+		/// Maps to C++ API.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_active_buffer_ranges")]
 		public static extern SpvcResult SpvcCompilerGetActiveBufferRanges(SpvcCompiler compiler, uint id, SpvcBufferRange* ranges, nuint* num_ranges);
 
+		/// <summary>
+		/// No stdint.h until C99, sigh :(
+		/// For smaller types, the result is sign or zero-extended as appropriate.
+		/// Maps to C++ API.
+		/// TODO: The SPIRConstant query interface and modification interface is not quite complete.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_constant_get_scalar_fp16")]
 		public static extern float SpvcConstantGetScalarFp16(SpvcConstant constant, uint column, uint row);
 
@@ -451,6 +598,9 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_constant_get_type")]
 		public static extern uint SpvcConstantGetType(SpvcConstant constant);
 
+		/// <summary>
+		/// C implementation of the C++ api.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_constant_set_scalar_fp16")]
 		public static extern void SpvcConstantSetScalarFp16(SpvcConstant constant, uint column, uint row, ushort value);
 
@@ -478,6 +628,10 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_constant_set_scalar_i8")]
 		public static extern void SpvcConstantSetScalarI8(SpvcConstant constant, uint column, uint row, sbyte value);
 
+		/// <summary>
+		/// Misc reflection
+		/// Maps to C++ API.
+		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_binary_offset_for_decoration")]
 		public static extern bool SpvcCompilerGetBinaryOffsetForDecoration(SpvcCompiler compiler, uint id, SpvDecoration decoration, uint* word_offset);
 

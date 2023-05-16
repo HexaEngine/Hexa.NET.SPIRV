@@ -13,7 +13,7 @@ using System.Diagnostics;
 namespace HexaEngine.SPIRVCross
 {
 	/// <summary>
-	/// A dispatchable handle.
+	/// These types are opaque to the user. 
 	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcContext : IEquatable<SpvcContext>
@@ -35,9 +35,6 @@ namespace HexaEngine.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcContext [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcParsedIr : IEquatable<SpvcParsedIr>
 	{
@@ -58,9 +55,6 @@ namespace HexaEngine.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcParsedIr [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcCompiler : IEquatable<SpvcCompiler>
 	{
@@ -81,9 +75,6 @@ namespace HexaEngine.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcCompiler [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcCompilerOptions : IEquatable<SpvcCompilerOptions>
 	{
@@ -104,9 +95,6 @@ namespace HexaEngine.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcCompilerOptions [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcResources : IEquatable<SpvcResources>
 	{
@@ -127,9 +115,6 @@ namespace HexaEngine.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcResources [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcType : IEquatable<SpvcType>
 	{
@@ -150,9 +135,6 @@ namespace HexaEngine.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcType [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcConstant : IEquatable<SpvcConstant>
 	{
@@ -173,9 +155,6 @@ namespace HexaEngine.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcConstant [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// A dispatchable handle.
-	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcSet : IEquatable<SpvcSet>
 	{
@@ -197,7 +176,7 @@ namespace HexaEngine.SPIRVCross
 	}
 
 	/// <summary>
-	/// A dispatchable handle.
+	/// Get notified in a callback when an error triggers. Useful for debugging. 
 	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcErrorCallback : IEquatable<SpvcErrorCallback>
