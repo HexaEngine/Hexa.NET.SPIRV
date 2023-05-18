@@ -125,7 +125,10 @@
             {
                 return knownValue;
             }
-
+            if (typeName.Contains('_'))
+            {
+                return typeName;
+            }
             List<string> parts = new(4);
             int chunkStart = 0;
             for (int i = 0; i < typeName.Length; i++)
@@ -178,6 +181,9 @@
             {
                 return knownName;
             }
+
+            if (value.StartsWith("0x"))
+                return value;
 
             string[] parts = value.Split('_', StringSplitOptions.RemoveEmptyEntries).SelectMany(x => x.SplitByCase()).ToArray();
             string[] prefixParts = enumPrefix.Split('_', StringSplitOptions.RemoveEmptyEntries);

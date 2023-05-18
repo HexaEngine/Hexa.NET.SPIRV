@@ -52,18 +52,6 @@ namespace HexaEngine.SPIRVCross
 		/// Gets the SPVC_C_API_VERSION_* used to build this library.
 		/// Can be used to check for ABI mismatch if so-versioning did not catch it.
 		/// </summary>
-		public static void SpvcGetVersion(uint* major, uint* minor, ref uint patch)
-		{
-			fixed (uint* ppatch = &patch)
-			{
-				SpvcGetVersion(major, minor, ppatch);
-			}
-		}
-
-		/// <summary>
-		/// Gets the SPVC_C_API_VERSION_* used to build this library.
-		/// Can be used to check for ABI mismatch if so-versioning did not catch it.
-		/// </summary>
 		public static void SpvcGetVersion(ref uint major, ref uint minor, uint* patch)
 		{
 			fixed (uint* pmajor = &major)
@@ -79,14 +67,11 @@ namespace HexaEngine.SPIRVCross
 		/// Gets the SPVC_C_API_VERSION_* used to build this library.
 		/// Can be used to check for ABI mismatch if so-versioning did not catch it.
 		/// </summary>
-		public static void SpvcGetVersion(uint* major, ref uint minor, ref uint patch)
+		public static void SpvcGetVersion(uint* major, uint* minor, ref uint patch)
 		{
-			fixed (uint* pminor = &minor)
+			fixed (uint* ppatch = &patch)
 			{
-				fixed (uint* ppatch = &patch)
-				{
-					SpvcGetVersion(major, pminor, ppatch);
-				}
+				SpvcGetVersion(major, minor, ppatch);
 			}
 		}
 
@@ -101,6 +86,21 @@ namespace HexaEngine.SPIRVCross
 				fixed (uint* ppatch = &patch)
 				{
 					SpvcGetVersion(pmajor, minor, ppatch);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets the SPVC_C_API_VERSION_* used to build this library.
+		/// Can be used to check for ABI mismatch if so-versioning did not catch it.
+		/// </summary>
+		public static void SpvcGetVersion(uint* major, ref uint minor, ref uint patch)
+		{
+			fixed (uint* pminor = &minor)
+			{
+				fixed (uint* ppatch = &patch)
+				{
+					SpvcGetVersion(major, pminor, ppatch);
 				}
 			}
 		}
@@ -477,17 +477,6 @@ namespace HexaEngine.SPIRVCross
 		/// <summary>
 		/// Maps to C++ API. 
 		/// </summary>
-		public static SpvcResult SpvcCompilerAddHeaderLine(SpvcCompiler compiler, string line)
-		{
-			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(line);
-			SpvcResult ret = SpvcCompilerAddHeaderLine(compiler, pStr0);
-			Marshal.FreeHGlobal((nint)pStr0);
-			return ret;
-		}
-
-		/// <summary>
-		/// Maps to C++ API. 
-		/// </summary>
 		public static SpvcResult SpvcCompilerAddHeaderLine(SpvcCompiler compiler, ref byte line)
 		{
 			fixed (byte* pline = &line)
@@ -497,16 +486,19 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_require_extension")]
-		public static extern SpvcResult SpvcCompilerRequireExtension(SpvcCompiler compiler, byte* ext);
-
-		public static SpvcResult SpvcCompilerRequireExtension(SpvcCompiler compiler, string ext)
+		/// <summary>
+		/// Maps to C++ API. 
+		/// </summary>
+		public static SpvcResult SpvcCompilerAddHeaderLine(SpvcCompiler compiler, string line)
 		{
-			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(ext);
-			SpvcResult ret = SpvcCompilerRequireExtension(compiler, pStr0);
+			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(line);
+			SpvcResult ret = SpvcCompilerAddHeaderLine(compiler, pStr0);
 			Marshal.FreeHGlobal((nint)pStr0);
 			return ret;
 		}
+
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_require_extension")]
+		public static extern SpvcResult SpvcCompilerRequireExtension(SpvcCompiler compiler, byte* ext);
 
 		public static SpvcResult SpvcCompilerRequireExtension(SpvcCompiler compiler, ref byte ext)
 		{
@@ -517,9 +509,18 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
+		public static SpvcResult SpvcCompilerRequireExtension(SpvcCompiler compiler, string ext)
+		{
+			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(ext);
+			SpvcResult ret = SpvcCompilerRequireExtension(compiler, pStr0);
+			Marshal.FreeHGlobal((nint)pStr0);
+			return ret;
+		}
+
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_flatten_buffer_block")]
 		public static extern SpvcResult SpvcCompilerFlattenBufferBlock(SpvcCompiler compiler, uint id);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_variable_is_depth_or_compare")]
 		public static extern bool SpvcCompilerVariableIsDepthOrCompare(SpvcCompiler compiler, uint id);
 
@@ -579,6 +580,7 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_hlsl_is_resource_used")]
 		public static extern bool SpvcCompilerHlslIsResourceUsed(SpvcCompiler compiler, SpvExecutionModel model, uint set, uint binding);
 
@@ -586,27 +588,34 @@ namespace HexaEngine.SPIRVCross
 		/// MSL specifics.
 		/// Maps to C++ API.
 		/// </summary>
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_is_rasterization_disabled")]
 		public static extern bool SpvcCompilerMslIsRasterizationDisabled(SpvcCompiler compiler);
 
 		/// <summary>
 		/// Obsolete. Renamed to needs_swizzle_buffer. 
 		/// </summary>
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_needs_aux_buffer")]
 		public static extern bool SpvcCompilerMslNeedsAuxBuffer(SpvcCompiler compiler);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_needs_swizzle_buffer")]
 		public static extern bool SpvcCompilerMslNeedsSwizzleBuffer(SpvcCompiler compiler);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_needs_buffer_size_buffer")]
 		public static extern bool SpvcCompilerMslNeedsBufferSizeBuffer(SpvcCompiler compiler);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_needs_output_buffer")]
 		public static extern bool SpvcCompilerMslNeedsOutputBuffer(SpvcCompiler compiler);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_needs_patch_output_buffer")]
 		public static extern bool SpvcCompilerMslNeedsPatchOutputBuffer(SpvcCompiler compiler);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_needs_input_threadgroup_mem")]
 		public static extern bool SpvcCompilerMslNeedsInputThreadgroupMem(SpvcCompiler compiler);
 
@@ -703,15 +712,19 @@ namespace HexaEngine.SPIRVCross
 		/// <summary>
 		/// Obsolete, use is_shader_input_used. 
 		/// </summary>
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_is_vertex_attribute_used")]
 		public static extern bool SpvcCompilerMslIsVertexAttributeUsed(SpvcCompiler compiler, uint location);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_is_shader_input_used")]
 		public static extern bool SpvcCompilerMslIsShaderInputUsed(SpvcCompiler compiler, uint location);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_is_shader_output_used")]
 		public static extern bool SpvcCompilerMslIsShaderOutputUsed(SpvcCompiler compiler, uint location);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_is_resource_used")]
 		public static extern bool SpvcCompilerMslIsResourceUsed(SpvcCompiler compiler, SpvExecutionModel model, uint set, uint binding);
 
@@ -823,14 +836,6 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_set_combined_sampler_suffix")]
 		public static extern SpvcResult SpvcCompilerMslSetCombinedSamplerSuffix(SpvcCompiler compiler, byte* suffix);
 
-		public static SpvcResult SpvcCompilerMslSetCombinedSamplerSuffix(SpvcCompiler compiler, string suffix)
-		{
-			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(suffix);
-			SpvcResult ret = SpvcCompilerMslSetCombinedSamplerSuffix(compiler, pStr0);
-			Marshal.FreeHGlobal((nint)pStr0);
-			return ret;
-		}
-
 		public static SpvcResult SpvcCompilerMslSetCombinedSamplerSuffix(SpvcCompiler compiler, ref byte suffix)
 		{
 			fixed (byte* psuffix = &suffix)
@@ -838,6 +843,14 @@ namespace HexaEngine.SPIRVCross
 				SpvcResult ret = SpvcCompilerMslSetCombinedSamplerSuffix(compiler, psuffix);
 				return ret;
 			}
+		}
+
+		public static SpvcResult SpvcCompilerMslSetCombinedSamplerSuffix(SpvcCompiler compiler, string suffix)
+		{
+			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(suffix);
+			SpvcResult ret = SpvcCompilerMslSetCombinedSamplerSuffix(compiler, pStr0);
+			Marshal.FreeHGlobal((nint)pStr0);
+			return ret;
 		}
 
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_msl_get_combined_sampler_suffix")]
@@ -972,13 +985,6 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_set_decoration_string")]
 		public static extern void SpvcCompilerSetDecorationString(SpvcCompiler compiler, SpvId id, SpvDecoration decoration, byte* argument);
 
-		public static void SpvcCompilerSetDecorationString(SpvcCompiler compiler, SpvId id, SpvDecoration decoration, string argument)
-		{
-			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(argument);
-			SpvcCompilerSetDecorationString(compiler, id, decoration, pStr0);
-			Marshal.FreeHGlobal((nint)pStr0);
-		}
-
 		public static void SpvcCompilerSetDecorationString(SpvcCompiler compiler, SpvId id, SpvDecoration decoration, ref byte argument)
 		{
 			fixed (byte* pargument = &argument)
@@ -987,15 +993,15 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_set_name")]
-		public static extern void SpvcCompilerSetName(SpvcCompiler compiler, SpvId id, byte* argument);
-
-		public static void SpvcCompilerSetName(SpvcCompiler compiler, SpvId id, string argument)
+		public static void SpvcCompilerSetDecorationString(SpvcCompiler compiler, SpvId id, SpvDecoration decoration, string argument)
 		{
 			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(argument);
-			SpvcCompilerSetName(compiler, id, pStr0);
+			SpvcCompilerSetDecorationString(compiler, id, decoration, pStr0);
 			Marshal.FreeHGlobal((nint)pStr0);
 		}
+
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_set_name")]
+		public static extern void SpvcCompilerSetName(SpvcCompiler compiler, SpvId id, byte* argument);
 
 		public static void SpvcCompilerSetName(SpvcCompiler compiler, SpvId id, ref byte argument)
 		{
@@ -1005,18 +1011,18 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
+		public static void SpvcCompilerSetName(SpvcCompiler compiler, SpvId id, string argument)
+		{
+			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(argument);
+			SpvcCompilerSetName(compiler, id, pStr0);
+			Marshal.FreeHGlobal((nint)pStr0);
+		}
+
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_set_member_decoration")]
 		public static extern void SpvcCompilerSetMemberDecoration(SpvcCompiler compiler, uint id, uint memberIndex, SpvDecoration decoration, uint argument);
 
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_set_member_decoration_string")]
 		public static extern void SpvcCompilerSetMemberDecorationString(SpvcCompiler compiler, uint id, uint memberIndex, SpvDecoration decoration, byte* argument);
-
-		public static void SpvcCompilerSetMemberDecorationString(SpvcCompiler compiler, uint id, uint memberIndex, SpvDecoration decoration, string argument)
-		{
-			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(argument);
-			SpvcCompilerSetMemberDecorationString(compiler, id, memberIndex, decoration, pStr0);
-			Marshal.FreeHGlobal((nint)pStr0);
-		}
 
 		public static void SpvcCompilerSetMemberDecorationString(SpvcCompiler compiler, uint id, uint memberIndex, SpvDecoration decoration, ref byte argument)
 		{
@@ -1026,15 +1032,15 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_set_member_name")]
-		public static extern void SpvcCompilerSetMemberName(SpvcCompiler compiler, uint id, uint memberIndex, byte* argument);
-
-		public static void SpvcCompilerSetMemberName(SpvcCompiler compiler, uint id, uint memberIndex, string argument)
+		public static void SpvcCompilerSetMemberDecorationString(SpvcCompiler compiler, uint id, uint memberIndex, SpvDecoration decoration, string argument)
 		{
 			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(argument);
-			SpvcCompilerSetMemberName(compiler, id, memberIndex, pStr0);
+			SpvcCompilerSetMemberDecorationString(compiler, id, memberIndex, decoration, pStr0);
 			Marshal.FreeHGlobal((nint)pStr0);
 		}
+
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_set_member_name")]
+		public static extern void SpvcCompilerSetMemberName(SpvcCompiler compiler, uint id, uint memberIndex, byte* argument);
 
 		public static void SpvcCompilerSetMemberName(SpvcCompiler compiler, uint id, uint memberIndex, ref byte argument)
 		{
@@ -1044,15 +1050,24 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
+		public static void SpvcCompilerSetMemberName(SpvcCompiler compiler, uint id, uint memberIndex, string argument)
+		{
+			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(argument);
+			SpvcCompilerSetMemberName(compiler, id, memberIndex, pStr0);
+			Marshal.FreeHGlobal((nint)pStr0);
+		}
+
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_unset_decoration")]
 		public static extern void SpvcCompilerUnsetDecoration(SpvcCompiler compiler, SpvId id, SpvDecoration decoration);
 
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_unset_member_decoration")]
 		public static extern void SpvcCompilerUnsetMemberDecoration(SpvcCompiler compiler, uint id, uint memberIndex, SpvDecoration decoration);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_has_decoration")]
 		public static extern bool SpvcCompilerHasDecoration(SpvcCompiler compiler, SpvId id, SpvDecoration decoration);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_has_member_decoration")]
 		public static extern bool SpvcCompilerHasMemberDecoration(SpvcCompiler compiler, uint id, uint memberIndex, SpvDecoration decoration);
 
@@ -1150,14 +1165,6 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_set_entry_point")]
 		public static extern SpvcResult SpvcCompilerSetEntryPoint(SpvcCompiler compiler, byte* name, SpvExecutionModel model);
 
-		public static SpvcResult SpvcCompilerSetEntryPoint(SpvcCompiler compiler, string name, SpvExecutionModel model)
-		{
-			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(name);
-			SpvcResult ret = SpvcCompilerSetEntryPoint(compiler, pStr0, model);
-			Marshal.FreeHGlobal((nint)pStr0);
-			return ret;
-		}
-
 		public static SpvcResult SpvcCompilerSetEntryPoint(SpvcCompiler compiler, ref byte name, SpvExecutionModel model)
 		{
 			fixed (byte* pname = &name)
@@ -1167,16 +1174,16 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_rename_entry_point")]
-		public static extern SpvcResult SpvcCompilerRenameEntryPoint(SpvcCompiler compiler, byte* oldName, byte* newName, SpvExecutionModel model);
-
-		public static SpvcResult SpvcCompilerRenameEntryPoint(SpvcCompiler compiler, string oldName, byte* newName, SpvExecutionModel model)
+		public static SpvcResult SpvcCompilerSetEntryPoint(SpvcCompiler compiler, string name, SpvExecutionModel model)
 		{
-			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(oldName);
-			SpvcResult ret = SpvcCompilerRenameEntryPoint(compiler, pStr0, newName, model);
+			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(name);
+			SpvcResult ret = SpvcCompilerSetEntryPoint(compiler, pStr0, model);
 			Marshal.FreeHGlobal((nint)pStr0);
 			return ret;
 		}
+
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_rename_entry_point")]
+		public static extern SpvcResult SpvcCompilerRenameEntryPoint(SpvcCompiler compiler, byte* oldName, byte* newName, SpvExecutionModel model);
 
 		public static SpvcResult SpvcCompilerRenameEntryPoint(SpvcCompiler compiler, ref byte oldName, byte* newName, SpvExecutionModel model)
 		{
@@ -1187,20 +1194,10 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
-		public static SpvcResult SpvcCompilerRenameEntryPoint(SpvcCompiler compiler, byte* oldName, string newName, SpvExecutionModel model)
-		{
-			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(newName);
-			SpvcResult ret = SpvcCompilerRenameEntryPoint(compiler, oldName, pStr0, model);
-			Marshal.FreeHGlobal((nint)pStr0);
-			return ret;
-		}
-
-		public static SpvcResult SpvcCompilerRenameEntryPoint(SpvcCompiler compiler, string oldName, string newName, SpvExecutionModel model)
+		public static SpvcResult SpvcCompilerRenameEntryPoint(SpvcCompiler compiler, string oldName, byte* newName, SpvExecutionModel model)
 		{
 			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(oldName);
-			byte* pStr1 = (byte*)Marshal.StringToHGlobalAnsi(newName);
-			SpvcResult ret = SpvcCompilerRenameEntryPoint(compiler, pStr0, pStr1, model);
-			Marshal.FreeHGlobal((nint)pStr1);
+			SpvcResult ret = SpvcCompilerRenameEntryPoint(compiler, pStr0, newName, model);
 			Marshal.FreeHGlobal((nint)pStr0);
 			return ret;
 		}
@@ -1212,6 +1209,14 @@ namespace HexaEngine.SPIRVCross
 				SpvcResult ret = SpvcCompilerRenameEntryPoint(compiler, oldName, pnewName, model);
 				return ret;
 			}
+		}
+
+		public static SpvcResult SpvcCompilerRenameEntryPoint(SpvcCompiler compiler, byte* oldName, string newName, SpvExecutionModel model)
+		{
+			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(newName);
+			SpvcResult ret = SpvcCompilerRenameEntryPoint(compiler, oldName, pStr0, model);
+			Marshal.FreeHGlobal((nint)pStr0);
+			return ret;
 		}
 
 		public static SpvcResult SpvcCompilerRenameEntryPoint(SpvcCompiler compiler, ref byte oldName, ref byte newName, SpvExecutionModel model)
@@ -1226,28 +1231,22 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
+		public static SpvcResult SpvcCompilerRenameEntryPoint(SpvcCompiler compiler, string oldName, string newName, SpvExecutionModel model)
+		{
+			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(oldName);
+			byte* pStr1 = (byte*)Marshal.StringToHGlobalAnsi(newName);
+			SpvcResult ret = SpvcCompilerRenameEntryPoint(compiler, pStr0, pStr1, model);
+			Marshal.FreeHGlobal((nint)pStr1);
+			Marshal.FreeHGlobal((nint)pStr0);
+			return ret;
+		}
+
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_cleansed_entry_point_name")]
 		public static extern byte* SpvcCompilerGetCleansedEntryPointName(SpvcCompiler compiler, byte* name, SpvExecutionModel model);
 
 		public static string SpvcCompilerGetCleansedEntryPointNameS(SpvcCompiler compiler, byte* name, SpvExecutionModel model)
 		{
 			string ret = Marshal.PtrToStringAnsi((nint)SpvcCompilerGetCleansedEntryPointName(compiler, name, model));
-			return ret;
-		}
-
-		public static string SpvcCompilerGetCleansedEntryPointNameS(SpvcCompiler compiler, string name, SpvExecutionModel model)
-		{
-			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(name);
-			string ret = Marshal.PtrToStringAnsi((nint)SpvcCompilerGetCleansedEntryPointName(compiler, pStr0, model));
-			Marshal.FreeHGlobal((nint)pStr0);
-			return ret;
-		}
-
-		public static byte* SpvcCompilerGetCleansedEntryPointName(SpvcCompiler compiler, string name, SpvExecutionModel model)
-		{
-			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(name);
-			byte* ret = SpvcCompilerGetCleansedEntryPointName(compiler, pStr0, model);
-			Marshal.FreeHGlobal((nint)pStr0);
 			return ret;
 		}
 
@@ -1267,6 +1266,22 @@ namespace HexaEngine.SPIRVCross
 				byte* ret = SpvcCompilerGetCleansedEntryPointName(compiler, pname, model);
 				return ret;
 			}
+		}
+
+		public static string SpvcCompilerGetCleansedEntryPointNameS(SpvcCompiler compiler, string name, SpvExecutionModel model)
+		{
+			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(name);
+			string ret = Marshal.PtrToStringAnsi((nint)SpvcCompilerGetCleansedEntryPointName(compiler, pStr0, model));
+			Marshal.FreeHGlobal((nint)pStr0);
+			return ret;
+		}
+
+		public static byte* SpvcCompilerGetCleansedEntryPointName(SpvcCompiler compiler, string name, SpvExecutionModel model)
+		{
+			byte* pStr0 = (byte*)Marshal.StringToHGlobalAnsi(name);
+			byte* ret = SpvcCompilerGetCleansedEntryPointName(compiler, pStr0, model);
+			Marshal.FreeHGlobal((nint)pStr0);
+			return ret;
 		}
 
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_set_execution_mode")]
@@ -1323,6 +1338,7 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_update_active_builtins")]
 		public static extern void SpvcCompilerUpdateActiveBuiltins(SpvcCompiler compiler);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_has_active_builtin")]
 		public static extern bool SpvcCompilerHasActiveBuiltin(SpvcCompiler compiler, SpvBuiltIn builtin, SpvStorageClass storage);
 
@@ -1357,6 +1373,7 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_get_num_array_dimensions")]
 		public static extern uint SpvcTypeGetNumArrayDimensions(SpvcType type);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_array_dimension_is_literal")]
 		public static extern bool SpvcTypeArrayDimensionIsLiteral(SpvcType type, uint dimension);
 
@@ -1381,15 +1398,19 @@ namespace HexaEngine.SPIRVCross
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_get_image_dimension")]
 		public static extern SpvDim SpvcTypeGetImageDimension(SpvcType type);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_get_image_is_depth")]
 		public static extern bool SpvcTypeGetImageIsDepth(SpvcType type);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_get_image_arrayed")]
 		public static extern bool SpvcTypeGetImageArrayed(SpvcType type);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_get_image_multisampled")]
 		public static extern bool SpvcTypeGetImageMultisampled(SpvcType type);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_type_get_image_is_storage")]
 		public static extern bool SpvcTypeGetImageIsStorage(SpvcType type);
 
@@ -1817,6 +1838,7 @@ namespace HexaEngine.SPIRVCross
 		/// Misc reflection
 		/// Maps to C++ API.
 		/// </summary>
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_get_binary_offset_for_decoration")]
 		public static extern bool SpvcCompilerGetBinaryOffsetForDecoration(SpvcCompiler compiler, uint id, SpvDecoration decoration, uint* wordOffset);
 
@@ -1833,9 +1855,11 @@ namespace HexaEngine.SPIRVCross
 			}
 		}
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_buffer_is_hlsl_counter_buffer")]
 		public static extern bool SpvcCompilerBufferIsHlslCounterBuffer(SpvcCompiler compiler, uint id);
 
+		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spvc_compiler_buffer_get_hlsl_counter_buffer")]
 		public static extern bool SpvcCompilerBufferGetHlslCounterBuffer(SpvcCompiler compiler, uint id, uint* counterId);
 
