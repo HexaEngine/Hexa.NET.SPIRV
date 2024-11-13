@@ -64,7 +64,7 @@ jobs:
                 -DCMAKE_ANDROID_API=21 \
                 -DIMGUI_WCHAR32=ON \
                 -S ./ \
-                -B ./build/arm64-v8a
+                -B ./build/arm64-v8a -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_CLI=OFF -DSPIRV_CROSS_ENABLE_TESTS=OFF
           cmake --build ./build/arm64-v8a  --config Release
 
     - name: Build for x86_64
@@ -79,7 +79,7 @@ jobs:
                 -DCMAKE_ANDROID_API=21 \
                 -DIMGUI_WCHAR32=ON \
                 -S ./ \
-                -B ./build/x86_64
+                -B ./build/x86_64 -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_CLI=OFF -DSPIRV_CROSS_ENABLE_TESTS=OFF
           cmake --build ./build/x86_64 --config Release
 
     - name: Upload Artifacts
