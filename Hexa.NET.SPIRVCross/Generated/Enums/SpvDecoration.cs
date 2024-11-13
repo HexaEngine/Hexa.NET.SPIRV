@@ -365,6 +365,20 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SpvDecorationWeightTextureQCOM")]
+		[NativeName(NativeNameType.Value, "4487")]
+		WeightTextureQcom = unchecked(4487),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SpvDecorationBlockMatchTextureQCOM")]
+		[NativeName(NativeNameType.Value, "4488")]
+		BlockMatchTextureQcom = unchecked(4488),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SpvDecorationExplicitInterpAMD")]
 		[NativeName(NativeNameType.Value, "4999")]
 		ExplicitInterpAmd = unchecked(4999),

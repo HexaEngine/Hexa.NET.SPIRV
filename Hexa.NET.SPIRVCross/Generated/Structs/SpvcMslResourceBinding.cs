@@ -16,7 +16,8 @@ using HexaGen.Runtime;
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
-	/// Maps to C++ API. <br/>
+	/// Maps to C++ API.<br/>
+	/// Deprecated. Use spvc_msl_resource_binding_2. <br/>
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "spvc_msl_resource_binding")]
 	[StructLayout(LayoutKind.Sequential)]

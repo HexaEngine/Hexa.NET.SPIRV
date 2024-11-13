@@ -27,8 +27,8 @@ namespace Hexa.NET.SPIRVCross
 		public const int SPVC_C_API_VERSION_MAJOR = 0;
 
 		[NativeName(NativeNameType.Const, "SPVC_C_API_VERSION_MINOR")]
-		[NativeName(NativeNameType.Value, "56")]
-		public const int SPVC_C_API_VERSION_MINOR = 56;
+		[NativeName(NativeNameType.Value, "64")]
+		public const int SPVC_C_API_VERSION_MINOR = 64;
 
 		[NativeName(NativeNameType.Const, "SPVC_C_API_VERSION_PATCH")]
 		[NativeName(NativeNameType.Value, "0")]

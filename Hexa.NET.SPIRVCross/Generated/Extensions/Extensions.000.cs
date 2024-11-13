@@ -368,6 +368,39 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_get_num_required_extensions")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static nuint GetNumRequiredExtensions(this SpvcCompiler compiler)
+		{
+			nuint ret = SPIRV.CompilerGetNumRequiredExtensionsNative(compiler);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_get_required_extension")]
+		[return: NativeName(NativeNameType.Type, "char const *")]
+		public static byte* GetRequiredExtension(this SpvcCompiler compiler, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "size_t")] nuint index)
+		{
+			byte* ret = SPIRV.CompilerGetRequiredExtensionNative(compiler, index);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_get_required_extension")]
+		[return: NativeName(NativeNameType.Type, "char const *")]
+		public static string GetRequiredExtensionS(this SpvcCompiler compiler, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "size_t")] nuint index)
+		{
+			string ret = Utils.DecodeStringUTF8(SPIRV.CompilerGetRequiredExtensionNative(compiler, index));
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_compiler_flatten_buffer_block")]
 		[return: NativeName(NativeNameType.Type, "spvc_result")]
 		public static SpvcResult FlattenBufferBlock(this SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id)
@@ -623,7 +656,7 @@ namespace Hexa.NET.SPIRVCross
 		}
 
 		/// <summary>
-		/// To be documented.
+		/// Deprecated; use spvc_compiler_msl_add_resource_binding_2(). <br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_resource_binding")]
 		[return: NativeName(NativeNameType.Type, "spvc_result")]
@@ -634,7 +667,7 @@ namespace Hexa.NET.SPIRVCross
 		}
 
 		/// <summary>
-		/// To be documented.
+		/// Deprecated; use spvc_compiler_msl_add_resource_binding_2(). <br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_resource_binding")]
 		[return: NativeName(NativeNameType.Type, "spvc_result")]
@@ -643,6 +676,31 @@ namespace Hexa.NET.SPIRVCross
 			fixed (SpvcMslResourceBinding* pbinding = &binding)
 			{
 				SpvcResult ret = SPIRV.CompilerMslAddResourceBindingNative(compiler, (SpvcMslResourceBinding*)pbinding);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_resource_binding_2")]
+		[return: NativeName(NativeNameType.Type, "spvc_result")]
+		public static SpvcResult MslAddResourceBinding2(this SpvcCompiler compiler, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_msl_resource_binding_2 const *")] SpvcMslResourceBinding2* binding)
+		{
+			SpvcResult ret = SPIRV.CompilerMslAddResourceBinding2Native(compiler, binding);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_resource_binding_2")]
+		[return: NativeName(NativeNameType.Type, "spvc_result")]
+		public static SpvcResult MslAddResourceBinding2(this SpvcCompiler compiler, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_msl_resource_binding_2 const *")] ref SpvcMslResourceBinding2 binding)
+		{
+			fixed (SpvcMslResourceBinding2* pbinding = &binding)
+			{
+				SpvcResult ret = SPIRV.CompilerMslAddResourceBinding2Native(compiler, (SpvcMslResourceBinding2*)pbinding);
 				return ret;
 			}
 		}
@@ -3459,6 +3517,28 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_u64")]
+		[return: NativeName(NativeNameType.Type, "unsigned long long")]
+		public static ulong GetScalarU64(this SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		{
+			ulong ret = SPIRV.ConstantGetScalarU64Native(constant, column, row);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_i64")]
+		[return: NativeName(NativeNameType.Type, "long long")]
+		public static long GetScalarI64(this SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		{
+			long ret = SPIRV.ConstantGetScalarI64Native(constant, column, row);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_constant_get_type")]
 		[return: NativeName(NativeNameType.Type, "spvc_type_id")]
 		public static uint GetType(this SpvcConstant constant)
@@ -3515,6 +3595,26 @@ namespace Hexa.NET.SPIRVCross
 		public static void SetScalarI32(this SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
 		{
 			SPIRV.ConstantSetScalarI32Native(constant, column, row, value);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_u64")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetScalarU64(this SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned long long")] ulong value)
+		{
+			SPIRV.ConstantSetScalarU64Native(constant, column, row, value);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_i64")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetScalarI64(this SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "long long")] long value)
+		{
+			SPIRV.ConstantSetScalarI64Native(constant, column, row, value);
 		}
 
 		/// <summary>

@@ -2654,6 +2654,34 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SpvOpImageSampleWeightedQCOM")]
+		[NativeName(NativeNameType.Value, "4480")]
+		ImageSampleWeightedQcom = unchecked(4480),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SpvOpImageBoxFilterQCOM")]
+		[NativeName(NativeNameType.Value, "4481")]
+		ImageBoxFilterQcom = unchecked(4481),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SpvOpImageBlockMatchSSDQCOM")]
+		[NativeName(NativeNameType.Value, "4482")]
+		ImageBlockMatchSsdqcom = unchecked(4482),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SpvOpImageBlockMatchSADQCOM")]
+		[NativeName(NativeNameType.Value, "4483")]
+		ImageBlockMatchSadqcom = unchecked(4483),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SpvOpGroupIAddNonUniformAMD")]
 		[NativeName(NativeNameType.Value, "5000")]
 		GroupIAddNonUniformAmd = unchecked(5000),

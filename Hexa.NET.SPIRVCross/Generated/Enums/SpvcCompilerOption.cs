@@ -638,6 +638,48 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_READWRITE_TEXTURE_FENCES")]
+		[NativeName(NativeNameType.Value, "134217814")]
+		MslReadwriteTextureFences = unchecked(134217814),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_REPLACE_RECURSIVE_INPUTS")]
+		[NativeName(NativeNameType.Value, "134217815")]
+		MslReplaceRecursiveInputs = unchecked(134217815),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_AGX_MANUAL_CUBE_GRAD_FIXUP")]
+		[NativeName(NativeNameType.Value, "134217816")]
+		MslAgxManualCubeGradFixup = unchecked(134217816),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_FORCE_FRAGMENT_WITH_SIDE_EFFECTS_EXECUTION")]
+		[NativeName(NativeNameType.Value, "134217817")]
+		MslForceFragmentWithSideEffectsExecution = unchecked(134217817),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_USE_ENTRY_POINT_NAME")]
+		[NativeName(NativeNameType.Value, "67108954")]
+		HlslUseEntryPointName = unchecked(67108954),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_PRESERVE_STRUCTURED_BUFFERS")]
+		[NativeName(NativeNameType.Value, "67108955")]
+		HlslPreserveStructuredBuffers = unchecked(67108955),
+
+		/// <summary>
+		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_INT_MAX")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),

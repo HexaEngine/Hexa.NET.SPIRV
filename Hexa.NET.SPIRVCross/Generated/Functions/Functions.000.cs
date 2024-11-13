@@ -351,6 +351,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// Initializes the resource binding struct.<br/>
 		/// The defaults are non-zero.<br/>
+		/// Deprecated: Use spvc_msl_resource_binding_init_2.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_msl_resource_binding_init")]
 		[return: NativeName(NativeNameType.Type, "void")]
@@ -367,6 +368,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// Initializes the resource binding struct.<br/>
 		/// The defaults are non-zero.<br/>
+		/// Deprecated: Use spvc_msl_resource_binding_init_2.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_msl_resource_binding_init")]
 		[return: NativeName(NativeNameType.Type, "void")]
@@ -378,6 +380,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// Initializes the resource binding struct.<br/>
 		/// The defaults are non-zero.<br/>
+		/// Deprecated: Use spvc_msl_resource_binding_init_2.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_msl_resource_binding_init")]
 		[return: NativeName(NativeNameType.Type, "void")]
@@ -390,6 +393,44 @@ namespace Hexa.NET.SPIRVCross
 		}
 
 		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_msl_resource_binding_init_2")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void MslResourceBindingInit2Native([NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_msl_resource_binding_2 *")] SpvcMslResourceBinding2* binding)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<SpvcMslResourceBinding2*, void>)funcTable[7])(binding);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[7])((nint)binding);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_msl_resource_binding_init_2")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void MslResourceBindingInit2([NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_msl_resource_binding_2 *")] SpvcMslResourceBinding2* binding)
+		{
+			MslResourceBindingInit2Native(binding);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_msl_resource_binding_init_2")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void MslResourceBindingInit2([NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_msl_resource_binding_2 *")] ref SpvcMslResourceBinding2 binding)
+		{
+			fixed (SpvcMslResourceBinding2* pbinding = &binding)
+			{
+				MslResourceBindingInit2Native((SpvcMslResourceBinding2*)pbinding);
+			}
+		}
+
+		/// <summary>
 		/// Runtime check for incompatibility. Obsolete. <br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_msl_get_aux_buffer_struct_version")]
@@ -398,9 +439,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint MslGetAuxBufferStructVersionNative()
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<uint>)funcTable[7])();
+			return ((delegate* unmanaged[Cdecl]<uint>)funcTable[8])();
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<uint>)funcTable[7])();
+			return (uint)((delegate* unmanaged[Cdecl]<uint>)funcTable[8])();
 			#endif
 		}
 
@@ -425,9 +466,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void MslConstexprSamplerInitNative([NativeName(NativeNameType.Param, "sampler")] [NativeName(NativeNameType.Type, "spvc_msl_constexpr_sampler *")] SpvcMslConstexprSampler* sampler)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcMslConstexprSampler*, void>)funcTable[8])(sampler);
+			((delegate* unmanaged[Cdecl]<SpvcMslConstexprSampler*, void>)funcTable[9])(sampler);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[8])((nint)sampler);
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[9])((nint)sampler);
 			#endif
 		}
 
@@ -466,9 +507,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void MslSamplerYcbcrConversionInitNative([NativeName(NativeNameType.Param, "conv")] [NativeName(NativeNameType.Type, "spvc_msl_sampler_ycbcr_conversion *")] SpvcMslSamplerYcbcrConversion* conv)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcMslSamplerYcbcrConversion*, void>)funcTable[9])(conv);
+			((delegate* unmanaged[Cdecl]<SpvcMslSamplerYcbcrConversion*, void>)funcTable[10])(conv);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[9])((nint)conv);
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[10])((nint)conv);
 			#endif
 		}
 
@@ -507,9 +548,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void HlslResourceBindingInitNative([NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_hlsl_resource_binding *")] SpvcHlslResourceBinding* binding)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcHlslResourceBinding*, void>)funcTable[10])(binding);
+			((delegate* unmanaged[Cdecl]<SpvcHlslResourceBinding*, void>)funcTable[11])(binding);
 			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[10])((nint)binding);
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[11])((nint)binding);
 			#endif
 		}
 
@@ -551,9 +592,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult ContextCreateNative([NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "spvc_context *")] SpvcContext* context)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcContext*, SpvcResult>)funcTable[11])(context);
+			return ((delegate* unmanaged[Cdecl]<SpvcContext*, SpvcResult>)funcTable[12])(context);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<nint, SpvcResult>)funcTable[11])((nint)context);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<nint, SpvcResult>)funcTable[12])((nint)context);
 			#endif
 		}
 
@@ -599,9 +640,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void ContextDestroyNative([NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "spvc_context")] SpvcContext context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcContext, void>)funcTable[12])(context);
+			((delegate* unmanaged[Cdecl]<SpvcContext, void>)funcTable[13])(context);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcContext, void>)funcTable[12])(context);
+			((delegate* unmanaged[Cdecl]<SpvcContext, void>)funcTable[13])(context);
 			#endif
 		}
 
@@ -624,9 +665,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void ContextReleaseAllocationsNative([NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "spvc_context")] SpvcContext context)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcContext, void>)funcTable[13])(context);
+			((delegate* unmanaged[Cdecl]<SpvcContext, void>)funcTable[14])(context);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcContext, void>)funcTable[13])(context);
+			((delegate* unmanaged[Cdecl]<SpvcContext, void>)funcTable[14])(context);
 			#endif
 		}
 
@@ -649,9 +690,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte* ContextGetLastErrorStringNative([NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "spvc_context")] SpvcContext context)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcContext, byte*>)funcTable[14])(context);
+			return ((delegate* unmanaged[Cdecl]<SpvcContext, byte*>)funcTable[15])(context);
 			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<SpvcContext, nint>)funcTable[14])(context);
+			return (byte*)((delegate* unmanaged[Cdecl]<SpvcContext, nint>)funcTable[15])(context);
 			#endif
 		}
 
@@ -686,9 +727,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void ContextSetErrorCallbackNative([NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "spvc_context")] SpvcContext context, [NativeName(NativeNameType.Param, "cb")] [NativeName(NativeNameType.Type, "spvc_error_callback")] SpvcErrorCallback cb, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void *")] void* userdata)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcContext, delegate*<void*, byte*, void>, void*, void>)funcTable[15])(context, (delegate*<void*, byte*, void>)Utils.GetFunctionPointerForDelegate(cb), userdata);
+			((delegate* unmanaged[Cdecl]<SpvcContext, delegate*<void*, byte*, void>, void*, void>)funcTable[16])(context, (delegate*<void*, byte*, void>)Utils.GetFunctionPointerForDelegate(cb), userdata);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcContext, nint, nint, void>)funcTable[15])(context, (nint)Utils.GetFunctionPointerForDelegate(cb), (nint)userdata);
+			((delegate* unmanaged[Cdecl]<SpvcContext, nint, nint, void>)funcTable[16])(context, (nint)Utils.GetFunctionPointerForDelegate(cb), (nint)userdata);
 			#endif
 		}
 
@@ -711,9 +752,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult ContextParseSpirvNative([NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "spvc_context")] SpvcContext context, [NativeName(NativeNameType.Param, "spirv")] [NativeName(NativeNameType.Type, "SpvId const *")] uint* spirv, [NativeName(NativeNameType.Param, "word_count")] [NativeName(NativeNameType.Type, "size_t")] nuint wordCount, [NativeName(NativeNameType.Param, "parsed_ir")] [NativeName(NativeNameType.Type, "spvc_parsed_ir *")] SpvcParsedIr* parsedIr)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcContext, uint*, nuint, SpvcParsedIr*, SpvcResult>)funcTable[16])(context, spirv, wordCount, parsedIr);
+			return ((delegate* unmanaged[Cdecl]<SpvcContext, uint*, nuint, SpvcParsedIr*, SpvcResult>)funcTable[17])(context, spirv, wordCount, parsedIr);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcContext, nint, nuint, nint, SpvcResult>)funcTable[16])(context, (nint)spirv, wordCount, (nint)parsedIr);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcContext, nint, nuint, nint, SpvcResult>)funcTable[17])(context, (nint)spirv, wordCount, (nint)parsedIr);
 			#endif
 		}
 
@@ -783,9 +824,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult ContextCreateCompilerNative([NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "spvc_context")] SpvcContext context, [NativeName(NativeNameType.Param, "backend")] [NativeName(NativeNameType.Type, "spvc_backend")] SpvcBackend backend, [NativeName(NativeNameType.Param, "parsed_ir")] [NativeName(NativeNameType.Type, "spvc_parsed_ir")] SpvcParsedIr parsedIr, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "spvc_capture_mode")] SpvcCaptureMode mode, [NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler *")] SpvcCompiler* compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcContext, SpvcBackend, SpvcParsedIr, SpvcCaptureMode, SpvcCompiler*, SpvcResult>)funcTable[17])(context, backend, parsedIr, mode, compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcContext, SpvcBackend, SpvcParsedIr, SpvcCaptureMode, SpvcCompiler*, SpvcResult>)funcTable[18])(context, backend, parsedIr, mode, compiler);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcContext, SpvcBackend, SpvcParsedIr, SpvcCaptureMode, nint, SpvcResult>)funcTable[17])(context, backend, parsedIr, mode, (nint)compiler);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcContext, SpvcBackend, SpvcParsedIr, SpvcCaptureMode, nint, SpvcResult>)funcTable[18])(context, backend, parsedIr, mode, (nint)compiler);
 			#endif
 		}
 
@@ -825,9 +866,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint CompilerGetCurrentIdBoundNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint>)funcTable[18])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint>)funcTable[19])(compiler);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint>)funcTable[18])(compiler);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint>)funcTable[19])(compiler);
 			#endif
 		}
 
@@ -851,9 +892,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerCreateCompilerOptionsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "spvc_compiler_options *")] SpvcCompilerOptions* options)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcCompilerOptions*, SpvcResult>)funcTable[19])(compiler, options);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcCompilerOptions*, SpvcResult>)funcTable[20])(compiler, options);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[19])(compiler, (nint)options);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[20])(compiler, (nint)options);
 			#endif
 		}
 
@@ -891,9 +932,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerOptionsSetBoolNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "spvc_compiler_options")] SpvcCompilerOptions options, [NativeName(NativeNameType.Param, "option")] [NativeName(NativeNameType.Type, "spvc_compiler_option")] SpvcCompilerOption option, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "spvc_bool")] byte value)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompilerOptions, SpvcCompilerOption, byte, SpvcResult>)funcTable[20])(options, option, value);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompilerOptions, SpvcCompilerOption, byte, SpvcResult>)funcTable[21])(options, option, value);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompilerOptions, SpvcCompilerOption, byte, SpvcResult>)funcTable[20])(options, option, value);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompilerOptions, SpvcCompilerOption, byte, SpvcResult>)funcTable[21])(options, option, value);
 			#endif
 		}
 
@@ -917,9 +958,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerOptionsSetUintNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "spvc_compiler_options")] SpvcCompilerOptions options, [NativeName(NativeNameType.Param, "option")] [NativeName(NativeNameType.Type, "spvc_compiler_option")] SpvcCompilerOption option, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned int")] uint value)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompilerOptions, SpvcCompilerOption, uint, SpvcResult>)funcTable[21])(options, option, value);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompilerOptions, SpvcCompilerOption, uint, SpvcResult>)funcTable[22])(options, option, value);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompilerOptions, SpvcCompilerOption, uint, SpvcResult>)funcTable[21])(options, option, value);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompilerOptions, SpvcCompilerOption, uint, SpvcResult>)funcTable[22])(options, option, value);
 			#endif
 		}
 
@@ -943,9 +984,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerInstallCompilerOptionsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "spvc_compiler_options")] SpvcCompilerOptions options)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcCompilerOptions, SpvcResult>)funcTable[22])(compiler, options);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcCompilerOptions, SpvcResult>)funcTable[23])(compiler, options);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcCompilerOptions, SpvcResult>)funcTable[22])(compiler, options);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcCompilerOptions, SpvcResult>)funcTable[23])(compiler, options);
 			#endif
 		}
 
@@ -969,9 +1010,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerCompileNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "source")] [NativeName(NativeNameType.Type, "char const * *")] byte** source)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte**, SpvcResult>)funcTable[23])(compiler, source);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte**, SpvcResult>)funcTable[24])(compiler, source);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[23])(compiler, (nint)source);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[24])(compiler, (nint)source);
 			#endif
 		}
 
@@ -1009,9 +1050,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerAddHeaderLineNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "line")] [NativeName(NativeNameType.Type, "char const *")] byte* line)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, SpvcResult>)funcTable[24])(compiler, line);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, SpvcResult>)funcTable[25])(compiler, line);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[24])(compiler, (nint)line);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[25])(compiler, (nint)line);
 			#endif
 		}
 
@@ -1095,9 +1136,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerRequireExtensionNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "ext")] [NativeName(NativeNameType.Type, "char const *")] byte* ext)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, SpvcResult>)funcTable[25])(compiler, ext);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, SpvcResult>)funcTable[26])(compiler, ext);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[25])(compiler, (nint)ext);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[26])(compiler, (nint)ext);
 			#endif
 		}
 
@@ -1175,15 +1216,78 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_get_num_required_extensions")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static nuint CompilerGetNumRequiredExtensionsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, nuint>)funcTable[27])(compiler);
+			#else
+			return (nuint)((delegate* unmanaged[Cdecl]<SpvcCompiler, nuint>)funcTable[27])(compiler);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_get_num_required_extensions")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static nuint CompilerGetNumRequiredExtensions([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
+		{
+			nuint ret = CompilerGetNumRequiredExtensionsNative(compiler);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_get_required_extension")]
+		[return: NativeName(NativeNameType.Type, "char const *")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte* CompilerGetRequiredExtensionNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "size_t")] nuint index)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, nuint, byte*>)funcTable[28])(compiler, index);
+			#else
+			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, nuint, nint>)funcTable[28])(compiler, index);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_get_required_extension")]
+		[return: NativeName(NativeNameType.Type, "char const *")]
+		public static byte* CompilerGetRequiredExtension([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "size_t")] nuint index)
+		{
+			byte* ret = CompilerGetRequiredExtensionNative(compiler, index);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_get_required_extension")]
+		[return: NativeName(NativeNameType.Type, "char const *")]
+		public static string CompilerGetRequiredExtensionS([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "size_t")] nuint index)
+		{
+			string ret = Utils.DecodeStringUTF8(CompilerGetRequiredExtensionNative(compiler, index));
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_compiler_flatten_buffer_block")]
 		[return: NativeName(NativeNameType.Type, "spvc_result")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static SpvcResult CompilerFlattenBufferBlockNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[26])(compiler, id);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[29])(compiler, id);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[26])(compiler, id);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[29])(compiler, id);
 			#endif
 		}
 
@@ -1207,9 +1311,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerVariableIsDepthOrCompareNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[27])(compiler, id);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[30])(compiler, id);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[27])(compiler, id);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[30])(compiler, id);
 			#endif
 		}
 
@@ -1233,9 +1337,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMaskStageOutputByLocationNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "location")] [NativeName(NativeNameType.Type, "unsigned int")] uint location, [NativeName(NativeNameType.Param, "component")] [NativeName(NativeNameType.Type, "unsigned int")] uint component)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[28])(compiler, location, component);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[31])(compiler, location, component);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[28])(compiler, location, component);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[31])(compiler, location, component);
 			#endif
 		}
 
@@ -1259,9 +1363,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMaskStageOutputByBuiltinNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "builtin")] [NativeName(NativeNameType.Type, "SpvBuiltIn")] SpvBuiltIn builtin)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvBuiltIn, SpvcResult>)funcTable[29])(compiler, builtin);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvBuiltIn, SpvcResult>)funcTable[32])(compiler, builtin);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvBuiltIn, SpvcResult>)funcTable[29])(compiler, builtin);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvBuiltIn, SpvcResult>)funcTable[32])(compiler, builtin);
 			#endif
 		}
 
@@ -1286,9 +1390,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerHlslSetRootConstantsLayoutNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "constant_info")] [NativeName(NativeNameType.Type, "spvc_hlsl_root_constants const *")] SpvcHlslRootConstants* constantInfo, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "size_t")] nuint count)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcHlslRootConstants*, nuint, SpvcResult>)funcTable[30])(compiler, constantInfo, count);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcHlslRootConstants*, nuint, SpvcResult>)funcTable[33])(compiler, constantInfo, count);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nuint, SpvcResult>)funcTable[30])(compiler, (nint)constantInfo, count);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nuint, SpvcResult>)funcTable[33])(compiler, (nint)constantInfo, count);
 			#endif
 		}
 
@@ -1328,9 +1432,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerHlslAddVertexAttributeRemapNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "remap")] [NativeName(NativeNameType.Type, "spvc_hlsl_vertex_attribute_remap const *")] SpvcHlslVertexAttributeRemap* remap, [NativeName(NativeNameType.Param, "remaps")] [NativeName(NativeNameType.Type, "size_t")] nuint remaps)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcHlslVertexAttributeRemap*, nuint, SpvcResult>)funcTable[31])(compiler, remap, remaps);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcHlslVertexAttributeRemap*, nuint, SpvcResult>)funcTable[34])(compiler, remap, remaps);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nuint, SpvcResult>)funcTable[31])(compiler, (nint)remap, remaps);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nuint, SpvcResult>)funcTable[34])(compiler, (nint)remap, remaps);
 			#endif
 		}
 
@@ -1368,9 +1472,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint CompilerHlslRemapNumWorkgroupsBuiltinNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint>)funcTable[32])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint>)funcTable[35])(compiler);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint>)funcTable[32])(compiler);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint>)funcTable[35])(compiler);
 			#endif
 		}
 
@@ -1394,9 +1498,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerHlslSetResourceBindingFlagsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "spvc_hlsl_binding_flags")] uint flags)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[33])(compiler, flags);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[36])(compiler, flags);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[33])(compiler, flags);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[36])(compiler, flags);
 			#endif
 		}
 
@@ -1420,9 +1524,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerHlslAddResourceBindingNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_hlsl_resource_binding const *")] SpvcHlslResourceBinding* binding)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcHlslResourceBinding*, SpvcResult>)funcTable[34])(compiler, binding);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcHlslResourceBinding*, SpvcResult>)funcTable[37])(compiler, binding);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[34])(compiler, (nint)binding);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[37])(compiler, (nint)binding);
 			#endif
 		}
 
@@ -1460,9 +1564,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerHlslIsResourceUsedNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "model")] [NativeName(NativeNameType.Type, "SpvExecutionModel")] SpvExecutionModel model, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "unsigned int")] uint set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "unsigned int")] uint binding)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel, uint, uint, byte>)funcTable[35])(compiler, model, set, binding);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel, uint, uint, byte>)funcTable[38])(compiler, model, set, binding);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel, uint, uint, byte>)funcTable[35])(compiler, model, set, binding);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel, uint, uint, byte>)funcTable[38])(compiler, model, set, binding);
 			#endif
 		}
 
@@ -1487,9 +1591,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslIsRasterizationDisabledNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[36])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[39])(compiler);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[36])(compiler);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[39])(compiler);
 			#endif
 		}
 
@@ -1514,9 +1618,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslNeedsAuxBufferNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[37])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[40])(compiler);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[37])(compiler);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[40])(compiler);
 			#endif
 		}
 
@@ -1540,9 +1644,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslNeedsSwizzleBufferNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[38])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[41])(compiler);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[38])(compiler);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[41])(compiler);
 			#endif
 		}
 
@@ -1566,9 +1670,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslNeedsBufferSizeBufferNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[39])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[42])(compiler);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[39])(compiler);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[42])(compiler);
 			#endif
 		}
 
@@ -1592,9 +1696,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslNeedsOutputBufferNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[40])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[43])(compiler);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[40])(compiler);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[43])(compiler);
 			#endif
 		}
 
@@ -1618,9 +1722,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslNeedsPatchOutputBufferNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[41])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[44])(compiler);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[41])(compiler);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[44])(compiler);
 			#endif
 		}
 
@@ -1644,9 +1748,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslNeedsInputThreadgroupMemNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[42])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[45])(compiler);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[42])(compiler);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, byte>)funcTable[45])(compiler);
 			#endif
 		}
 
@@ -1670,9 +1774,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslAddVertexAttributeNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "attrs")] [NativeName(NativeNameType.Type, "spvc_msl_vertex_attribute const *")] SpvcMslVertexAttribute* attrs)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslVertexAttribute*, SpvcResult>)funcTable[43])(compiler, attrs);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslVertexAttribute*, SpvcResult>)funcTable[46])(compiler, attrs);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[43])(compiler, (nint)attrs);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[46])(compiler, (nint)attrs);
 			#endif
 		}
 
@@ -1702,7 +1806,7 @@ namespace Hexa.NET.SPIRVCross
 		}
 
 		/// <summary>
-		/// To be documented.
+		/// Deprecated; use spvc_compiler_msl_add_resource_binding_2(). <br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_resource_binding")]
 		[return: NativeName(NativeNameType.Type, "spvc_result")]
@@ -1710,14 +1814,14 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslAddResourceBindingNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_msl_resource_binding const *")] SpvcMslResourceBinding* binding)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslResourceBinding*, SpvcResult>)funcTable[44])(compiler, binding);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslResourceBinding*, SpvcResult>)funcTable[47])(compiler, binding);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[44])(compiler, (nint)binding);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[47])(compiler, (nint)binding);
 			#endif
 		}
 
 		/// <summary>
-		/// To be documented.
+		/// Deprecated; use spvc_compiler_msl_add_resource_binding_2(). <br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_resource_binding")]
 		[return: NativeName(NativeNameType.Type, "spvc_result")]
@@ -1728,7 +1832,7 @@ namespace Hexa.NET.SPIRVCross
 		}
 
 		/// <summary>
-		/// To be documented.
+		/// Deprecated; use spvc_compiler_msl_add_resource_binding_2(). <br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_resource_binding")]
 		[return: NativeName(NativeNameType.Type, "spvc_result")]
@@ -1742,6 +1846,46 @@ namespace Hexa.NET.SPIRVCross
 		}
 
 		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_resource_binding_2")]
+		[return: NativeName(NativeNameType.Type, "spvc_result")]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static SpvcResult CompilerMslAddResourceBinding2Native([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_msl_resource_binding_2 const *")] SpvcMslResourceBinding2* binding)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslResourceBinding2*, SpvcResult>)funcTable[48])(compiler, binding);
+			#else
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[48])(compiler, (nint)binding);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_resource_binding_2")]
+		[return: NativeName(NativeNameType.Type, "spvc_result")]
+		public static SpvcResult CompilerMslAddResourceBinding2([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_msl_resource_binding_2 const *")] SpvcMslResourceBinding2* binding)
+		{
+			SpvcResult ret = CompilerMslAddResourceBinding2Native(compiler, binding);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_resource_binding_2")]
+		[return: NativeName(NativeNameType.Type, "spvc_result")]
+		public static SpvcResult CompilerMslAddResourceBinding2([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "spvc_msl_resource_binding_2 const *")] ref SpvcMslResourceBinding2 binding)
+		{
+			fixed (SpvcMslResourceBinding2* pbinding = &binding)
+			{
+				SpvcResult ret = CompilerMslAddResourceBinding2Native(compiler, (SpvcMslResourceBinding2*)pbinding);
+				return ret;
+			}
+		}
+
+		/// <summary>
 		/// Deprecated; use spvc_compiler_msl_add_shader_input_2(). <br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "spvc_compiler_msl_add_shader_input")]
@@ -1750,9 +1894,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslAddShaderInputNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "spvc_msl_shader_interface_var const *")] SpvcMslShaderInterfaceVar* input)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslShaderInterfaceVar*, SpvcResult>)funcTable[45])(compiler, input);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslShaderInterfaceVar*, SpvcResult>)funcTable[49])(compiler, input);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[45])(compiler, (nint)input);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[49])(compiler, (nint)input);
 			#endif
 		}
 
@@ -1790,9 +1934,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslAddShaderInput2Native([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "input")] [NativeName(NativeNameType.Type, "spvc_msl_shader_interface_var_2 const *")] SpvcMslShaderInterfaceVar2* input)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslShaderInterfaceVar2*, SpvcResult>)funcTable[46])(compiler, input);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslShaderInterfaceVar2*, SpvcResult>)funcTable[50])(compiler, input);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[46])(compiler, (nint)input);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[50])(compiler, (nint)input);
 			#endif
 		}
 
@@ -1830,9 +1974,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslAddShaderOutputNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "output")] [NativeName(NativeNameType.Type, "spvc_msl_shader_interface_var const *")] SpvcMslShaderInterfaceVar* output)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslShaderInterfaceVar*, SpvcResult>)funcTable[47])(compiler, output);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslShaderInterfaceVar*, SpvcResult>)funcTable[51])(compiler, output);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[47])(compiler, (nint)output);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[51])(compiler, (nint)output);
 			#endif
 		}
 
@@ -1870,9 +2014,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslAddShaderOutput2Native([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "output")] [NativeName(NativeNameType.Type, "spvc_msl_shader_interface_var_2 const *")] SpvcMslShaderInterfaceVar2* output)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslShaderInterfaceVar2*, SpvcResult>)funcTable[48])(compiler, output);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcMslShaderInterfaceVar2*, SpvcResult>)funcTable[52])(compiler, output);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[48])(compiler, (nint)output);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[52])(compiler, (nint)output);
 			#endif
 		}
 
@@ -1910,9 +2054,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslAddDiscreteDescriptorSetNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "desc_set")] [NativeName(NativeNameType.Type, "unsigned int")] uint descSet)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[49])(compiler, descSet);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[53])(compiler, descSet);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[49])(compiler, descSet);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcResult>)funcTable[53])(compiler, descSet);
 			#endif
 		}
 
@@ -1936,9 +2080,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslSetArgumentBufferDeviceAddressSpaceNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "desc_set")] [NativeName(NativeNameType.Type, "unsigned int")] uint descSet, [NativeName(NativeNameType.Param, "device_address")] [NativeName(NativeNameType.Type, "spvc_bool")] byte deviceAddress)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte, SpvcResult>)funcTable[50])(compiler, descSet, deviceAddress);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte, SpvcResult>)funcTable[54])(compiler, descSet, deviceAddress);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte, SpvcResult>)funcTable[50])(compiler, descSet, deviceAddress);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte, SpvcResult>)funcTable[54])(compiler, descSet, deviceAddress);
 			#endif
 		}
 
@@ -1962,9 +2106,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslIsVertexAttributeUsedNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "location")] [NativeName(NativeNameType.Type, "unsigned int")] uint location)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[51])(compiler, location);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[55])(compiler, location);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[51])(compiler, location);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[55])(compiler, location);
 			#endif
 		}
 
@@ -1988,9 +2132,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslIsShaderInputUsedNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "location")] [NativeName(NativeNameType.Type, "unsigned int")] uint location)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[52])(compiler, location);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[56])(compiler, location);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[52])(compiler, location);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[56])(compiler, location);
 			#endif
 		}
 
@@ -2014,9 +2158,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslIsShaderOutputUsedNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "location")] [NativeName(NativeNameType.Type, "unsigned int")] uint location)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[53])(compiler, location);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[57])(compiler, location);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[53])(compiler, location);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[57])(compiler, location);
 			#endif
 		}
 
@@ -2040,9 +2184,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerMslIsResourceUsedNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "model")] [NativeName(NativeNameType.Type, "SpvExecutionModel")] SpvExecutionModel model, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "unsigned int")] uint set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "unsigned int")] uint binding)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel, uint, uint, byte>)funcTable[54])(compiler, model, set, binding);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel, uint, uint, byte>)funcTable[58])(compiler, model, set, binding);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel, uint, uint, byte>)funcTable[54])(compiler, model, set, binding);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel, uint, uint, byte>)funcTable[58])(compiler, model, set, binding);
 			#endif
 		}
 
@@ -2066,9 +2210,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslRemapConstexprSamplerNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "sampler")] [NativeName(NativeNameType.Type, "spvc_msl_constexpr_sampler const *")] SpvcMslConstexprSampler* sampler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcMslConstexprSampler*, SpvcResult>)funcTable[55])(compiler, id, sampler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcMslConstexprSampler*, SpvcResult>)funcTable[59])(compiler, id, sampler);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, nint, SpvcResult>)funcTable[55])(compiler, id, (nint)sampler);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, nint, SpvcResult>)funcTable[59])(compiler, id, (nint)sampler);
 			#endif
 		}
 
@@ -2106,9 +2250,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslRemapConstexprSamplerByBindingNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "desc_set")] [NativeName(NativeNameType.Type, "unsigned int")] uint descSet, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "unsigned int")] uint binding, [NativeName(NativeNameType.Param, "sampler")] [NativeName(NativeNameType.Type, "spvc_msl_constexpr_sampler const *")] SpvcMslConstexprSampler* sampler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcMslConstexprSampler*, SpvcResult>)funcTable[56])(compiler, descSet, binding, sampler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcMslConstexprSampler*, SpvcResult>)funcTable[60])(compiler, descSet, binding, sampler);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, nint, SpvcResult>)funcTable[56])(compiler, descSet, binding, (nint)sampler);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, nint, SpvcResult>)funcTable[60])(compiler, descSet, binding, (nint)sampler);
 			#endif
 		}
 
@@ -2146,9 +2290,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslRemapConstexprSamplerYcbcrNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "sampler")] [NativeName(NativeNameType.Type, "spvc_msl_constexpr_sampler const *")] SpvcMslConstexprSampler* sampler, [NativeName(NativeNameType.Param, "conv")] [NativeName(NativeNameType.Type, "spvc_msl_sampler_ycbcr_conversion const *")] SpvcMslSamplerYcbcrConversion* conv)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcMslConstexprSampler*, SpvcMslSamplerYcbcrConversion*, SpvcResult>)funcTable[57])(compiler, id, sampler, conv);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcMslConstexprSampler*, SpvcMslSamplerYcbcrConversion*, SpvcResult>)funcTable[61])(compiler, id, sampler, conv);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, nint, nint, SpvcResult>)funcTable[57])(compiler, id, (nint)sampler, (nint)conv);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, nint, nint, SpvcResult>)funcTable[61])(compiler, id, (nint)sampler, (nint)conv);
 			#endif
 		}
 
@@ -2217,9 +2361,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslRemapConstexprSamplerByBindingYcbcrNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "desc_set")] [NativeName(NativeNameType.Type, "unsigned int")] uint descSet, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "unsigned int")] uint binding, [NativeName(NativeNameType.Param, "sampler")] [NativeName(NativeNameType.Type, "spvc_msl_constexpr_sampler const *")] SpvcMslConstexprSampler* sampler, [NativeName(NativeNameType.Param, "conv")] [NativeName(NativeNameType.Type, "spvc_msl_sampler_ycbcr_conversion const *")] SpvcMslSamplerYcbcrConversion* conv)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcMslConstexprSampler*, SpvcMslSamplerYcbcrConversion*, SpvcResult>)funcTable[58])(compiler, descSet, binding, sampler, conv);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcMslConstexprSampler*, SpvcMslSamplerYcbcrConversion*, SpvcResult>)funcTable[62])(compiler, descSet, binding, sampler, conv);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, nint, nint, SpvcResult>)funcTable[58])(compiler, descSet, binding, (nint)sampler, (nint)conv);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, nint, nint, SpvcResult>)funcTable[62])(compiler, descSet, binding, (nint)sampler, (nint)conv);
 			#endif
 		}
 
@@ -2288,9 +2432,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslSetFragmentOutputComponentsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "location")] [NativeName(NativeNameType.Type, "unsigned int")] uint location, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "unsigned int")] uint components)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[59])(compiler, location, components);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[63])(compiler, location, components);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[59])(compiler, location, components);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[63])(compiler, location, components);
 			#endif
 		}
 
@@ -2314,9 +2458,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint CompilerMslGetAutomaticResourceBindingNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint>)funcTable[60])(compiler, id);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint>)funcTable[64])(compiler, id);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint>)funcTable[60])(compiler, id);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint>)funcTable[64])(compiler, id);
 			#endif
 		}
 
@@ -2340,9 +2484,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint CompilerMslGetAutomaticResourceBindingSecondaryNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint>)funcTable[61])(compiler, id);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint>)funcTable[65])(compiler, id);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint>)funcTable[61])(compiler, id);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint>)funcTable[65])(compiler, id);
 			#endif
 		}
 
@@ -2366,9 +2510,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslAddDynamicBufferNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "desc_set")] [NativeName(NativeNameType.Type, "unsigned int")] uint descSet, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "unsigned int")] uint binding, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, uint, SpvcResult>)funcTable[62])(compiler, descSet, binding, index);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, uint, SpvcResult>)funcTable[66])(compiler, descSet, binding, index);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, uint, SpvcResult>)funcTable[62])(compiler, descSet, binding, index);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, uint, SpvcResult>)funcTable[66])(compiler, descSet, binding, index);
 			#endif
 		}
 
@@ -2392,9 +2536,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslAddInlineUniformBlockNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "desc_set")] [NativeName(NativeNameType.Type, "unsigned int")] uint descSet, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "unsigned int")] uint binding)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[63])(compiler, descSet, binding);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[67])(compiler, descSet, binding);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[63])(compiler, descSet, binding);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvcResult>)funcTable[67])(compiler, descSet, binding);
 			#endif
 		}
 
@@ -2418,9 +2562,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerMslSetCombinedSamplerSuffixNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "suffix")] [NativeName(NativeNameType.Type, "char const *")] byte* suffix)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, SpvcResult>)funcTable[64])(compiler, suffix);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, SpvcResult>)funcTable[68])(compiler, suffix);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[64])(compiler, (nint)suffix);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[68])(compiler, (nint)suffix);
 			#endif
 		}
 
@@ -2504,9 +2648,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte* CompilerMslGetCombinedSamplerSuffixNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*>)funcTable[65])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*>)funcTable[69])(compiler);
 			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint>)funcTable[65])(compiler);
+			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint>)funcTable[69])(compiler);
 			#endif
 		}
 
@@ -2542,9 +2686,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerGetActiveInterfaceVariablesNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "spvc_set *")] SpvcSet* set)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcSet*, SpvcResult>)funcTable[66])(compiler, set);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcSet*, SpvcResult>)funcTable[70])(compiler, set);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[66])(compiler, (nint)set);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[70])(compiler, (nint)set);
 			#endif
 		}
 
@@ -2584,9 +2728,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerSetEnabledInterfaceVariablesNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "spvc_set")] SpvcSet set)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcSet, SpvcResult>)funcTable[67])(compiler, set);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcSet, SpvcResult>)funcTable[71])(compiler, set);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcSet, SpvcResult>)funcTable[67])(compiler, set);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcSet, SpvcResult>)funcTable[71])(compiler, set);
 			#endif
 		}
 
@@ -2610,9 +2754,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerCreateShaderResourcesNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "resources")] [NativeName(NativeNameType.Type, "spvc_resources *")] SpvcResources* resources)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcResources*, SpvcResult>)funcTable[68])(compiler, resources);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcResources*, SpvcResult>)funcTable[72])(compiler, resources);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[68])(compiler, (nint)resources);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[72])(compiler, (nint)resources);
 			#endif
 		}
 
@@ -2650,9 +2794,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerCreateShaderResourcesForActiveVariablesNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "resources")] [NativeName(NativeNameType.Type, "spvc_resources *")] SpvcResources* resources, [NativeName(NativeNameType.Param, "active")] [NativeName(NativeNameType.Type, "spvc_set")] SpvcSet active)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcResources*, SpvcSet, SpvcResult>)funcTable[69])(compiler, resources, active);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcResources*, SpvcSet, SpvcResult>)funcTable[73])(compiler, resources, active);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcSet, SpvcResult>)funcTable[69])(compiler, (nint)resources, active);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcSet, SpvcResult>)funcTable[73])(compiler, (nint)resources, active);
 			#endif
 		}
 
@@ -2690,9 +2834,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult ResourcesGetResourceListForTypeNative([NativeName(NativeNameType.Param, "resources")] [NativeName(NativeNameType.Type, "spvc_resources")] SpvcResources resources, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_resource_type")] SpvcResourceType type, [NativeName(NativeNameType.Param, "resource_list")] [NativeName(NativeNameType.Type, "spvc_reflected_resource const * *")] SpvcReflectedResource** resourceList, [NativeName(NativeNameType.Param, "resource_size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* resourceSize)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcResources, SpvcResourceType, SpvcReflectedResource**, nuint*, SpvcResult>)funcTable[70])(resources, type, resourceList, resourceSize);
+			return ((delegate* unmanaged[Cdecl]<SpvcResources, SpvcResourceType, SpvcReflectedResource**, nuint*, SpvcResult>)funcTable[74])(resources, type, resourceList, resourceSize);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcResources, SpvcResourceType, nint, nint, SpvcResult>)funcTable[70])(resources, type, (nint)resourceList, (nint)resourceSize);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcResources, SpvcResourceType, nint, nint, SpvcResult>)funcTable[74])(resources, type, (nint)resourceList, (nint)resourceSize);
 			#endif
 		}
 
@@ -2761,9 +2905,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult ResourcesGetBuiltinResourceListForTypeNative([NativeName(NativeNameType.Param, "resources")] [NativeName(NativeNameType.Type, "spvc_resources")] SpvcResources resources, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_builtin_resource_type")] SpvcBuiltinResourceType type, [NativeName(NativeNameType.Param, "resource_list")] [NativeName(NativeNameType.Type, "spvc_reflected_builtin_resource const * *")] SpvcReflectedBuiltinResource** resourceList, [NativeName(NativeNameType.Param, "resource_size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* resourceSize)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcResources, SpvcBuiltinResourceType, SpvcReflectedBuiltinResource**, nuint*, SpvcResult>)funcTable[71])(resources, type, resourceList, resourceSize);
+			return ((delegate* unmanaged[Cdecl]<SpvcResources, SpvcBuiltinResourceType, SpvcReflectedBuiltinResource**, nuint*, SpvcResult>)funcTable[75])(resources, type, resourceList, resourceSize);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcResources, SpvcBuiltinResourceType, nint, nint, SpvcResult>)funcTable[71])(resources, type, (nint)resourceList, (nint)resourceSize);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcResources, SpvcBuiltinResourceType, nint, nint, SpvcResult>)funcTable[75])(resources, type, (nint)resourceList, (nint)resourceSize);
 			#endif
 		}
 
@@ -2833,9 +2977,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerSetDecorationNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "SpvId")] uint id, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration, [NativeName(NativeNameType.Param, "argument")] [NativeName(NativeNameType.Type, "unsigned int")] uint argument)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, uint, void>)funcTable[72])(compiler, id, decoration, argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, uint, void>)funcTable[76])(compiler, id, decoration, argument);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, uint, void>)funcTable[72])(compiler, id, decoration, argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, uint, void>)funcTable[76])(compiler, id, decoration, argument);
 			#endif
 		}
 
@@ -2859,9 +3003,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerSetDecorationStringNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "SpvId")] uint id, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration, [NativeName(NativeNameType.Param, "argument")] [NativeName(NativeNameType.Type, "char const *")] byte* argument)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, byte*, void>)funcTable[73])(compiler, id, decoration, argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, byte*, void>)funcTable[77])(compiler, id, decoration, argument);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, nint, void>)funcTable[73])(compiler, id, decoration, (nint)argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, nint, void>)funcTable[77])(compiler, id, decoration, (nint)argument);
 			#endif
 		}
 
@@ -2941,9 +3085,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerSetNameNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "SpvId")] uint id, [NativeName(NativeNameType.Param, "argument")] [NativeName(NativeNameType.Type, "char const *")] byte* argument)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte*, void>)funcTable[74])(compiler, id, argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte*, void>)funcTable[78])(compiler, id, argument);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, nint, void>)funcTable[74])(compiler, id, (nint)argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, nint, void>)funcTable[78])(compiler, id, (nint)argument);
 			#endif
 		}
 
@@ -3023,9 +3167,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerSetMemberDecorationNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_type_id")] uint id, [NativeName(NativeNameType.Param, "member_index")] [NativeName(NativeNameType.Type, "unsigned int")] uint memberIndex, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration, [NativeName(NativeNameType.Param, "argument")] [NativeName(NativeNameType.Type, "unsigned int")] uint argument)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, uint, void>)funcTable[75])(compiler, id, memberIndex, decoration, argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, uint, void>)funcTable[79])(compiler, id, memberIndex, decoration, argument);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, uint, void>)funcTable[75])(compiler, id, memberIndex, decoration, argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, uint, void>)funcTable[79])(compiler, id, memberIndex, decoration, argument);
 			#endif
 		}
 
@@ -3048,9 +3192,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerSetMemberDecorationStringNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_type_id")] uint id, [NativeName(NativeNameType.Param, "member_index")] [NativeName(NativeNameType.Type, "unsigned int")] uint memberIndex, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration, [NativeName(NativeNameType.Param, "argument")] [NativeName(NativeNameType.Type, "char const *")] byte* argument)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, byte*, void>)funcTable[76])(compiler, id, memberIndex, decoration, argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, byte*, void>)funcTable[80])(compiler, id, memberIndex, decoration, argument);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, nint, void>)funcTable[76])(compiler, id, memberIndex, decoration, (nint)argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, nint, void>)funcTable[80])(compiler, id, memberIndex, decoration, (nint)argument);
 			#endif
 		}
 
@@ -3130,9 +3274,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerSetMemberNameNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_type_id")] uint id, [NativeName(NativeNameType.Param, "member_index")] [NativeName(NativeNameType.Type, "unsigned int")] uint memberIndex, [NativeName(NativeNameType.Param, "argument")] [NativeName(NativeNameType.Type, "char const *")] byte* argument)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, byte*, void>)funcTable[77])(compiler, id, memberIndex, argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, byte*, void>)funcTable[81])(compiler, id, memberIndex, argument);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, nint, void>)funcTable[77])(compiler, id, memberIndex, (nint)argument);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, nint, void>)funcTable[81])(compiler, id, memberIndex, (nint)argument);
 			#endif
 		}
 
@@ -3212,9 +3356,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerUnsetDecorationNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "SpvId")] uint id, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, void>)funcTable[78])(compiler, id, decoration);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, void>)funcTable[82])(compiler, id, decoration);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, void>)funcTable[78])(compiler, id, decoration);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, void>)funcTable[82])(compiler, id, decoration);
 			#endif
 		}
 
@@ -3237,9 +3381,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerUnsetMemberDecorationNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_type_id")] uint id, [NativeName(NativeNameType.Param, "member_index")] [NativeName(NativeNameType.Type, "unsigned int")] uint memberIndex, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, void>)funcTable[79])(compiler, id, memberIndex, decoration);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, void>)funcTable[83])(compiler, id, memberIndex, decoration);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, void>)funcTable[79])(compiler, id, memberIndex, decoration);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, void>)funcTable[83])(compiler, id, memberIndex, decoration);
 			#endif
 		}
 
@@ -3262,9 +3406,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerHasDecorationNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "SpvId")] uint id, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, byte>)funcTable[80])(compiler, id, decoration);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, byte>)funcTable[84])(compiler, id, decoration);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, byte>)funcTable[80])(compiler, id, decoration);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, byte>)funcTable[84])(compiler, id, decoration);
 			#endif
 		}
 
@@ -3288,9 +3432,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerHasMemberDecorationNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_type_id")] uint id, [NativeName(NativeNameType.Param, "member_index")] [NativeName(NativeNameType.Type, "unsigned int")] uint memberIndex, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, byte>)funcTable[81])(compiler, id, memberIndex, decoration);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, byte>)funcTable[85])(compiler, id, memberIndex, decoration);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, byte>)funcTable[81])(compiler, id, memberIndex, decoration);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, byte>)funcTable[85])(compiler, id, memberIndex, decoration);
 			#endif
 		}
 
@@ -3314,9 +3458,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte* CompilerGetNameNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "SpvId")] uint id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte*>)funcTable[82])(compiler, id);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte*>)funcTable[86])(compiler, id);
 			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, nint>)funcTable[82])(compiler, id);
+			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, nint>)funcTable[86])(compiler, id);
 			#endif
 		}
 
@@ -3351,9 +3495,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint CompilerGetDecorationNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "SpvId")] uint id, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, uint>)funcTable[83])(compiler, id, decoration);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, uint>)funcTable[87])(compiler, id, decoration);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, uint>)funcTable[83])(compiler, id, decoration);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, uint>)funcTable[87])(compiler, id, decoration);
 			#endif
 		}
 
@@ -3377,9 +3521,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte* CompilerGetDecorationStringNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "SpvId")] uint id, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, byte*>)funcTable[84])(compiler, id, decoration);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, byte*>)funcTable[88])(compiler, id, decoration);
 			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, nint>)funcTable[84])(compiler, id, decoration);
+			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, nint>)funcTable[88])(compiler, id, decoration);
 			#endif
 		}
 
@@ -3414,9 +3558,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint CompilerGetMemberDecorationNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_type_id")] uint id, [NativeName(NativeNameType.Param, "member_index")] [NativeName(NativeNameType.Type, "unsigned int")] uint memberIndex, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, uint>)funcTable[85])(compiler, id, memberIndex, decoration);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, uint>)funcTable[89])(compiler, id, memberIndex, decoration);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, uint>)funcTable[85])(compiler, id, memberIndex, decoration);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, uint>)funcTable[89])(compiler, id, memberIndex, decoration);
 			#endif
 		}
 
@@ -3440,9 +3584,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte* CompilerGetMemberDecorationStringNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_type_id")] uint id, [NativeName(NativeNameType.Param, "member_index")] [NativeName(NativeNameType.Type, "unsigned int")] uint memberIndex, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, byte*>)funcTable[86])(compiler, id, memberIndex, decoration);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, byte*>)funcTable[90])(compiler, id, memberIndex, decoration);
 			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, nint>)funcTable[86])(compiler, id, memberIndex, decoration);
+			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, SpvDecoration, nint>)funcTable[90])(compiler, id, memberIndex, decoration);
 			#endif
 		}
 
@@ -3477,9 +3621,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte* CompilerGetMemberNameNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_type_id")] uint id, [NativeName(NativeNameType.Param, "member_index")] [NativeName(NativeNameType.Type, "unsigned int")] uint memberIndex)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, byte*>)funcTable[87])(compiler, id, memberIndex);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, byte*>)funcTable[91])(compiler, id, memberIndex);
 			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, nint>)funcTable[87])(compiler, id, memberIndex);
+			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint, nint>)funcTable[91])(compiler, id, memberIndex);
 			#endif
 		}
 
@@ -3515,9 +3659,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerGetEntryPointsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "entry_points")] [NativeName(NativeNameType.Type, "spvc_entry_point const * *")] SpvcEntryPoint** entryPoints, [NativeName(NativeNameType.Param, "num_entry_points")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numEntryPoints)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcEntryPoint**, nuint*, SpvcResult>)funcTable[88])(compiler, entryPoints, numEntryPoints);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcEntryPoint**, nuint*, SpvcResult>)funcTable[92])(compiler, entryPoints, numEntryPoints);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nint, SpvcResult>)funcTable[88])(compiler, (nint)entryPoints, (nint)numEntryPoints);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nint, SpvcResult>)funcTable[92])(compiler, (nint)entryPoints, (nint)numEntryPoints);
 			#endif
 		}
 
@@ -3590,9 +3734,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerSetEntryPointNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "char const *")] byte* name, [NativeName(NativeNameType.Param, "model")] [NativeName(NativeNameType.Type, "SpvExecutionModel")] SpvExecutionModel model)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, SpvExecutionModel, SpvcResult>)funcTable[89])(compiler, name, model);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, SpvExecutionModel, SpvcResult>)funcTable[93])(compiler, name, model);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvExecutionModel, SpvcResult>)funcTable[89])(compiler, (nint)name, model);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvExecutionModel, SpvcResult>)funcTable[93])(compiler, (nint)name, model);
 			#endif
 		}
 
@@ -3676,9 +3820,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerRenameEntryPointNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "old_name")] [NativeName(NativeNameType.Type, "char const *")] byte* oldName, [NativeName(NativeNameType.Param, "new_name")] [NativeName(NativeNameType.Type, "char const *")] byte* newName, [NativeName(NativeNameType.Param, "model")] [NativeName(NativeNameType.Type, "SpvExecutionModel")] SpvExecutionModel model)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, byte*, SpvExecutionModel, SpvcResult>)funcTable[90])(compiler, oldName, newName, model);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, byte*, SpvExecutionModel, SpvcResult>)funcTable[94])(compiler, oldName, newName, model);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nint, SpvExecutionModel, SpvcResult>)funcTable[90])(compiler, (nint)oldName, (nint)newName, model);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nint, SpvExecutionModel, SpvcResult>)funcTable[94])(compiler, (nint)oldName, (nint)newName, model);
 			#endif
 		}
 
@@ -3909,9 +4053,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte* CompilerGetCleansedEntryPointNameNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "char const *")] byte* name, [NativeName(NativeNameType.Param, "model")] [NativeName(NativeNameType.Type, "SpvExecutionModel")] SpvExecutionModel model)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, SpvExecutionModel, byte*>)funcTable[91])(compiler, name, model);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte*, SpvExecutionModel, byte*>)funcTable[95])(compiler, name, model);
 			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvExecutionModel, nint>)funcTable[91])(compiler, (nint)name, model);
+			return (byte*)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvExecutionModel, nint>)funcTable[95])(compiler, (nint)name, model);
 			#endif
 		}
 
@@ -4066,9 +4210,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerSetExecutionModeNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SpvExecutionMode")] SpvExecutionMode mode)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, void>)funcTable[92])(compiler, mode);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, void>)funcTable[96])(compiler, mode);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, void>)funcTable[92])(compiler, mode);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, void>)funcTable[96])(compiler, mode);
 			#endif
 		}
 
@@ -4091,9 +4235,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerUnsetExecutionModeNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SpvExecutionMode")] SpvExecutionMode mode)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, void>)funcTable[93])(compiler, mode);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, void>)funcTable[97])(compiler, mode);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, void>)funcTable[93])(compiler, mode);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, void>)funcTable[97])(compiler, mode);
 			#endif
 		}
 
@@ -4116,9 +4260,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerSetExecutionModeWithArgumentsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SpvExecutionMode")] SpvExecutionMode mode, [NativeName(NativeNameType.Param, "arg0")] [NativeName(NativeNameType.Type, "unsigned int")] uint arg0, [NativeName(NativeNameType.Param, "arg1")] [NativeName(NativeNameType.Type, "unsigned int")] uint arg1, [NativeName(NativeNameType.Param, "arg2")] [NativeName(NativeNameType.Type, "unsigned int")] uint arg2)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint, uint, uint, void>)funcTable[94])(compiler, mode, arg0, arg1, arg2);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint, uint, uint, void>)funcTable[98])(compiler, mode, arg0, arg1, arg2);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint, uint, uint, void>)funcTable[94])(compiler, mode, arg0, arg1, arg2);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint, uint, uint, void>)funcTable[98])(compiler, mode, arg0, arg1, arg2);
 			#endif
 		}
 
@@ -4141,9 +4285,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerGetExecutionModesNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "modes")] [NativeName(NativeNameType.Type, "SpvExecutionMode const * *")] SpvExecutionMode** modes, [NativeName(NativeNameType.Param, "num_modes")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numModes)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode**, nuint*, SpvcResult>)funcTable[95])(compiler, modes, numModes);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode**, nuint*, SpvcResult>)funcTable[99])(compiler, modes, numModes);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nint, SpvcResult>)funcTable[95])(compiler, (nint)modes, (nint)numModes);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nint, SpvcResult>)funcTable[99])(compiler, (nint)modes, (nint)numModes);
 			#endif
 		}
 
@@ -4181,9 +4325,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint CompilerGetExecutionModeArgumentNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SpvExecutionMode")] SpvExecutionMode mode)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint>)funcTable[96])(compiler, mode);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint>)funcTable[100])(compiler, mode);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint>)funcTable[96])(compiler, mode);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint>)funcTable[100])(compiler, mode);
 			#endif
 		}
 
@@ -4207,9 +4351,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint CompilerGetExecutionModeArgumentByIndexNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SpvExecutionMode")] SpvExecutionMode mode, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint, uint>)funcTable[97])(compiler, mode, index);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint, uint>)funcTable[101])(compiler, mode, index);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint, uint>)funcTable[97])(compiler, mode, index);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionMode, uint, uint>)funcTable[101])(compiler, mode, index);
 			#endif
 		}
 
@@ -4233,9 +4377,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvExecutionModel CompilerGetExecutionModelNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel>)funcTable[98])(compiler);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel>)funcTable[102])(compiler);
 			#else
-			return (SpvExecutionModel)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel>)funcTable[98])(compiler);
+			return (SpvExecutionModel)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvExecutionModel>)funcTable[102])(compiler);
 			#endif
 		}
 
@@ -4259,9 +4403,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static void CompilerUpdateActiveBuiltinsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
 		{
 			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, void>)funcTable[99])(compiler);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, void>)funcTable[103])(compiler);
 			#else
-			((delegate* unmanaged[Cdecl]<SpvcCompiler, void>)funcTable[99])(compiler);
+			((delegate* unmanaged[Cdecl]<SpvcCompiler, void>)funcTable[103])(compiler);
 			#endif
 		}
 
@@ -4284,9 +4428,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte CompilerHasActiveBuiltinNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "builtin")] [NativeName(NativeNameType.Type, "SpvBuiltIn")] SpvBuiltIn builtin, [NativeName(NativeNameType.Param, "storage")] [NativeName(NativeNameType.Type, "SpvStorageClass")] SpvStorageClass storage)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvBuiltIn, SpvStorageClass, byte>)funcTable[100])(compiler, builtin, storage);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvBuiltIn, SpvStorageClass, byte>)funcTable[104])(compiler, builtin, storage);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvBuiltIn, SpvStorageClass, byte>)funcTable[100])(compiler, builtin, storage);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvBuiltIn, SpvStorageClass, byte>)funcTable[104])(compiler, builtin, storage);
 			#endif
 		}
 
@@ -4311,9 +4455,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcType CompilerGetTypeHandleNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_type_id")] uint id)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcType>)funcTable[101])(compiler, id);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcType>)funcTable[105])(compiler, id);
 			#else
-			return (SpvcType)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcType>)funcTable[101])(compiler, id);
+			return (SpvcType)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcType>)funcTable[105])(compiler, id);
 			#endif
 		}
 
@@ -4341,9 +4485,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint TypeGetBaseTypeIdNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[102])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[106])(type);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[102])(type);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[106])(type);
 			#endif
 		}
 
@@ -4370,9 +4514,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcBasetype TypeGetBasetypeNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, SpvcBasetype>)funcTable[103])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, SpvcBasetype>)funcTable[107])(type);
 			#else
-			return (SpvcBasetype)((delegate* unmanaged[Cdecl]<SpvcType, SpvcBasetype>)funcTable[103])(type);
+			return (SpvcBasetype)((delegate* unmanaged[Cdecl]<SpvcType, SpvcBasetype>)funcTable[107])(type);
 			#endif
 		}
 
@@ -4396,9 +4540,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint TypeGetWidthNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[104])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[108])(type);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[104])(type);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[108])(type);
 			#endif
 		}
 
@@ -4422,9 +4566,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint TypeGetVectorSizeNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[105])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[109])(type);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[105])(type);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[109])(type);
 			#endif
 		}
 
@@ -4448,9 +4592,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint TypeGetColumnsNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[106])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[110])(type);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[106])(type);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[110])(type);
 			#endif
 		}
 
@@ -4474,9 +4618,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint TypeGetNumArrayDimensionsNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[107])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[111])(type);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[107])(type);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[111])(type);
 			#endif
 		}
 
@@ -4500,9 +4644,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte TypeArrayDimensionIsLiteralNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "dimension")] [NativeName(NativeNameType.Type, "unsigned int")] uint dimension)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, uint, byte>)funcTable[108])(type, dimension);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, uint, byte>)funcTable[112])(type, dimension);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcType, uint, byte>)funcTable[108])(type, dimension);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcType, uint, byte>)funcTable[112])(type, dimension);
 			#endif
 		}
 
@@ -4526,9 +4670,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint TypeGetArrayDimensionNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "dimension")] [NativeName(NativeNameType.Type, "unsigned int")] uint dimension)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, uint, uint>)funcTable[109])(type, dimension);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, uint, uint>)funcTable[113])(type, dimension);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint, uint>)funcTable[109])(type, dimension);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint, uint>)funcTable[113])(type, dimension);
 			#endif
 		}
 
@@ -4552,9 +4696,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint TypeGetNumMemberTypesNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[110])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[114])(type);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[110])(type);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[114])(type);
 			#endif
 		}
 
@@ -4578,9 +4722,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint TypeGetMemberTypeNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, uint, uint>)funcTable[111])(type, index);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, uint, uint>)funcTable[115])(type, index);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint, uint>)funcTable[111])(type, index);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint, uint>)funcTable[115])(type, index);
 			#endif
 		}
 
@@ -4604,9 +4748,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvStorageClass TypeGetStorageClassNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, SpvStorageClass>)funcTable[112])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, SpvStorageClass>)funcTable[116])(type);
 			#else
-			return (SpvStorageClass)((delegate* unmanaged[Cdecl]<SpvcType, SpvStorageClass>)funcTable[112])(type);
+			return (SpvStorageClass)((delegate* unmanaged[Cdecl]<SpvcType, SpvStorageClass>)funcTable[116])(type);
 			#endif
 		}
 
@@ -4630,9 +4774,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static uint TypeGetImageSampledTypeNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[113])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[117])(type);
 			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[113])(type);
+			return (uint)((delegate* unmanaged[Cdecl]<SpvcType, uint>)funcTable[117])(type);
 			#endif
 		}
 
@@ -4656,9 +4800,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvDim TypeGetImageDimensionNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, SpvDim>)funcTable[114])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, SpvDim>)funcTable[118])(type);
 			#else
-			return (SpvDim)((delegate* unmanaged[Cdecl]<SpvcType, SpvDim>)funcTable[114])(type);
+			return (SpvDim)((delegate* unmanaged[Cdecl]<SpvcType, SpvDim>)funcTable[118])(type);
 			#endif
 		}
 
@@ -4682,9 +4826,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte TypeGetImageIsDepthNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[115])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[119])(type);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[115])(type);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[119])(type);
 			#endif
 		}
 
@@ -4708,9 +4852,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte TypeGetImageArrayedNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[116])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[120])(type);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[116])(type);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[120])(type);
 			#endif
 		}
 
@@ -4734,9 +4878,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte TypeGetImageMultisampledNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[117])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[121])(type);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[117])(type);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[121])(type);
 			#endif
 		}
 
@@ -4760,9 +4904,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static byte TypeGetImageIsStorageNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[118])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[122])(type);
 			#else
-			return (byte)((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[118])(type);
+			return (byte)((delegate* unmanaged[Cdecl]<SpvcType, byte>)funcTable[122])(type);
 			#endif
 		}
 
@@ -4786,9 +4930,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvImageFormat TypeGetImageStorageFormatNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, SpvImageFormat>)funcTable[119])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, SpvImageFormat>)funcTable[123])(type);
 			#else
-			return (SpvImageFormat)((delegate* unmanaged[Cdecl]<SpvcType, SpvImageFormat>)funcTable[119])(type);
+			return (SpvImageFormat)((delegate* unmanaged[Cdecl]<SpvcType, SpvImageFormat>)funcTable[123])(type);
 			#endif
 		}
 
@@ -4812,9 +4956,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvAccessQualifier TypeGetImageAccessQualifierNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcType, SpvAccessQualifier>)funcTable[120])(type);
+			return ((delegate* unmanaged[Cdecl]<SpvcType, SpvAccessQualifier>)funcTable[124])(type);
 			#else
-			return (SpvAccessQualifier)((delegate* unmanaged[Cdecl]<SpvcType, SpvAccessQualifier>)funcTable[120])(type);
+			return (SpvAccessQualifier)((delegate* unmanaged[Cdecl]<SpvcType, SpvAccessQualifier>)funcTable[124])(type);
 			#endif
 		}
 
@@ -4839,9 +4983,9 @@ namespace Hexa.NET.SPIRVCross
 		internal static SpvcResult CompilerGetDeclaredStructSizeNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "struct_type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType structType, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* size)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, nuint*, SpvcResult>)funcTable[121])(compiler, structType, size);
+			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, nuint*, SpvcResult>)funcTable[125])(compiler, structType, size);
 			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, nint, SpvcResult>)funcTable[121])(compiler, structType, (nint)size);
+			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, nint, SpvcResult>)funcTable[125])(compiler, structType, (nint)size);
 			#endif
 		}
 
@@ -4870,152 +5014,6 @@ namespace Hexa.NET.SPIRVCross
 				SpvcResult ret = CompilerGetDeclaredStructSizeNative(compiler, structType, (nuint*)psize);
 				return ret;
 			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_size_runtime_array")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerGetDeclaredStructSizeRuntimeArrayNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "struct_type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType structType, [NativeName(NativeNameType.Param, "array_size")] [NativeName(NativeNameType.Type, "size_t")] nuint arraySize, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* size)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, nuint, nuint*, SpvcResult>)funcTable[122])(compiler, structType, arraySize, size);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, nuint, nint, SpvcResult>)funcTable[122])(compiler, structType, arraySize, (nint)size);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_size_runtime_array")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredStructSizeRuntimeArray([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "struct_type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType structType, [NativeName(NativeNameType.Param, "array_size")] [NativeName(NativeNameType.Type, "size_t")] nuint arraySize, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* size)
-		{
-			SpvcResult ret = CompilerGetDeclaredStructSizeRuntimeArrayNative(compiler, structType, arraySize, size);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_size_runtime_array")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredStructSizeRuntimeArray([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "struct_type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType structType, [NativeName(NativeNameType.Param, "array_size")] [NativeName(NativeNameType.Type, "size_t")] nuint arraySize, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint size)
-		{
-			fixed (nuint* psize = &size)
-			{
-				SpvcResult ret = CompilerGetDeclaredStructSizeRuntimeArrayNative(compiler, structType, arraySize, (nuint*)psize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_member_size")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerGetDeclaredStructMemberSizeNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* size)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, nuint*, SpvcResult>)funcTable[123])(compiler, type, index, size);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, nint, SpvcResult>)funcTable[123])(compiler, type, index, (nint)size);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_member_size")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredStructMemberSize([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* size)
-		{
-			SpvcResult ret = CompilerGetDeclaredStructMemberSizeNative(compiler, type, index, size);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_member_size")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredStructMemberSize([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint size)
-		{
-			fixed (nuint* psize = &size)
-			{
-				SpvcResult ret = CompilerGetDeclaredStructMemberSizeNative(compiler, type, index, (nuint*)psize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_offset")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerTypeStructMemberOffsetNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* offset)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, uint*, SpvcResult>)funcTable[124])(compiler, type, index, offset);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, nint, SpvcResult>)funcTable[124])(compiler, type, index, (nint)offset);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_offset")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerTypeStructMemberOffset([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* offset)
-		{
-			SpvcResult ret = CompilerTypeStructMemberOffsetNative(compiler, type, index, offset);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_offset")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerTypeStructMemberOffset([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "unsigned int *")] ref uint offset)
-		{
-			fixed (uint* poffset = &offset)
-			{
-				SpvcResult ret = CompilerTypeStructMemberOffsetNative(compiler, type, index, (uint*)poffset);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_array_stride")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerTypeStructMemberArrayStrideNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* stride)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, uint*, SpvcResult>)funcTable[125])(compiler, type, index, stride);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, nint, SpvcResult>)funcTable[125])(compiler, type, index, (nint)stride);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_array_stride")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerTypeStructMemberArrayStride([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* stride)
-		{
-			SpvcResult ret = CompilerTypeStructMemberArrayStrideNative(compiler, type, index, stride);
-			return ret;
 		}
 	}
 }

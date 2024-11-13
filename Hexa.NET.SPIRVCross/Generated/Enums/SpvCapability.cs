@@ -729,6 +729,27 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SpvCapabilityTextureSampleWeightedQCOM")]
+		[NativeName(NativeNameType.Value, "4484")]
+		TextureSampleWeightedQcom = unchecked(4484),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SpvCapabilityTextureBoxFilterQCOM")]
+		[NativeName(NativeNameType.Value, "4485")]
+		TextureBoxFilterQcom = unchecked(4485),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SpvCapabilityTextureBlockMatchQCOM")]
+		[NativeName(NativeNameType.Value, "4486")]
+		TextureBlockMatchQcom = unchecked(4486),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SpvCapabilityFloat16ImageAMD")]
 		[NativeName(NativeNameType.Value, "5008")]
 		Float16ImageAmd = unchecked(5008),

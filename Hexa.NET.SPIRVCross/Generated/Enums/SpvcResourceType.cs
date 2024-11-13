@@ -127,6 +127,13 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_GL_PLAIN_UNIFORM")]
+		[NativeName(NativeNameType.Value, "15")]
+		GlPlainUniform = unchecked(15),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_INT_MAX")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
