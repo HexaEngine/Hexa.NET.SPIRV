@@ -1,32 +1,13 @@
 {
-  "Namespace": "HexaEngine.SPIRVCross",
+  "Namespace": "Hexa.NET.SPIRVCross",
   "ApiName": "SPIRV",
   "LibName": "spirv-cross-c-shared",
   "GenerateSizeOfStructs": false,
-  "KnownConstantNames": {
-  },
-  "KnownEnumValueNames": {
-    "": ""
-  },
-  "KnownEnumPrefixes": {
-  },
-  "KnownExtensionPrefixes": {
-  },
-  "KnownExtensionNames": {
-  },
-  "KnownStructMethods": {
-  },
+  "GenerateMetadata": true,
   "IgnoredParts": [
     "bit"
   ],
-  "PreserveCaps": [
-    ""
-  ],
-  "Keywords": [
-    "object",
-    "event"
-  ],
-  "NameMappings": {
+  "TypeMappings": {
     "uint8_t": "byte",
     "uint16_t": "ushort",
     "uint32_t": "uint",

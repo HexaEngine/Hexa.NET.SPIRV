@@ -1,41 +1,9 @@
-﻿namespace Generator
-{
-    using CppAst;
+﻿// See https://aka.ms/new-console-template for more information
+using HexaGen;
+using HexaGen.Patching;
 
-    internal unsafe class Program
-    {
-        private static int Main(string[] args)
-        {
-            string headerFile = "SPIRV-Cross/spirv_cross_c.h";
-
-            var options = new CppParserOptions
-            {
-                ParseMacros = true,
-            };
-
-            var compilation = CppParser.ParseFile(headerFile, options);
-
-            // Print diagnostic messages
-            if (compilation.HasErrors)
-            {
-                for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
-                {
-                    CppDiagnosticMessage? message = compilation.Diagnostics.Messages[i];
-                    if (message.Type == CppLogMessageType.Error)
-                    {
-                        var currentColor = Console.ForegroundColor;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine(message);
-                        Console.ForegroundColor = currentColor;
-                    }
-                }
-
-                return 0;
-            }
-
-            CsCodeGenerator.Generate(compilation, "../../../../HexaEngine.SPIRVCross/Generated");
-
-            return 0;
-        }
-    }
-}
+CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("generator.json");
+CsCodeGenerator generator = new(generatorSettings);
+generator.LogToConsole();
+generator.PatchEngine.RegisterPrePatch(new NamingPatch(["Spvc"], NamingPatchOptions.None));
+generator.Generate([.. Directory.GetFiles("include")], "../../../../Hexa.NET.SPIRVCross/Generated");
