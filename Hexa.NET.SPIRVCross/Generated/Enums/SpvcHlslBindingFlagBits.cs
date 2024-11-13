@@ -9,63 +9,49 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_hlsl_binding_flag_bits")]
 	[Flags]
 	public enum SpvcHlslBindingFlagBits : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_HLSL_BINDING_AUTO_NONE_BIT")]
-		[NativeName(NativeNameType.Value, "0")]
-		AutoNone = unchecked(0),
+		AutoNoneBit = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_HLSL_BINDING_AUTO_PUSH_CONSTANT_BIT")]
-		[NativeName(NativeNameType.Value, "1")]
-		AutoPushConstant = unchecked(1),
+		AutoPushConstantBit = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_HLSL_BINDING_AUTO_CBV_BIT")]
-		[NativeName(NativeNameType.Value, "2")]
-		AutoCbv = unchecked(2),
+		AutoCbvBit = unchecked(2),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_HLSL_BINDING_AUTO_SRV_BIT")]
-		[NativeName(NativeNameType.Value, "4")]
-		AutoSrv = unchecked(4),
+		AutoSrvBit = unchecked(4),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_HLSL_BINDING_AUTO_UAV_BIT")]
-		[NativeName(NativeNameType.Value, "8")]
-		AutoUav = unchecked(8),
+		AutoUavBit = unchecked(8),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_HLSL_BINDING_AUTO_SAMPLER_BIT")]
-		[NativeName(NativeNameType.Value, "16")]
-		AutoSampler = unchecked(16),
+		AutoSamplerBit = unchecked(16),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_HLSL_BINDING_AUTO_ALL")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		AutoAll = unchecked(2147483647),
 	}
 }

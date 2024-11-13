@@ -11,852 +11,17 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
-	public unsafe partial class SPIRV
+	public unsafe partial class SPIRVCross
 	{
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_size_runtime_array")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerGetDeclaredStructSizeRuntimeArrayNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "struct_type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType structType, [NativeName(NativeNameType.Param, "array_size")] [NativeName(NativeNameType.Type, "size_t")] nuint arraySize, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* size)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, nuint, nuint*, SpvcResult>)funcTable[126])(compiler, structType, arraySize, size);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, nuint, nint, SpvcResult>)funcTable[126])(compiler, structType, arraySize, (nint)size);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_size_runtime_array")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredStructSizeRuntimeArray([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "struct_type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType structType, [NativeName(NativeNameType.Param, "array_size")] [NativeName(NativeNameType.Type, "size_t")] nuint arraySize, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* size)
-		{
-			SpvcResult ret = CompilerGetDeclaredStructSizeRuntimeArrayNative(compiler, structType, arraySize, size);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_size_runtime_array")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredStructSizeRuntimeArray([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "struct_type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType structType, [NativeName(NativeNameType.Param, "array_size")] [NativeName(NativeNameType.Type, "size_t")] nuint arraySize, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint size)
-		{
-			fixed (nuint* psize = &size)
-			{
-				SpvcResult ret = CompilerGetDeclaredStructSizeRuntimeArrayNative(compiler, structType, arraySize, (nuint*)psize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_member_size")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerGetDeclaredStructMemberSizeNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* size)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, nuint*, SpvcResult>)funcTable[127])(compiler, type, index, size);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, nint, SpvcResult>)funcTable[127])(compiler, type, index, (nint)size);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_member_size")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredStructMemberSize([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] nuint* size)
-		{
-			SpvcResult ret = CompilerGetDeclaredStructMemberSizeNative(compiler, type, index, size);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_struct_member_size")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredStructMemberSize([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint size)
-		{
-			fixed (nuint* psize = &size)
-			{
-				SpvcResult ret = CompilerGetDeclaredStructMemberSizeNative(compiler, type, index, (nuint*)psize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_offset")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerTypeStructMemberOffsetNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* offset)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, uint*, SpvcResult>)funcTable[128])(compiler, type, index, offset);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, nint, SpvcResult>)funcTable[128])(compiler, type, index, (nint)offset);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_offset")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerTypeStructMemberOffset([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* offset)
-		{
-			SpvcResult ret = CompilerTypeStructMemberOffsetNative(compiler, type, index, offset);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_offset")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerTypeStructMemberOffset([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "unsigned int *")] ref uint offset)
-		{
-			fixed (uint* poffset = &offset)
-			{
-				SpvcResult ret = CompilerTypeStructMemberOffsetNative(compiler, type, index, (uint*)poffset);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_array_stride")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerTypeStructMemberArrayStrideNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* stride)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, uint*, SpvcResult>)funcTable[129])(compiler, type, index, stride);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, nint, SpvcResult>)funcTable[129])(compiler, type, index, (nint)stride);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_array_stride")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerTypeStructMemberArrayStride([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* stride)
-		{
-			SpvcResult ret = CompilerTypeStructMemberArrayStrideNative(compiler, type, index, stride);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_array_stride")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerTypeStructMemberArrayStride([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "unsigned int *")] ref uint stride)
-		{
-			fixed (uint* pstride = &stride)
-			{
-				SpvcResult ret = CompilerTypeStructMemberArrayStrideNative(compiler, type, index, (uint*)pstride);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_matrix_stride")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerTypeStructMemberMatrixStrideNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* stride)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, uint*, SpvcResult>)funcTable[130])(compiler, type, index, stride);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcType, uint, nint, SpvcResult>)funcTable[130])(compiler, type, index, (nint)stride);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_matrix_stride")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerTypeStructMemberMatrixStride([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* stride)
-		{
-			SpvcResult ret = CompilerTypeStructMemberMatrixStrideNative(compiler, type, index, stride);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_type_struct_member_matrix_stride")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerTypeStructMemberMatrixStride([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "spvc_type")] SpvcType type, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "unsigned int")] uint index, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "unsigned int *")] ref uint stride)
-		{
-			fixed (uint* pstride = &stride)
-			{
-				SpvcResult ret = CompilerTypeStructMemberMatrixStrideNative(compiler, type, index, (uint*)pstride);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Workaround helper functions.<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_build_dummy_sampler_for_combined_images")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerBuildDummySamplerForCombinedImagesNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id *")] uint* id)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint*, SpvcResult>)funcTable[131])(compiler, id);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, SpvcResult>)funcTable[131])(compiler, (nint)id);
-			#endif
-		}
-
-		/// <summary>
-		/// Workaround helper functions.<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_build_dummy_sampler_for_combined_images")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerBuildDummySamplerForCombinedImages([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id *")] uint* id)
-		{
-			SpvcResult ret = CompilerBuildDummySamplerForCombinedImagesNative(compiler, id);
-			return ret;
-		}
-
-		/// <summary>
-		/// Workaround helper functions.<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_build_dummy_sampler_for_combined_images")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerBuildDummySamplerForCombinedImages([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id *")] ref uint id)
-		{
-			fixed (uint* pid = &id)
-			{
-				SpvcResult ret = CompilerBuildDummySamplerForCombinedImagesNative(compiler, (uint*)pid);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_build_combined_image_samplers")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerBuildCombinedImageSamplersNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcResult>)funcTable[132])(compiler);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcResult>)funcTable[132])(compiler);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_build_combined_image_samplers")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerBuildCombinedImageSamplers([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler)
-		{
-			SpvcResult ret = CompilerBuildCombinedImageSamplersNative(compiler);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_combined_image_samplers")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerGetCombinedImageSamplersNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "samplers")] [NativeName(NativeNameType.Type, "spvc_combined_image_sampler const * *")] SpvcCombinedImageSampler** samplers, [NativeName(NativeNameType.Param, "num_samplers")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numSamplers)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcCombinedImageSampler**, nuint*, SpvcResult>)funcTable[133])(compiler, samplers, numSamplers);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nint, SpvcResult>)funcTable[133])(compiler, (nint)samplers, (nint)numSamplers);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_combined_image_samplers")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetCombinedImageSamplers([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "samplers")] [NativeName(NativeNameType.Type, "spvc_combined_image_sampler const * *")] SpvcCombinedImageSampler** samplers, [NativeName(NativeNameType.Param, "num_samplers")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numSamplers)
-		{
-			SpvcResult ret = CompilerGetCombinedImageSamplersNative(compiler, samplers, numSamplers);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_combined_image_samplers")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetCombinedImageSamplers([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "samplers")] [NativeName(NativeNameType.Type, "spvc_combined_image_sampler const * *")] ref SpvcCombinedImageSampler* samplers, [NativeName(NativeNameType.Param, "num_samplers")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numSamplers)
-		{
-			fixed (SpvcCombinedImageSampler** psamplers = &samplers)
-			{
-				SpvcResult ret = CompilerGetCombinedImageSamplersNative(compiler, (SpvcCombinedImageSampler**)psamplers, numSamplers);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_combined_image_samplers")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetCombinedImageSamplers([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "samplers")] [NativeName(NativeNameType.Type, "spvc_combined_image_sampler const * *")] SpvcCombinedImageSampler** samplers, [NativeName(NativeNameType.Param, "num_samplers")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint numSamplers)
-		{
-			fixed (nuint* pnumSamplers = &numSamplers)
-			{
-				SpvcResult ret = CompilerGetCombinedImageSamplersNative(compiler, samplers, (nuint*)pnumSamplers);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_combined_image_samplers")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetCombinedImageSamplers([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "samplers")] [NativeName(NativeNameType.Type, "spvc_combined_image_sampler const * *")] ref SpvcCombinedImageSampler* samplers, [NativeName(NativeNameType.Param, "num_samplers")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint numSamplers)
-		{
-			fixed (SpvcCombinedImageSampler** psamplers = &samplers)
-			{
-				fixed (nuint* pnumSamplers = &numSamplers)
-				{
-					SpvcResult ret = CompilerGetCombinedImageSamplersNative(compiler, (SpvcCombinedImageSampler**)psamplers, (nuint*)pnumSamplers);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Constants<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerGetSpecializationConstantsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "constants")] [NativeName(NativeNameType.Type, "spvc_specialization_constant const * *")] SpvcSpecializationConstant** constants, [NativeName(NativeNameType.Param, "num_constants")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numConstants)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcSpecializationConstant**, nuint*, SpvcResult>)funcTable[134])(compiler, constants, numConstants);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nint, SpvcResult>)funcTable[134])(compiler, (nint)constants, (nint)numConstants);
-			#endif
-		}
-
-		/// <summary>
-		/// Constants<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "constants")] [NativeName(NativeNameType.Type, "spvc_specialization_constant const * *")] SpvcSpecializationConstant** constants, [NativeName(NativeNameType.Param, "num_constants")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numConstants)
-		{
-			SpvcResult ret = CompilerGetSpecializationConstantsNative(compiler, constants, numConstants);
-			return ret;
-		}
-
-		/// <summary>
-		/// Constants<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "constants")] [NativeName(NativeNameType.Type, "spvc_specialization_constant const * *")] ref SpvcSpecializationConstant* constants, [NativeName(NativeNameType.Param, "num_constants")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numConstants)
-		{
-			fixed (SpvcSpecializationConstant** pconstants = &constants)
-			{
-				SpvcResult ret = CompilerGetSpecializationConstantsNative(compiler, (SpvcSpecializationConstant**)pconstants, numConstants);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Constants<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "constants")] [NativeName(NativeNameType.Type, "spvc_specialization_constant const * *")] SpvcSpecializationConstant** constants, [NativeName(NativeNameType.Param, "num_constants")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint numConstants)
-		{
-			fixed (nuint* pnumConstants = &numConstants)
-			{
-				SpvcResult ret = CompilerGetSpecializationConstantsNative(compiler, constants, (nuint*)pnumConstants);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Constants<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "constants")] [NativeName(NativeNameType.Type, "spvc_specialization_constant const * *")] ref SpvcSpecializationConstant* constants, [NativeName(NativeNameType.Param, "num_constants")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint numConstants)
-		{
-			fixed (SpvcSpecializationConstant** pconstants = &constants)
-			{
-				fixed (nuint* pnumConstants = &numConstants)
-				{
-					SpvcResult ret = CompilerGetSpecializationConstantsNative(compiler, (SpvcSpecializationConstant**)pconstants, (nuint*)pnumConstants);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_constant_handle")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcConstant CompilerGetConstantHandleNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_constant_id")] uint id)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcConstant>)funcTable[135])(compiler, id);
-			#else
-			return (SpvcConstant)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcConstant>)funcTable[135])(compiler, id);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_constant_handle")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant")]
-		public static SpvcConstant CompilerGetConstantHandle([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_constant_id")] uint id)
-		{
-			SpvcConstant ret = CompilerGetConstantHandleNative(compiler, id);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_work_group_size_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant_id")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static uint CompilerGetWorkGroupSizeSpecializationConstantsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* y, [NativeName(NativeNameType.Param, "z")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* z)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvcSpecializationConstant*, SpvcSpecializationConstant*, SpvcSpecializationConstant*, uint>)funcTable[136])(compiler, x, y, z);
-			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcCompiler, nint, nint, nint, uint>)funcTable[136])(compiler, (nint)x, (nint)y, (nint)z);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_work_group_size_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant_id")]
-		public static uint CompilerGetWorkGroupSizeSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* y, [NativeName(NativeNameType.Param, "z")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* z)
-		{
-			uint ret = CompilerGetWorkGroupSizeSpecializationConstantsNative(compiler, x, y, z);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_work_group_size_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant_id")]
-		public static uint CompilerGetWorkGroupSizeSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* y, [NativeName(NativeNameType.Param, "z")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* z)
-		{
-			fixed (SpvcSpecializationConstant* px = &x)
-			{
-				uint ret = CompilerGetWorkGroupSizeSpecializationConstantsNative(compiler, (SpvcSpecializationConstant*)px, y, z);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_work_group_size_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant_id")]
-		public static uint CompilerGetWorkGroupSizeSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant y, [NativeName(NativeNameType.Param, "z")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* z)
-		{
-			fixed (SpvcSpecializationConstant* py = &y)
-			{
-				uint ret = CompilerGetWorkGroupSizeSpecializationConstantsNative(compiler, x, (SpvcSpecializationConstant*)py, z);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_work_group_size_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant_id")]
-		public static uint CompilerGetWorkGroupSizeSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant y, [NativeName(NativeNameType.Param, "z")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* z)
-		{
-			fixed (SpvcSpecializationConstant* px = &x)
-			{
-				fixed (SpvcSpecializationConstant* py = &y)
-				{
-					uint ret = CompilerGetWorkGroupSizeSpecializationConstantsNative(compiler, (SpvcSpecializationConstant*)px, (SpvcSpecializationConstant*)py, z);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_work_group_size_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant_id")]
-		public static uint CompilerGetWorkGroupSizeSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* y, [NativeName(NativeNameType.Param, "z")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant z)
-		{
-			fixed (SpvcSpecializationConstant* pz = &z)
-			{
-				uint ret = CompilerGetWorkGroupSizeSpecializationConstantsNative(compiler, x, y, (SpvcSpecializationConstant*)pz);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_work_group_size_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant_id")]
-		public static uint CompilerGetWorkGroupSizeSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* y, [NativeName(NativeNameType.Param, "z")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant z)
-		{
-			fixed (SpvcSpecializationConstant* px = &x)
-			{
-				fixed (SpvcSpecializationConstant* pz = &z)
-				{
-					uint ret = CompilerGetWorkGroupSizeSpecializationConstantsNative(compiler, (SpvcSpecializationConstant*)px, y, (SpvcSpecializationConstant*)pz);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_work_group_size_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant_id")]
-		public static uint CompilerGetWorkGroupSizeSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] SpvcSpecializationConstant* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant y, [NativeName(NativeNameType.Param, "z")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant z)
-		{
-			fixed (SpvcSpecializationConstant* py = &y)
-			{
-				fixed (SpvcSpecializationConstant* pz = &z)
-				{
-					uint ret = CompilerGetWorkGroupSizeSpecializationConstantsNative(compiler, x, (SpvcSpecializationConstant*)py, (SpvcSpecializationConstant*)pz);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_work_group_size_specialization_constants")]
-		[return: NativeName(NativeNameType.Type, "spvc_constant_id")]
-		public static uint CompilerGetWorkGroupSizeSpecializationConstants([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant y, [NativeName(NativeNameType.Param, "z")] [NativeName(NativeNameType.Type, "spvc_specialization_constant *")] ref SpvcSpecializationConstant z)
-		{
-			fixed (SpvcSpecializationConstant* px = &x)
-			{
-				fixed (SpvcSpecializationConstant* py = &y)
-				{
-					fixed (SpvcSpecializationConstant* pz = &z)
-					{
-						uint ret = CompilerGetWorkGroupSizeSpecializationConstantsNative(compiler, (SpvcSpecializationConstant*)px, (SpvcSpecializationConstant*)py, (SpvcSpecializationConstant*)pz);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Buffer ranges<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_active_buffer_ranges")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerGetActiveBufferRangesNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "ranges")] [NativeName(NativeNameType.Type, "spvc_buffer_range const * *")] SpvcBufferRange** ranges, [NativeName(NativeNameType.Param, "num_ranges")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numRanges)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvcBufferRange**, nuint*, SpvcResult>)funcTable[137])(compiler, id, ranges, numRanges);
-			#else
-			return (SpvcResult)((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, nint, nint, SpvcResult>)funcTable[137])(compiler, id, (nint)ranges, (nint)numRanges);
-			#endif
-		}
-
-		/// <summary>
-		/// Buffer ranges<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_active_buffer_ranges")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetActiveBufferRanges([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "ranges")] [NativeName(NativeNameType.Type, "spvc_buffer_range const * *")] SpvcBufferRange** ranges, [NativeName(NativeNameType.Param, "num_ranges")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numRanges)
-		{
-			SpvcResult ret = CompilerGetActiveBufferRangesNative(compiler, id, ranges, numRanges);
-			return ret;
-		}
-
-		/// <summary>
-		/// Buffer ranges<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_active_buffer_ranges")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetActiveBufferRanges([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "ranges")] [NativeName(NativeNameType.Type, "spvc_buffer_range const * *")] ref SpvcBufferRange* ranges, [NativeName(NativeNameType.Param, "num_ranges")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numRanges)
-		{
-			fixed (SpvcBufferRange** pranges = &ranges)
-			{
-				SpvcResult ret = CompilerGetActiveBufferRangesNative(compiler, id, (SpvcBufferRange**)pranges, numRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Buffer ranges<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_active_buffer_ranges")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetActiveBufferRanges([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "ranges")] [NativeName(NativeNameType.Type, "spvc_buffer_range const * *")] SpvcBufferRange** ranges, [NativeName(NativeNameType.Param, "num_ranges")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint numRanges)
-		{
-			fixed (nuint* pnumRanges = &numRanges)
-			{
-				SpvcResult ret = CompilerGetActiveBufferRangesNative(compiler, id, ranges, (nuint*)pnumRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Buffer ranges<br/>
-		/// Maps to C++ API.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_active_buffer_ranges")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetActiveBufferRanges([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "ranges")] [NativeName(NativeNameType.Type, "spvc_buffer_range const * *")] ref SpvcBufferRange* ranges, [NativeName(NativeNameType.Param, "num_ranges")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint numRanges)
-		{
-			fixed (SpvcBufferRange** pranges = &ranges)
-			{
-				fixed (nuint* pnumRanges = &numRanges)
-				{
-					SpvcResult ret = CompilerGetActiveBufferRangesNative(compiler, id, (SpvcBufferRange**)pranges, (nuint*)pnumRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// No stdint.h until C99, sigh :(<br/>
-		/// For smaller types, the result is sign or zero-extended as appropriate.<br/>
-		/// Maps to C++ API.<br/>
-		/// TODO: The SPIRConstant query interface and modification interface is not quite complete.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_fp16")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static float ConstantGetScalarFp16Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, float>)funcTable[138])(constant, column, row);
-			#else
-			return (float)((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, float>)funcTable[138])(constant, column, row);
-			#endif
-		}
-
-		/// <summary>
-		/// No stdint.h until C99, sigh :(<br/>
-		/// For smaller types, the result is sign or zero-extended as appropriate.<br/>
-		/// Maps to C++ API.<br/>
-		/// TODO: The SPIRConstant query interface and modification interface is not quite complete.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_fp16")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float ConstantGetScalarFp16([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			float ret = ConstantGetScalarFp16Native(constant, column, row);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_fp32")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static float ConstantGetScalarFp32Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, float>)funcTable[139])(constant, column, row);
-			#else
-			return (float)((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, float>)funcTable[139])(constant, column, row);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_fp32")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float ConstantGetScalarFp32([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			float ret = ConstantGetScalarFp32Native(constant, column, row);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_fp64")]
-		[return: NativeName(NativeNameType.Type, "double")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static double ConstantGetScalarFp64Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, double>)funcTable[140])(constant, column, row);
-			#else
-			return (double)((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, double>)funcTable[140])(constant, column, row);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_fp64")]
-		[return: NativeName(NativeNameType.Type, "double")]
-		public static double ConstantGetScalarFp64([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			double ret = ConstantGetScalarFp64Native(constant, column, row);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_u32")]
-		[return: NativeName(NativeNameType.Type, "unsigned int")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static uint ConstantGetScalarU32Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, uint>)funcTable[141])(constant, column, row);
-			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, uint>)funcTable[141])(constant, column, row);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_u32")]
-		[return: NativeName(NativeNameType.Type, "unsigned int")]
-		public static uint ConstantGetScalarU32([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			uint ret = ConstantGetScalarU32Native(constant, column, row);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_i32")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int ConstantGetScalarI32Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, int>)funcTable[142])(constant, column, row);
-			#else
-			return (int)((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, int>)funcTable[142])(constant, column, row);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_i32")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ConstantGetScalarI32([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			int ret = ConstantGetScalarI32Native(constant, column, row);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_u16")]
-		[return: NativeName(NativeNameType.Type, "unsigned int")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static uint ConstantGetScalarU16Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, uint>)funcTable[143])(constant, column, row);
-			#else
-			return (uint)((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, uint>)funcTable[143])(constant, column, row);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_u16")]
-		[return: NativeName(NativeNameType.Type, "unsigned int")]
-		public static uint ConstantGetScalarU16([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			uint ret = ConstantGetScalarU16Native(constant, column, row);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_i16")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int ConstantGetScalarI16Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, int>)funcTable[144])(constant, column, row);
-			#else
-			return (int)((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, int>)funcTable[144])(constant, column, row);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_i16")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ConstantGetScalarI16([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		public static int ConstantGetScalarI16(SpvcConstant constant, uint column, uint row)
 		{
 			int ret = ConstantGetScalarI16Native(constant, column, row);
 			return ret;
@@ -865,10 +30,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_u8")]
-		[return: NativeName(NativeNameType.Type, "unsigned int")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static uint ConstantGetScalarU8Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		internal static uint ConstantGetScalarU8Native(SpvcConstant constant, uint column, uint row)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, uint>)funcTable[145])(constant, column, row);
@@ -880,9 +43,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_u8")]
-		[return: NativeName(NativeNameType.Type, "unsigned int")]
-		public static uint ConstantGetScalarU8([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		public static uint ConstantGetScalarU8(SpvcConstant constant, uint column, uint row)
 		{
 			uint ret = ConstantGetScalarU8Native(constant, column, row);
 			return ret;
@@ -891,10 +52,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_i8")]
-		[return: NativeName(NativeNameType.Type, "int")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int ConstantGetScalarI8Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		internal static int ConstantGetScalarI8Native(SpvcConstant constant, uint column, uint row)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, int>)funcTable[146])(constant, column, row);
@@ -906,9 +65,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_i8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ConstantGetScalarI8([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		public static int ConstantGetScalarI8(SpvcConstant constant, uint column, uint row)
 		{
 			int ret = ConstantGetScalarI8Native(constant, column, row);
 			return ret;
@@ -917,10 +74,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_subconstants")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantGetSubconstantsNative([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "constituents")] [NativeName(NativeNameType.Type, "spvc_constant_id const * *")] uint** constituents, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "size_t *")] nuint* count)
+		internal static void ConstantGetSubconstantsNative(SpvcConstant constant, uint** constituents, nuint* count)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint**, nuint*, void>)funcTable[147])(constant, constituents, count);
@@ -932,9 +87,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_subconstants")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantGetSubconstants([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "constituents")] [NativeName(NativeNameType.Type, "spvc_constant_id const * *")] uint** constituents, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "size_t *")] nuint* count)
+		public static void ConstantGetSubconstants(SpvcConstant constant, uint** constituents, nuint* count)
 		{
 			ConstantGetSubconstantsNative(constant, constituents, count);
 		}
@@ -942,9 +95,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_subconstants")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantGetSubconstants([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "constituents")] [NativeName(NativeNameType.Type, "spvc_constant_id const * *")] ref uint* constituents, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "size_t *")] nuint* count)
+		public static void ConstantGetSubconstants(SpvcConstant constant, ref uint* constituents, nuint* count)
 		{
 			fixed (uint** pconstituents = &constituents)
 			{
@@ -955,9 +106,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_subconstants")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantGetSubconstants([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "constituents")] [NativeName(NativeNameType.Type, "spvc_constant_id const * *")] uint** constituents, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint count)
+		public static void ConstantGetSubconstants(SpvcConstant constant, uint** constituents, ref nuint count)
 		{
 			fixed (nuint* pcount = &count)
 			{
@@ -968,9 +117,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_subconstants")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantGetSubconstants([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "constituents")] [NativeName(NativeNameType.Type, "spvc_constant_id const * *")] ref uint* constituents, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint count)
+		public static void ConstantGetSubconstants(SpvcConstant constant, ref uint* constituents, ref nuint count)
 		{
 			fixed (uint** pconstituents = &constituents)
 			{
@@ -984,10 +131,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_u64")]
-		[return: NativeName(NativeNameType.Type, "unsigned long long")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static ulong ConstantGetScalarU64Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		internal static ulong ConstantGetScalarU64Native(SpvcConstant constant, uint column, uint row)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, ulong>)funcTable[148])(constant, column, row);
@@ -999,9 +144,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_u64")]
-		[return: NativeName(NativeNameType.Type, "unsigned long long")]
-		public static ulong ConstantGetScalarU64([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		public static ulong ConstantGetScalarU64(SpvcConstant constant, uint column, uint row)
 		{
 			ulong ret = ConstantGetScalarU64Native(constant, column, row);
 			return ret;
@@ -1010,10 +153,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_i64")]
-		[return: NativeName(NativeNameType.Type, "long long")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static long ConstantGetScalarI64Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		internal static long ConstantGetScalarI64Native(SpvcConstant constant, uint column, uint row)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, long>)funcTable[149])(constant, column, row);
@@ -1025,9 +166,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_scalar_i64")]
-		[return: NativeName(NativeNameType.Type, "long long")]
-		public static long ConstantGetScalarI64([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row)
+		public static long ConstantGetScalarI64(SpvcConstant constant, uint column, uint row)
 		{
 			long ret = ConstantGetScalarI64Native(constant, column, row);
 			return ret;
@@ -1036,10 +175,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_type")]
-		[return: NativeName(NativeNameType.Type, "spvc_type_id")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static uint ConstantGetTypeNative([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant)
+		internal static uint ConstantGetTypeNative(SpvcConstant constant)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcConstant, uint>)funcTable[150])(constant);
@@ -1051,9 +188,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_get_type")]
-		[return: NativeName(NativeNameType.Type, "spvc_type_id")]
-		public static uint ConstantGetType([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant)
+		public static uint ConstantGetType(SpvcConstant constant)
 		{
 			uint ret = ConstantGetTypeNative(constant);
 			return ret;
@@ -1062,10 +197,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// C implementation of the C++ api.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_fp16")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarFp16Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned short")] ushort value)
+		internal static void ConstantSetScalarFp16Native(SpvcConstant constant, uint column, uint row, ushort value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, ushort, void>)funcTable[151])(constant, column, row, value);
@@ -1077,9 +210,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// C implementation of the C++ api.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_fp16")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarFp16([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned short")] ushort value)
+		public static void ConstantSetScalarFp16(SpvcConstant constant, uint column, uint row, ushort value)
 		{
 			ConstantSetScalarFp16Native(constant, column, row, value);
 		}
@@ -1087,10 +218,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_fp32")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarFp32Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "float")] float value)
+		internal static void ConstantSetScalarFp32Native(SpvcConstant constant, uint column, uint row, float value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, float, void>)funcTable[152])(constant, column, row, value);
@@ -1102,9 +231,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_fp32")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarFp32([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "float")] float value)
+		public static void ConstantSetScalarFp32(SpvcConstant constant, uint column, uint row, float value)
 		{
 			ConstantSetScalarFp32Native(constant, column, row, value);
 		}
@@ -1112,10 +239,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_fp64")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarFp64Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "double")] double value)
+		internal static void ConstantSetScalarFp64Native(SpvcConstant constant, uint column, uint row, double value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, double, void>)funcTable[153])(constant, column, row, value);
@@ -1127,9 +252,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_fp64")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarFp64([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "double")] double value)
+		public static void ConstantSetScalarFp64(SpvcConstant constant, uint column, uint row, double value)
 		{
 			ConstantSetScalarFp64Native(constant, column, row, value);
 		}
@@ -1137,10 +260,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_u32")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarU32Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned int")] uint value)
+		internal static void ConstantSetScalarU32Native(SpvcConstant constant, uint column, uint row, uint value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, uint, void>)funcTable[154])(constant, column, row, value);
@@ -1152,9 +273,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_u32")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarU32([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned int")] uint value)
+		public static void ConstantSetScalarU32(SpvcConstant constant, uint column, uint row, uint value)
 		{
 			ConstantSetScalarU32Native(constant, column, row, value);
 		}
@@ -1162,10 +281,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_i32")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarI32Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		internal static void ConstantSetScalarI32Native(SpvcConstant constant, uint column, uint row, int value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, int, void>)funcTable[155])(constant, column, row, value);
@@ -1177,9 +294,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_i32")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarI32([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		public static void ConstantSetScalarI32(SpvcConstant constant, uint column, uint row, int value)
 		{
 			ConstantSetScalarI32Native(constant, column, row, value);
 		}
@@ -1187,10 +302,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_u64")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarU64Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned long long")] ulong value)
+		internal static void ConstantSetScalarU64Native(SpvcConstant constant, uint column, uint row, ulong value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, ulong, void>)funcTable[156])(constant, column, row, value);
@@ -1202,9 +315,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_u64")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarU64([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned long long")] ulong value)
+		public static void ConstantSetScalarU64(SpvcConstant constant, uint column, uint row, ulong value)
 		{
 			ConstantSetScalarU64Native(constant, column, row, value);
 		}
@@ -1212,10 +323,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_i64")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarI64Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "long long")] long value)
+		internal static void ConstantSetScalarI64Native(SpvcConstant constant, uint column, uint row, long value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, long, void>)funcTable[157])(constant, column, row, value);
@@ -1227,9 +336,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_i64")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarI64([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "long long")] long value)
+		public static void ConstantSetScalarI64(SpvcConstant constant, uint column, uint row, long value)
 		{
 			ConstantSetScalarI64Native(constant, column, row, value);
 		}
@@ -1237,10 +344,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_u16")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarU16Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned short")] ushort value)
+		internal static void ConstantSetScalarU16Native(SpvcConstant constant, uint column, uint row, ushort value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, ushort, void>)funcTable[158])(constant, column, row, value);
@@ -1252,9 +357,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_u16")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarU16([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned short")] ushort value)
+		public static void ConstantSetScalarU16(SpvcConstant constant, uint column, uint row, ushort value)
 		{
 			ConstantSetScalarU16Native(constant, column, row, value);
 		}
@@ -1262,10 +365,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_i16")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarI16Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "short")] short value)
+		internal static void ConstantSetScalarI16Native(SpvcConstant constant, uint column, uint row, short value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, short, void>)funcTable[159])(constant, column, row, value);
@@ -1277,9 +378,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_i16")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarI16([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "short")] short value)
+		public static void ConstantSetScalarI16(SpvcConstant constant, uint column, uint row, short value)
 		{
 			ConstantSetScalarI16Native(constant, column, row, value);
 		}
@@ -1287,10 +386,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_u8")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarU8Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned char")] byte value)
+		internal static void ConstantSetScalarU8Native(SpvcConstant constant, uint column, uint row, byte value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, byte, void>)funcTable[160])(constant, column, row, value);
@@ -1302,9 +399,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_u8")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarU8([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "unsigned char")] byte value)
+		public static void ConstantSetScalarU8(SpvcConstant constant, uint column, uint row, byte value)
 		{
 			ConstantSetScalarU8Native(constant, column, row, value);
 		}
@@ -1312,10 +407,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_i8")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ConstantSetScalarI8Native([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "char")] byte value)
+		internal static void ConstantSetScalarI8Native(SpvcConstant constant, uint column, uint row, byte value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<SpvcConstant, uint, uint, byte, void>)funcTable[161])(constant, column, row, value);
@@ -1327,9 +420,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_constant_set_scalar_i8")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ConstantSetScalarI8([NativeName(NativeNameType.Param, "constant")] [NativeName(NativeNameType.Type, "spvc_constant")] SpvcConstant constant, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "unsigned int")] uint column, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "unsigned int")] uint row, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "char")] byte value)
+		public static void ConstantSetScalarI8(SpvcConstant constant, uint column, uint row, byte value)
 		{
 			ConstantSetScalarI8Native(constant, column, row, value);
 		}
@@ -1338,10 +429,8 @@ namespace Hexa.NET.SPIRVCross
 		/// Misc reflection<br/>
 		/// Maps to C++ API.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_binary_offset_for_decoration")]
-		[return: NativeName(NativeNameType.Type, "spvc_bool")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static byte CompilerGetBinaryOffsetForDecorationNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration, [NativeName(NativeNameType.Param, "word_offset")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* wordOffset)
+		internal static byte CompilerGetBinaryOffsetForDecorationNative(SpvcCompiler compiler, uint id, SpvDecoration decoration, uint* wordOffset)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration, uint*, byte>)funcTable[162])(compiler, id, decoration, wordOffset);
@@ -1354,9 +443,7 @@ namespace Hexa.NET.SPIRVCross
 		/// Misc reflection<br/>
 		/// Maps to C++ API.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_binary_offset_for_decoration")]
-		[return: NativeName(NativeNameType.Type, "spvc_bool")]
-		public static bool CompilerGetBinaryOffsetForDecoration([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration, [NativeName(NativeNameType.Param, "word_offset")] [NativeName(NativeNameType.Type, "unsigned int *")] uint* wordOffset)
+		public static bool CompilerGetBinaryOffsetForDecoration(SpvcCompiler compiler, uint id, SpvDecoration decoration, uint* wordOffset)
 		{
 			byte ret = CompilerGetBinaryOffsetForDecorationNative(compiler, id, decoration, wordOffset);
 			return ret != 0;
@@ -1366,9 +453,7 @@ namespace Hexa.NET.SPIRVCross
 		/// Misc reflection<br/>
 		/// Maps to C++ API.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_binary_offset_for_decoration")]
-		[return: NativeName(NativeNameType.Type, "spvc_bool")]
-		public static bool CompilerGetBinaryOffsetForDecoration([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "decoration")] [NativeName(NativeNameType.Type, "SpvDecoration")] SpvDecoration decoration, [NativeName(NativeNameType.Param, "word_offset")] [NativeName(NativeNameType.Type, "unsigned int *")] ref uint wordOffset)
+		public static bool CompilerGetBinaryOffsetForDecoration(SpvcCompiler compiler, uint id, SpvDecoration decoration, ref uint wordOffset)
 		{
 			fixed (uint* pwordOffset = &wordOffset)
 			{
@@ -1380,10 +465,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_buffer_is_hlsl_counter_buffer")]
-		[return: NativeName(NativeNameType.Type, "spvc_bool")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static byte CompilerBufferIsHlslCounterBufferNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id)
+		internal static byte CompilerBufferIsHlslCounterBufferNative(SpvcCompiler compiler, uint id)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte>)funcTable[163])(compiler, id);
@@ -1395,9 +478,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_buffer_is_hlsl_counter_buffer")]
-		[return: NativeName(NativeNameType.Type, "spvc_bool")]
-		public static bool CompilerBufferIsHlslCounterBuffer([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id)
+		public static bool CompilerBufferIsHlslCounterBuffer(SpvcCompiler compiler, uint id)
 		{
 			byte ret = CompilerBufferIsHlslCounterBufferNative(compiler, id);
 			return ret != 0;
@@ -1406,10 +487,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_buffer_get_hlsl_counter_buffer")]
-		[return: NativeName(NativeNameType.Type, "spvc_bool")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static byte CompilerBufferGetHlslCounterBufferNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "counter_id")] [NativeName(NativeNameType.Type, "spvc_variable_id *")] uint* counterId)
+		internal static byte CompilerBufferGetHlslCounterBufferNative(SpvcCompiler compiler, uint id, uint* counterId)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, uint*, byte>)funcTable[164])(compiler, id, counterId);
@@ -1421,9 +500,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_buffer_get_hlsl_counter_buffer")]
-		[return: NativeName(NativeNameType.Type, "spvc_bool")]
-		public static bool CompilerBufferGetHlslCounterBuffer([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "counter_id")] [NativeName(NativeNameType.Type, "spvc_variable_id *")] uint* counterId)
+		public static bool CompilerBufferGetHlslCounterBuffer(SpvcCompiler compiler, uint id, uint* counterId)
 		{
 			byte ret = CompilerBufferGetHlslCounterBufferNative(compiler, id, counterId);
 			return ret != 0;
@@ -1432,9 +509,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_buffer_get_hlsl_counter_buffer")]
-		[return: NativeName(NativeNameType.Type, "spvc_bool")]
-		public static bool CompilerBufferGetHlslCounterBuffer([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "counter_id")] [NativeName(NativeNameType.Type, "spvc_variable_id *")] ref uint counterId)
+		public static bool CompilerBufferGetHlslCounterBuffer(SpvcCompiler compiler, uint id, ref uint counterId)
 		{
 			fixed (uint* pcounterId = &counterId)
 			{
@@ -1446,10 +521,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_capabilities")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerGetDeclaredCapabilitiesNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "capabilities")] [NativeName(NativeNameType.Type, "SpvCapability const * *")] SpvCapability** capabilities, [NativeName(NativeNameType.Param, "num_capabilities")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numCapabilities)
+		internal static SpvcResult CompilerGetDeclaredCapabilitiesNative(SpvcCompiler compiler, SpvCapability** capabilities, nuint* numCapabilities)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, SpvCapability**, nuint*, SpvcResult>)funcTable[165])(compiler, capabilities, numCapabilities);
@@ -1461,9 +534,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_capabilities")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredCapabilities([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "capabilities")] [NativeName(NativeNameType.Type, "SpvCapability const * *")] SpvCapability** capabilities, [NativeName(NativeNameType.Param, "num_capabilities")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numCapabilities)
+		public static SpvcResult CompilerGetDeclaredCapabilities(SpvcCompiler compiler, SpvCapability** capabilities, nuint* numCapabilities)
 		{
 			SpvcResult ret = CompilerGetDeclaredCapabilitiesNative(compiler, capabilities, numCapabilities);
 			return ret;
@@ -1472,9 +543,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_capabilities")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredCapabilities([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "capabilities")] [NativeName(NativeNameType.Type, "SpvCapability const * *")] SpvCapability** capabilities, [NativeName(NativeNameType.Param, "num_capabilities")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint numCapabilities)
+		public static SpvcResult CompilerGetDeclaredCapabilities(SpvcCompiler compiler, SpvCapability** capabilities, ref nuint numCapabilities)
 		{
 			fixed (nuint* pnumCapabilities = &numCapabilities)
 			{
@@ -1486,10 +555,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_extensions")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerGetDeclaredExtensionsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "extensions")] [NativeName(NativeNameType.Type, "char const * * *")] byte*** extensions, [NativeName(NativeNameType.Param, "num_extensions")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numExtensions)
+		internal static SpvcResult CompilerGetDeclaredExtensionsNative(SpvcCompiler compiler, byte*** extensions, nuint* numExtensions)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, byte***, nuint*, SpvcResult>)funcTable[166])(compiler, extensions, numExtensions);
@@ -1501,9 +568,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_extensions")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredExtensions([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "extensions")] [NativeName(NativeNameType.Type, "char const * * *")] byte*** extensions, [NativeName(NativeNameType.Param, "num_extensions")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numExtensions)
+		public static SpvcResult CompilerGetDeclaredExtensions(SpvcCompiler compiler, byte*** extensions, nuint* numExtensions)
 		{
 			SpvcResult ret = CompilerGetDeclaredExtensionsNative(compiler, extensions, numExtensions);
 			return ret;
@@ -1512,9 +577,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_extensions")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredExtensions([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "extensions")] [NativeName(NativeNameType.Type, "char const * * *")] ref byte** extensions, [NativeName(NativeNameType.Param, "num_extensions")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numExtensions)
+		public static SpvcResult CompilerGetDeclaredExtensions(SpvcCompiler compiler, ref byte** extensions, nuint* numExtensions)
 		{
 			fixed (byte*** pextensions = &extensions)
 			{
@@ -1526,9 +589,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_extensions")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredExtensions([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "extensions")] [NativeName(NativeNameType.Type, "char const * * *")] byte*** extensions, [NativeName(NativeNameType.Param, "num_extensions")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint numExtensions)
+		public static SpvcResult CompilerGetDeclaredExtensions(SpvcCompiler compiler, byte*** extensions, ref nuint numExtensions)
 		{
 			fixed (nuint* pnumExtensions = &numExtensions)
 			{
@@ -1540,9 +601,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_declared_extensions")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetDeclaredExtensions([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "extensions")] [NativeName(NativeNameType.Type, "char const * * *")] ref byte** extensions, [NativeName(NativeNameType.Param, "num_extensions")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint numExtensions)
+		public static SpvcResult CompilerGetDeclaredExtensions(SpvcCompiler compiler, ref byte** extensions, ref nuint numExtensions)
 		{
 			fixed (byte*** pextensions = &extensions)
 			{
@@ -1557,10 +616,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_remapped_declared_block_name")]
-		[return: NativeName(NativeNameType.Type, "char const *")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static byte* CompilerGetRemappedDeclaredBlockNameNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id)
+		internal static byte* CompilerGetRemappedDeclaredBlockNameNative(SpvcCompiler compiler, uint id)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, byte*>)funcTable[167])(compiler, id);
@@ -1572,9 +629,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_remapped_declared_block_name")]
-		[return: NativeName(NativeNameType.Type, "char const *")]
-		public static byte* CompilerGetRemappedDeclaredBlockName([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id)
+		public static byte* CompilerGetRemappedDeclaredBlockName(SpvcCompiler compiler, uint id)
 		{
 			byte* ret = CompilerGetRemappedDeclaredBlockNameNative(compiler, id);
 			return ret;
@@ -1583,9 +638,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_remapped_declared_block_name")]
-		[return: NativeName(NativeNameType.Type, "char const *")]
-		public static string CompilerGetRemappedDeclaredBlockNameS([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id)
+		public static string CompilerGetRemappedDeclaredBlockNameS(SpvcCompiler compiler, uint id)
 		{
 			string ret = Utils.DecodeStringUTF8(CompilerGetRemappedDeclaredBlockNameNative(compiler, id));
 			return ret;
@@ -1594,10 +647,8 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_buffer_block_decorations")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static SpvcResult CompilerGetBufferBlockDecorationsNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "decorations")] [NativeName(NativeNameType.Type, "SpvDecoration const * *")] SpvDecoration** decorations, [NativeName(NativeNameType.Param, "num_decorations")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numDecorations)
+		internal static SpvcResult CompilerGetBufferBlockDecorationsNative(SpvcCompiler compiler, uint id, SpvDecoration** decorations, nuint* numDecorations)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<SpvcCompiler, uint, SpvDecoration**, nuint*, SpvcResult>)funcTable[168])(compiler, id, decorations, numDecorations);
@@ -1609,9 +660,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_buffer_block_decorations")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetBufferBlockDecorations([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "decorations")] [NativeName(NativeNameType.Type, "SpvDecoration const * *")] SpvDecoration** decorations, [NativeName(NativeNameType.Param, "num_decorations")] [NativeName(NativeNameType.Type, "size_t *")] nuint* numDecorations)
+		public static SpvcResult CompilerGetBufferBlockDecorations(SpvcCompiler compiler, uint id, SpvDecoration** decorations, nuint* numDecorations)
 		{
 			SpvcResult ret = CompilerGetBufferBlockDecorationsNative(compiler, id, decorations, numDecorations);
 			return ret;
@@ -1620,9 +669,7 @@ namespace Hexa.NET.SPIRVCross
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Func, "spvc_compiler_get_buffer_block_decorations")]
-		[return: NativeName(NativeNameType.Type, "spvc_result")]
-		public static SpvcResult CompilerGetBufferBlockDecorations([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "spvc_compiler")] SpvcCompiler compiler, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "spvc_variable_id")] uint id, [NativeName(NativeNameType.Param, "decorations")] [NativeName(NativeNameType.Type, "SpvDecoration const * *")] SpvDecoration** decorations, [NativeName(NativeNameType.Param, "num_decorations")] [NativeName(NativeNameType.Type, "size_t *")] ref nuint numDecorations)
+		public static SpvcResult CompilerGetBufferBlockDecorations(SpvcCompiler compiler, uint id, SpvDecoration** decorations, ref nuint numDecorations)
 		{
 			fixed (nuint* pnumDecorations = &numDecorations)
 			{

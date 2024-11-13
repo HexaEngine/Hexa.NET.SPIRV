@@ -12,63 +12,49 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_msl_resource_binding_2")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcMslResourceBinding2
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "stage")]
-		[NativeName(NativeNameType.Type, "SpvExecutionModel")]
 		public SpvExecutionModel Stage;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "desc_set")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint DescSet;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "binding")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Binding;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "count")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Count;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "msl_buffer")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint MslBuffer;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "msl_texture")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint MslTexture;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "msl_sampler")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint MslSampler;
 
 

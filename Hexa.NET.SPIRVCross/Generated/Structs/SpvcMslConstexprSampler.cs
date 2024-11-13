@@ -12,119 +12,89 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_msl_constexpr_sampler")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcMslConstexprSampler
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "coord")]
-		[NativeName(NativeNameType.Type, "spvc_msl_sampler_coord")]
 		public SpvcMslSamplerCoord Coord;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "min_filter")]
-		[NativeName(NativeNameType.Type, "spvc_msl_sampler_filter")]
 		public SpvcMslSamplerFilter MinFilter;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "mag_filter")]
-		[NativeName(NativeNameType.Type, "spvc_msl_sampler_filter")]
 		public SpvcMslSamplerFilter MagFilter;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "mip_filter")]
-		[NativeName(NativeNameType.Type, "spvc_msl_sampler_mip_filter")]
 		public SpvcMslSamplerMipFilter MipFilter;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "s_address")]
-		[NativeName(NativeNameType.Type, "spvc_msl_sampler_address")]
 		public SpvcMslSamplerAddress SAddress;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "t_address")]
-		[NativeName(NativeNameType.Type, "spvc_msl_sampler_address")]
 		public SpvcMslSamplerAddress TAddress;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "r_address")]
-		[NativeName(NativeNameType.Type, "spvc_msl_sampler_address")]
 		public SpvcMslSamplerAddress RAddress;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "compare_func")]
-		[NativeName(NativeNameType.Type, "spvc_msl_sampler_compare_func")]
 		public SpvcMslSamplerCompareFunc CompareFunc;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "border_color")]
-		[NativeName(NativeNameType.Type, "spvc_msl_sampler_border_color")]
 		public SpvcMslSamplerBorderColor BorderColor;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "lod_clamp_min")]
-		[NativeName(NativeNameType.Type, "float")]
 		public float LodClampMin;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "lod_clamp_max")]
-		[NativeName(NativeNameType.Type, "float")]
 		public float LodClampMax;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "max_anisotropy")]
-		[NativeName(NativeNameType.Type, "int")]
 		public int MaxAnisotropy;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "compare_enable")]
-		[NativeName(NativeNameType.Type, "spvc_bool")]
 		public byte CompareEnable;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "lod_clamp_enable")]
-		[NativeName(NativeNameType.Type, "spvc_bool")]
 		public byte LodClampEnable;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "anisotropy_enable")]
-		[NativeName(NativeNameType.Type, "spvc_bool")]
 		public byte AnisotropyEnable;
 
 

@@ -11,13 +11,13 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// These types are opaque to the user. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "spvc_context")]
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif

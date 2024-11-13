@@ -12,63 +12,49 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_hlsl_resource_binding")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcHlslResourceBinding
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "stage")]
-		[NativeName(NativeNameType.Type, "SpvExecutionModel")]
 		public SpvExecutionModel Stage;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "desc_set")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint DescSet;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "binding")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Binding;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "cbv")]
-		[NativeName(NativeNameType.Type, "spvc_hlsl_resource_binding_mapping")]
 		public SpvcHlslResourceBindingMapping Cbv;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "uav")]
-		[NativeName(NativeNameType.Type, "spvc_hlsl_resource_binding_mapping")]
 		public SpvcHlslResourceBindingMapping Uav;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "srv")]
-		[NativeName(NativeNameType.Type, "spvc_hlsl_resource_binding_mapping")]
 		public SpvcHlslResourceBindingMapping Srv;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "sampler")]
-		[NativeName(NativeNameType.Type, "spvc_hlsl_resource_binding_mapping")]
 		public SpvcHlslResourceBindingMapping Sampler;
 
 

@@ -9,35 +9,29 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_msl_platform")]
 	[Flags]
 	public enum SpvcMslPlatform : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_PLATFORM_IOS")]
-		[NativeName(NativeNameType.Value, "0")]
 		Ios = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_PLATFORM_MACOS")]
-		[NativeName(NativeNameType.Value, "1")]
 		Macos = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_PLATFORM_MAX_INT")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		MaxInt = unchecked(2147483647),
 	}
 }

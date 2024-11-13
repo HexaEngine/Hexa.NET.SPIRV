@@ -9,21 +9,19 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_capture_mode")]
 	[Flags]
 	public enum SpvcCaptureMode : int
 	{
 		/// <summary>
 		/// The Parsed IR payload will be copied, and the handle can be reused to create other compiler instances. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_CAPTURE_MODE_COPY")]
-		[NativeName(NativeNameType.Value, "0")]
 		Copy = unchecked(0),
 
 		/// <summary>
@@ -31,8 +29,6 @@ namespace Hexa.NET.SPIRVCross
 		/// parsed_ir should now be considered a dead blob and must not be used further.<br/>
 		/// This is optimal for performance and should be the go-to option.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_CAPTURE_MODE_TAKE_OWNERSHIP")]
-		[NativeName(NativeNameType.Value, "1")]
 		TakeOwnership = unchecked(1),
 
 		/// <summary>
@@ -40,8 +36,6 @@ namespace Hexa.NET.SPIRVCross
 		/// parsed_ir should now be considered a dead blob and must not be used further.<br/>
 		/// This is optimal for performance and should be the go-to option.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_CAPTURE_MODE_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }

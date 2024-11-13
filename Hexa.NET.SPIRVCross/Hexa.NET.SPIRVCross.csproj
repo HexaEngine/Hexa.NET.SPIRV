@@ -98,7 +98,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Generated\" />
+	  <ProjectReference Include="..\Hexa.NET.SPIRV.Core\Hexa.NET.SPIRV.Core.csproj" />
 	</ItemGroup>
 
 </Project>

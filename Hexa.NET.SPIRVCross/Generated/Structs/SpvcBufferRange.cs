@@ -12,35 +12,29 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// See C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_buffer_range")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcBufferRange
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "index")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Index;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "offset")]
-		[NativeName(NativeNameType.Type, "size_t")]
 		public nuint Offset;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "range")]
-		[NativeName(NativeNameType.Type, "size_t")]
 		public nuint Range;
 
 

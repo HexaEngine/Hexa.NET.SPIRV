@@ -9,42 +9,34 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_msl_sampler_border_color")]
 	[Flags]
 	public enum SpvcMslSamplerBorderColor : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_BORDER_COLOR_TRANSPARENT_BLACK")]
-		[NativeName(NativeNameType.Value, "0")]
 		TransparentBlack = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_BORDER_COLOR_OPAQUE_BLACK")]
-		[NativeName(NativeNameType.Value, "1")]
 		OpaqueBlack = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_BORDER_COLOR_OPAQUE_WHITE")]
-		[NativeName(NativeNameType.Value, "2")]
 		OpaqueWhite = unchecked(2),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_BORDER_COLOR_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }

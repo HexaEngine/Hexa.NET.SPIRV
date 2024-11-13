@@ -23,7 +23,7 @@
         public static void CheckResult(this SpvcResult result, SpvcContext context, [CallerFilePath] string file = "", [CallerLineNumber] int line = 0, [CallerMemberName] string member = "")
         {
             if (result != SpvcResult.Success)
-                throw new SPIRVException($"{file}:{line}, {member}: {SPIRV.ContextGetLastErrorStringS(context)}");
+                throw new SPIRVException($"{file}:{line}, {member}: {context.GetLastErrorStringS()}");
         }
 
         public static uint Bitcount(this uint value)

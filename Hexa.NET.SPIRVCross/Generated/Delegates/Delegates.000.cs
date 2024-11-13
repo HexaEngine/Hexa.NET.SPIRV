@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
@@ -19,7 +20,6 @@ namespace Hexa.NET.SPIRVCross
 	/// <summary>
 	/// Get notified in a callback when an error triggers. Useful for debugging. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "spvc_error_callback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void SpvcErrorCallback([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void *")] void* userdata, [NativeName(NativeNameType.Param, "error")] [NativeName(NativeNameType.Type, "char const *")] byte* error);
 
@@ -27,7 +27,6 @@ namespace Hexa.NET.SPIRVCross
 	/// <summary>
 	/// Get notified in a callback when an error triggers. Useful for debugging. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "spvc_error_callback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void SpvcErrorCallback([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void *")] nint userdata, [NativeName(NativeNameType.Param, "error")] [NativeName(NativeNameType.Type, "char const *")] nint error);
 

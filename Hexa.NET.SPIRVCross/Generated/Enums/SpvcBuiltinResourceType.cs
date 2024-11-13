@@ -9,42 +9,34 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_builtin_resource_type")]
 	[Flags]
 	public enum SpvcBuiltinResourceType : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BUILTIN_RESOURCE_TYPE_UNKNOWN")]
-		[NativeName(NativeNameType.Value, "0")]
 		Unknown = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BUILTIN_RESOURCE_TYPE_STAGE_INPUT")]
-		[NativeName(NativeNameType.Value, "1")]
 		StageInput = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BUILTIN_RESOURCE_TYPE_STAGE_OUTPUT")]
-		[NativeName(NativeNameType.Value, "2")]
 		StageOutput = unchecked(2),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BUILTIN_RESOURCE_TYPE_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }

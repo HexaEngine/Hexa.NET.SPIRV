@@ -1,0 +1,13 @@
+{
+  "Namespace": "Hexa.NET.SPIRV.Core",
+  "ApiName": "SPIRV",
+  "TypeMappings": {
+    "spvc_bool": "bool",
+    "spvc_constant_id": "uint",
+    "spvc_variable_id": "uint",
+    "spvc_type_id": "uint",
+    "spvc_hlsl_binding_flags": "uint",
+    "spvc_msl_shader_input": "SpvcMslShaderInterfaceVar",
+    "spvc_msl_vertex_format": "SpvcMslShaderVariableFormat"
+  }
+}

@@ -1,5 +1,3 @@
-using Hexa.NET.SPIRVCross.Tests;
-
 namespace Hexa.NET.SPIRVCross.Tests
 {
     public unsafe class CrossCompileTests
@@ -32,7 +30,7 @@ namespace Hexa.NET.SPIRVCross.Tests
             SpvcErrorCallback errorCallback = new(ErrorCallback);
 
             // Create context.
-            SPIRV.ContextCreate(&context).CheckResult();
+            SPIRVCross.ContextCreate(&context).CheckResult();
 
             // Set debug callback.
             context.SetErrorCallback(errorCallback, null);
@@ -79,7 +77,7 @@ namespace Hexa.NET.SPIRVCross.Tests
             SpvcErrorCallback errorCallback = new(ErrorCallback);
 
             // Create context.
-            SPIRV.ContextCreate(&context).CheckResult();
+            SPIRVCross.ContextCreate(&context).CheckResult();
 
             // Set debug callback.
             context.SetErrorCallback(errorCallback, null);
@@ -125,7 +123,7 @@ namespace Hexa.NET.SPIRVCross.Tests
             SpvcErrorCallback errorCallback = new(ErrorCallback);
 
             // Create context.
-            SPIRV.ContextCreate(&context).CheckResult();
+            SPIRVCross.ContextCreate(&context).CheckResult();
 
             // Set debug callback.
             context.SetErrorCallback(errorCallback, null);

@@ -9,63 +9,49 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_backend")]
 	[Flags]
 	public enum SpvcBackend : int
 	{
 		/// <summary>
 		/// This backend can only perform reflection, no compiler options are supported. Maps to spirv_cross::Compiler. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BACKEND_NONE")]
-		[NativeName(NativeNameType.Value, "0")]
 		None = unchecked(0),
 
 		/// <summary>
 		/// spirv_cross::CompilerGLSL <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BACKEND_GLSL")]
-		[NativeName(NativeNameType.Value, "1")]
 		Glsl = unchecked(1),
 
 		/// <summary>
 		/// CompilerHLSL <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BACKEND_HLSL")]
-		[NativeName(NativeNameType.Value, "2")]
 		Hlsl = unchecked(2),
 
 		/// <summary>
 		/// CompilerMSL <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BACKEND_MSL")]
-		[NativeName(NativeNameType.Value, "3")]
 		Msl = unchecked(3),
 
 		/// <summary>
 		/// CompilerCPP <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BACKEND_CPP")]
-		[NativeName(NativeNameType.Value, "4")]
 		Cpp = unchecked(4),
 
 		/// <summary>
 		/// CompilerReflection w/ JSON backend <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BACKEND_JSON")]
-		[NativeName(NativeNameType.Value, "5")]
 		Json = unchecked(5),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BACKEND_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }

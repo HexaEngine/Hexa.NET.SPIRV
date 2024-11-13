@@ -9,161 +9,119 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to spirv_cross::SPIRType::BaseType. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_basetype")]
 	[Flags]
 	public enum SpvcBasetype : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_UNKNOWN")]
-		[NativeName(NativeNameType.Value, "0")]
 		Unknown = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_VOID")]
-		[NativeName(NativeNameType.Value, "1")]
 		Void = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_BOOLEAN")]
-		[NativeName(NativeNameType.Value, "2")]
 		Boolean = unchecked(2),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_INT8")]
-		[NativeName(NativeNameType.Value, "3")]
 		Int8 = unchecked(3),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_UINT8")]
-		[NativeName(NativeNameType.Value, "4")]
 		Uint8 = unchecked(4),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_INT16")]
-		[NativeName(NativeNameType.Value, "5")]
 		Int16 = unchecked(5),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_UINT16")]
-		[NativeName(NativeNameType.Value, "6")]
 		Uint16 = unchecked(6),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_INT32")]
-		[NativeName(NativeNameType.Value, "7")]
 		Int32 = unchecked(7),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_UINT32")]
-		[NativeName(NativeNameType.Value, "8")]
 		Uint32 = unchecked(8),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_INT64")]
-		[NativeName(NativeNameType.Value, "9")]
 		Int64 = unchecked(9),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_UINT64")]
-		[NativeName(NativeNameType.Value, "10")]
 		Uint64 = unchecked(10),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_ATOMIC_COUNTER")]
-		[NativeName(NativeNameType.Value, "11")]
 		AtomicCounter = unchecked(11),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_FP16")]
-		[NativeName(NativeNameType.Value, "12")]
 		Fp16 = unchecked(12),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_FP32")]
-		[NativeName(NativeNameType.Value, "13")]
 		Fp32 = unchecked(13),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_FP64")]
-		[NativeName(NativeNameType.Value, "14")]
 		Fp64 = unchecked(14),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_STRUCT")]
-		[NativeName(NativeNameType.Value, "15")]
 		Struct = unchecked(15),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_IMAGE")]
-		[NativeName(NativeNameType.Value, "16")]
 		Image = unchecked(16),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_SAMPLED_IMAGE")]
-		[NativeName(NativeNameType.Value, "17")]
 		SampledImage = unchecked(17),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_SAMPLER")]
-		[NativeName(NativeNameType.Value, "18")]
 		Sampler = unchecked(18),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_ACCELERATION_STRUCTURE")]
-		[NativeName(NativeNameType.Value, "19")]
 		AccelerationStructure = unchecked(19),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_BASETYPE_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }

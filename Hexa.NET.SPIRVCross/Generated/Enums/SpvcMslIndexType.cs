@@ -9,42 +9,34 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_msl_index_type")]
 	[Flags]
 	public enum SpvcMslIndexType : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_INDEX_TYPE_NONE")]
-		[NativeName(NativeNameType.Value, "0")]
 		None = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_INDEX_TYPE_UINT16")]
-		[NativeName(NativeNameType.Value, "1")]
 		Uint16 = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_INDEX_TYPE_UINT32")]
-		[NativeName(NativeNameType.Value, "2")]
 		Uint32 = unchecked(2),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_INDEX_TYPE_MAX_INT")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		MaxInt = unchecked(2147483647),
 	}
 }

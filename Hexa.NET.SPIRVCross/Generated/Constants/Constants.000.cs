@@ -9,65 +9,34 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
-	public unsafe partial class SPIRV
+	public unsafe partial class SPIRVCross
 	{
-		[NativeName(NativeNameType.Const, "SPV_VERSION")]
-		[NativeName(NativeNameType.Value, "0x10600")]
-		public const int SPV_VERSION = 0x10600;
-
-		[NativeName(NativeNameType.Const, "SPV_REVISION")]
-		[NativeName(NativeNameType.Value, "1")]
-		public const int SPV_REVISION = 1;
-
-		[NativeName(NativeNameType.Const, "SPVC_C_API_VERSION_MAJOR")]
-		[NativeName(NativeNameType.Value, "0")]
 		public const int SPVC_C_API_VERSION_MAJOR = 0;
 
-		[NativeName(NativeNameType.Const, "SPVC_C_API_VERSION_MINOR")]
-		[NativeName(NativeNameType.Value, "64")]
 		public const int SPVC_C_API_VERSION_MINOR = 64;
 
-		[NativeName(NativeNameType.Const, "SPVC_C_API_VERSION_PATCH")]
-		[NativeName(NativeNameType.Value, "0")]
 		public const int SPVC_C_API_VERSION_PATCH = 0;
 
-		[NativeName(NativeNameType.Const, "SPVC_COMPILER_OPTION_COMMON_BIT")]
-		[NativeName(NativeNameType.Value, "0x1000000")]
 		public const int SPVC_COMPILER_OPTION_COMMON_BIT = 0x1000000;
 
-		[NativeName(NativeNameType.Const, "SPVC_COMPILER_OPTION_GLSL_BIT")]
-		[NativeName(NativeNameType.Value, "0x2000000")]
 		public const int SPVC_COMPILER_OPTION_GLSL_BIT = 0x2000000;
 
-		[NativeName(NativeNameType.Const, "SPVC_COMPILER_OPTION_HLSL_BIT")]
-		[NativeName(NativeNameType.Value, "0x4000000")]
 		public const int SPVC_COMPILER_OPTION_HLSL_BIT = 0x4000000;
 
-		[NativeName(NativeNameType.Const, "SPVC_COMPILER_OPTION_MSL_BIT")]
-		[NativeName(NativeNameType.Value, "0x8000000")]
 		public const int SPVC_COMPILER_OPTION_MSL_BIT = 0x8000000;
 
-		[NativeName(NativeNameType.Const, "SPVC_COMPILER_OPTION_LANG_BITS")]
-		[NativeName(NativeNameType.Value, "0x0f000000")]
 		public const int SPVC_COMPILER_OPTION_LANG_BITS = 0x0f000000;
 
-		[NativeName(NativeNameType.Const, "SPVC_COMPILER_OPTION_ENUM_BITS")]
-		[NativeName(NativeNameType.Value, "0xffffff")]
 		public const int SPVC_COMPILER_OPTION_ENUM_BITS = 0xffffff;
 
-		[NativeName(NativeNameType.Const, "SPVC_MSL_PUSH_CONSTANT_BINDING")]
-		[NativeName(NativeNameType.Value, "(0)")]
 		public const int SPVC_MSL_PUSH_CONSTANT_BINDING = (0);
 
-		[NativeName(NativeNameType.Const, "SPVC_MSL_AUX_BUFFER_STRUCT_VERSION")]
-		[NativeName(NativeNameType.Value, "1")]
 		public const int SPVC_MSL_AUX_BUFFER_STRUCT_VERSION = 1;
 
-		[NativeName(NativeNameType.Const, "SPVC_HLSL_PUSH_CONSTANT_BINDING")]
-		[NativeName(NativeNameType.Value, "(0)")]
 		public const int SPVC_HLSL_PUSH_CONSTANT_BINDING = (0);
 
 	}

@@ -12,42 +12,34 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// See C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_reflected_resource")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcReflectedResource
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "id")]
-		[NativeName(NativeNameType.Type, "spvc_variable_id")]
 		public uint Id;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "base_type_id")]
-		[NativeName(NativeNameType.Type, "spvc_type_id")]
 		public uint BaseTypeId;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "type_id")]
-		[NativeName(NativeNameType.Type, "spvc_type_id")]
 		public uint TypeId;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "name")]
-		[NativeName(NativeNameType.Type, "char const *")]
 		public unsafe byte* Name;
 
 

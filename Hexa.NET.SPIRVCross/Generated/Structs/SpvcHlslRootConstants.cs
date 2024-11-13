@@ -12,42 +12,34 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// See C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_hlsl_root_constants")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcHlslRootConstants
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "start")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Start;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "end")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint End;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "binding")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Binding;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "space")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Space;
 
 

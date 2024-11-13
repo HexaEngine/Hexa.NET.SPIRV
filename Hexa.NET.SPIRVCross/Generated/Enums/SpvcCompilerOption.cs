@@ -9,679 +9,489 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to the various spirv_cross::Compiler*::Option structures. See C++ API for defaults and details. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_compiler_option")]
 	[Flags]
 	public enum SpvcCompilerOption : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_UNKNOWN")]
-		[NativeName(NativeNameType.Value, "0")]
 		Unknown = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_FORCE_TEMPORARY")]
-		[NativeName(NativeNameType.Value, "16777217")]
 		ForceTemporary = unchecked(16777217),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_FLATTEN_MULTIDIMENSIONAL_ARRAYS")]
-		[NativeName(NativeNameType.Value, "16777218")]
 		FlattenMultidimensionalArrays = unchecked(16777218),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_FIXUP_DEPTH_CONVENTION")]
-		[NativeName(NativeNameType.Value, "16777219")]
 		FixupDepthConvention = unchecked(16777219),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_FLIP_VERTEX_Y")]
-		[NativeName(NativeNameType.Value, "16777220")]
 		FlipVertexY = unchecked(16777220),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_SUPPORT_NONZERO_BASE_INSTANCE")]
-		[NativeName(NativeNameType.Value, "33554437")]
 		GlslSupportNonzeroBaseInstance = unchecked(33554437),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_SEPARATE_SHADER_OBJECTS")]
-		[NativeName(NativeNameType.Value, "33554438")]
 		GlslSeparateShaderObjects = unchecked(33554438),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_ENABLE_420PACK_EXTENSION")]
-		[NativeName(NativeNameType.Value, "33554439")]
 		GlslEnable420PackExtension = unchecked(33554439),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_VERSION")]
-		[NativeName(NativeNameType.Value, "33554440")]
 		GlslVersion = unchecked(33554440),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_ES")]
-		[NativeName(NativeNameType.Value, "33554441")]
 		GlslEs = unchecked(33554441),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_VULKAN_SEMANTICS")]
-		[NativeName(NativeNameType.Value, "33554442")]
 		GlslVulkanSemantics = unchecked(33554442),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_ES_DEFAULT_FLOAT_PRECISION_HIGHP")]
-		[NativeName(NativeNameType.Value, "33554443")]
 		GlslEsDefaultFloatPrecisionHighp = unchecked(33554443),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_ES_DEFAULT_INT_PRECISION_HIGHP")]
-		[NativeName(NativeNameType.Value, "33554444")]
 		GlslEsDefaultIntPrecisionHighp = unchecked(33554444),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_SHADER_MODEL")]
-		[NativeName(NativeNameType.Value, "67108877")]
 		HlslShaderModel = unchecked(67108877),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_POINT_SIZE_COMPAT")]
-		[NativeName(NativeNameType.Value, "67108878")]
 		HlslPointSizeCompat = unchecked(67108878),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_POINT_COORD_COMPAT")]
-		[NativeName(NativeNameType.Value, "67108879")]
 		HlslPointCoordCompat = unchecked(67108879),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_SUPPORT_NONZERO_BASE_VERTEX_BASE_INSTANCE")]
-		[NativeName(NativeNameType.Value, "67108880")]
 		HlslSupportNonzeroBaseVertexBaseInstance = unchecked(67108880),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_VERSION")]
-		[NativeName(NativeNameType.Value, "134217745")]
 		MslVersion = unchecked(134217745),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_TEXEL_BUFFER_TEXTURE_WIDTH")]
-		[NativeName(NativeNameType.Value, "134217746")]
 		MslTexelBufferTextureWidth = unchecked(134217746),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_AUX_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217747")]
 		MslAuxBufferIndex = unchecked(134217747),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_SWIZZLE_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217747")]
 		MslSwizzleBufferIndex = unchecked(134217747),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_INDIRECT_PARAMS_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217748")]
 		MslIndirectParamsBufferIndex = unchecked(134217748),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_SHADER_OUTPUT_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217749")]
 		MslShaderOutputBufferIndex = unchecked(134217749),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_SHADER_PATCH_OUTPUT_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217750")]
 		MslShaderPatchOutputBufferIndex = unchecked(134217750),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_SHADER_TESS_FACTOR_OUTPUT_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217751")]
 		MslShaderTessFactorOutputBufferIndex = unchecked(134217751),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_SHADER_INPUT_WORKGROUP_INDEX")]
-		[NativeName(NativeNameType.Value, "134217752")]
 		MslShaderInputWorkgroupIndex = unchecked(134217752),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_ENABLE_POINT_SIZE_BUILTIN")]
-		[NativeName(NativeNameType.Value, "134217753")]
 		MslEnablePointSizeBuiltin = unchecked(134217753),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_DISABLE_RASTERIZATION")]
-		[NativeName(NativeNameType.Value, "134217754")]
 		MslDisableRasterization = unchecked(134217754),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_CAPTURE_OUTPUT_TO_BUFFER")]
-		[NativeName(NativeNameType.Value, "134217755")]
 		MslCaptureOutputToBuffer = unchecked(134217755),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_SWIZZLE_TEXTURE_SAMPLES")]
-		[NativeName(NativeNameType.Value, "134217756")]
 		MslSwizzleTextureSamples = unchecked(134217756),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_PAD_FRAGMENT_OUTPUT_COMPONENTS")]
-		[NativeName(NativeNameType.Value, "134217757")]
 		MslPadFragmentOutputComponents = unchecked(134217757),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_TESS_DOMAIN_ORIGIN_LOWER_LEFT")]
-		[NativeName(NativeNameType.Value, "134217758")]
 		MslTessDomainOriginLowerLeft = unchecked(134217758),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_PLATFORM")]
-		[NativeName(NativeNameType.Value, "134217759")]
 		MslPlatform = unchecked(134217759),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_ARGUMENT_BUFFERS")]
-		[NativeName(NativeNameType.Value, "134217760")]
 		MslArgumentBuffers = unchecked(134217760),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_EMIT_PUSH_CONSTANT_AS_UNIFORM_BUFFER")]
-		[NativeName(NativeNameType.Value, "33554465")]
 		GlslEmitPushConstantAsUniformBuffer = unchecked(33554465),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_TEXTURE_BUFFER_NATIVE")]
-		[NativeName(NativeNameType.Value, "134217762")]
 		MslTextureBufferNative = unchecked(134217762),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_EMIT_UNIFORM_BUFFER_AS_PLAIN_UNIFORMS")]
-		[NativeName(NativeNameType.Value, "33554467")]
 		GlslEmitUniformBufferAsPlainUniforms = unchecked(33554467),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_BUFFER_SIZE_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217764")]
 		MslBufferSizeBufferIndex = unchecked(134217764),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_EMIT_LINE_DIRECTIVES")]
-		[NativeName(NativeNameType.Value, "16777253")]
 		EmitLineDirectives = unchecked(16777253),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_MULTIVIEW")]
-		[NativeName(NativeNameType.Value, "134217766")]
 		MslMultiview = unchecked(134217766),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_VIEW_MASK_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217767")]
 		MslViewMaskBufferIndex = unchecked(134217767),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_DEVICE_INDEX")]
-		[NativeName(NativeNameType.Value, "134217768")]
 		MslDeviceIndex = unchecked(134217768),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_VIEW_INDEX_FROM_DEVICE_INDEX")]
-		[NativeName(NativeNameType.Value, "134217769")]
 		MslViewIndexFromDeviceIndex = unchecked(134217769),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_DISPATCH_BASE")]
-		[NativeName(NativeNameType.Value, "134217770")]
 		MslDispatchBase = unchecked(134217770),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_DYNAMIC_OFFSETS_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217771")]
 		MslDynamicOffsetsBufferIndex = unchecked(134217771),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_TEXTURE_1D_AS_2D")]
-		[NativeName(NativeNameType.Value, "134217772")]
 		MslTexture1DAs2D = unchecked(134217772),
 
 		/// <summary>
 		/// Obsolete, use SWIZZLE_BUFFER_INDEX instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_ENABLE_BASE_INDEX_ZERO")]
-		[NativeName(NativeNameType.Value, "134217773")]
 		MslEnableBaseIndexZero = unchecked(134217773),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_IOS_FRAMEBUFFER_FETCH_SUBPASS")]
-		[NativeName(NativeNameType.Value, "134217774")]
 		MslIosFramebufferFetchSubpass = unchecked(134217774),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_FRAMEBUFFER_FETCH_SUBPASS")]
-		[NativeName(NativeNameType.Value, "134217774")]
 		MslFramebufferFetchSubpass = unchecked(134217774),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_INVARIANT_FP_MATH")]
-		[NativeName(NativeNameType.Value, "134217775")]
 		MslInvariantFpMath = unchecked(134217775),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_EMULATE_CUBEMAP_ARRAY")]
-		[NativeName(NativeNameType.Value, "134217776")]
 		MslEmulateCubemapArray = unchecked(134217776),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_ENABLE_DECORATION_BINDING")]
-		[NativeName(NativeNameType.Value, "134217777")]
 		MslEnableDecorationBinding = unchecked(134217777),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_FORCE_ACTIVE_ARGUMENT_BUFFER_RESOURCES")]
-		[NativeName(NativeNameType.Value, "134217778")]
 		MslForceActiveArgumentBufferResources = unchecked(134217778),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_FORCE_NATIVE_ARRAYS")]
-		[NativeName(NativeNameType.Value, "134217779")]
 		MslForceNativeArrays = unchecked(134217779),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_ENABLE_STORAGE_IMAGE_QUALIFIER_DEDUCTION")]
-		[NativeName(NativeNameType.Value, "16777268")]
 		EnableStorageImageQualifierDeduction = unchecked(16777268),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_FORCE_STORAGE_BUFFER_AS_UAV")]
-		[NativeName(NativeNameType.Value, "67108917")]
 		HlslForceStorageBufferAsUav = unchecked(67108917),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_FORCE_ZERO_INITIALIZED_VARIABLES")]
-		[NativeName(NativeNameType.Value, "16777270")]
 		ForceZeroInitializedVariables = unchecked(16777270),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_NONWRITABLE_UAV_TEXTURE_AS_SRV")]
-		[NativeName(NativeNameType.Value, "67108919")]
 		HlslNonwritableUavTextureAsSrv = unchecked(67108919),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_ENABLE_FRAG_OUTPUT_MASK")]
-		[NativeName(NativeNameType.Value, "134217784")]
 		MslEnableFragOutputMask = unchecked(134217784),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_ENABLE_FRAG_DEPTH_BUILTIN")]
-		[NativeName(NativeNameType.Value, "134217785")]
 		MslEnableFragDepthBuiltin = unchecked(134217785),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_ENABLE_FRAG_STENCIL_REF_BUILTIN")]
-		[NativeName(NativeNameType.Value, "134217786")]
 		MslEnableFragStencilRefBuiltin = unchecked(134217786),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_ENABLE_CLIP_DISTANCE_USER_VARYING")]
-		[NativeName(NativeNameType.Value, "134217787")]
 		MslEnableClipDistanceUserVarying = unchecked(134217787),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_ENABLE_16BIT_TYPES")]
-		[NativeName(NativeNameType.Value, "67108924")]
-		HlslEnable16Types = unchecked(67108924),
+		HlslEnable16BitTypes = unchecked(67108924),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_MULTI_PATCH_WORKGROUP")]
-		[NativeName(NativeNameType.Value, "134217789")]
 		MslMultiPatchWorkgroup = unchecked(134217789),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_SHADER_INPUT_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217790")]
 		MslShaderInputBufferIndex = unchecked(134217790),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_SHADER_INDEX_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217791")]
 		MslShaderIndexBufferIndex = unchecked(134217791),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_VERTEX_FOR_TESSELLATION")]
-		[NativeName(NativeNameType.Value, "134217792")]
 		MslVertexForTessellation = unchecked(134217792),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_VERTEX_INDEX_TYPE")]
-		[NativeName(NativeNameType.Value, "134217793")]
 		MslVertexIndexType = unchecked(134217793),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_FORCE_FLATTENED_IO_BLOCKS")]
-		[NativeName(NativeNameType.Value, "33554498")]
 		GlslForceFlattenedIoBlocks = unchecked(33554498),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_MULTIVIEW_LAYERED_RENDERING")]
-		[NativeName(NativeNameType.Value, "134217795")]
 		MslMultiviewLayeredRendering = unchecked(134217795),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_ARRAYED_SUBPASS_INPUT")]
-		[NativeName(NativeNameType.Value, "134217796")]
 		MslArrayedSubpassInput = unchecked(134217796),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_R32UI_LINEAR_TEXTURE_ALIGNMENT")]
-		[NativeName(NativeNameType.Value, "134217797")]
 		MslR32UiLinearTextureAlignment = unchecked(134217797),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_R32UI_ALIGNMENT_CONSTANT_ID")]
-		[NativeName(NativeNameType.Value, "134217798")]
 		MslR32UiAlignmentConstantId = unchecked(134217798),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_FLATTEN_MATRIX_VERTEX_INPUT_SEMANTICS")]
-		[NativeName(NativeNameType.Value, "67108935")]
 		HlslFlattenMatrixVertexInputSemantics = unchecked(67108935),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_IOS_USE_SIMDGROUP_FUNCTIONS")]
-		[NativeName(NativeNameType.Value, "134217800")]
 		MslIosUseSimdgroupFunctions = unchecked(134217800),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_EMULATE_SUBGROUPS")]
-		[NativeName(NativeNameType.Value, "134217801")]
 		MslEmulateSubgroups = unchecked(134217801),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_FIXED_SUBGROUP_SIZE")]
-		[NativeName(NativeNameType.Value, "134217802")]
 		MslFixedSubgroupSize = unchecked(134217802),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_FORCE_SAMPLE_RATE_SHADING")]
-		[NativeName(NativeNameType.Value, "134217803")]
 		MslForceSampleRateShading = unchecked(134217803),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_IOS_SUPPORT_BASE_VERTEX_INSTANCE")]
-		[NativeName(NativeNameType.Value, "134217804")]
 		MslIosSupportBaseVertexInstance = unchecked(134217804),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_OVR_MULTIVIEW_VIEW_COUNT")]
-		[NativeName(NativeNameType.Value, "33554509")]
 		GlslOvrMultiviewViewCount = unchecked(33554509),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_RELAX_NAN_CHECKS")]
-		[NativeName(NativeNameType.Value, "16777294")]
 		RelaxNanChecks = unchecked(16777294),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_RAW_BUFFER_TESE_INPUT")]
-		[NativeName(NativeNameType.Value, "134217807")]
 		MslRawBufferTeseInput = unchecked(134217807),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_SHADER_PATCH_INPUT_BUFFER_INDEX")]
-		[NativeName(NativeNameType.Value, "134217808")]
 		MslShaderPatchInputBufferIndex = unchecked(134217808),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_MANUAL_HELPER_INVOCATION_UPDATES")]
-		[NativeName(NativeNameType.Value, "134217809")]
 		MslManualHelperInvocationUpdates = unchecked(134217809),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_CHECK_DISCARDED_FRAG_STORES")]
-		[NativeName(NativeNameType.Value, "134217810")]
 		MslCheckDiscardedFragStores = unchecked(134217810),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_GLSL_ENABLE_ROW_MAJOR_LOAD_WORKAROUND")]
-		[NativeName(NativeNameType.Value, "33554515")]
 		GlslEnableRowMajorLoadWorkaround = unchecked(33554515),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_ARGUMENT_BUFFERS_TIER")]
-		[NativeName(NativeNameType.Value, "134217812")]
 		MslArgumentBuffersTier = unchecked(134217812),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_SAMPLE_DREF_LOD_ARRAY_AS_GRAD")]
-		[NativeName(NativeNameType.Value, "134217813")]
 		MslSampleDrefLodArrayAsGrad = unchecked(134217813),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_READWRITE_TEXTURE_FENCES")]
-		[NativeName(NativeNameType.Value, "134217814")]
 		MslReadwriteTextureFences = unchecked(134217814),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_REPLACE_RECURSIVE_INPUTS")]
-		[NativeName(NativeNameType.Value, "134217815")]
 		MslReplaceRecursiveInputs = unchecked(134217815),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_AGX_MANUAL_CUBE_GRAD_FIXUP")]
-		[NativeName(NativeNameType.Value, "134217816")]
 		MslAgxManualCubeGradFixup = unchecked(134217816),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_MSL_FORCE_FRAGMENT_WITH_SIDE_EFFECTS_EXECUTION")]
-		[NativeName(NativeNameType.Value, "134217817")]
 		MslForceFragmentWithSideEffectsExecution = unchecked(134217817),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_USE_ENTRY_POINT_NAME")]
-		[NativeName(NativeNameType.Value, "67108954")]
 		HlslUseEntryPointName = unchecked(67108954),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_HLSL_PRESERVE_STRUCTURED_BUFFERS")]
-		[NativeName(NativeNameType.Value, "67108955")]
 		HlslPreserveStructuredBuffers = unchecked(67108955),
 
 		/// <summary>
 		/// Obsolete. Use MSL_FRAMEBUFFER_FETCH_SUBPASS instead. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_COMPILER_OPTION_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }

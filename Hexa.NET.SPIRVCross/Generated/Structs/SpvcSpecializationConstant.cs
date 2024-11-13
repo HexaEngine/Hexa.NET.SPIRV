@@ -12,28 +12,24 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// See C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_specialization_constant")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcSpecializationConstant
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "id")]
-		[NativeName(NativeNameType.Type, "spvc_constant_id")]
 		public uint Id;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "constant_id")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint ConstantId;
 
 

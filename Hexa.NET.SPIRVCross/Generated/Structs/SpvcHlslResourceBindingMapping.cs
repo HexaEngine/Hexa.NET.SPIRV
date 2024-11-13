@@ -12,28 +12,24 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_hlsl_resource_binding_mapping")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcHlslResourceBindingMapping
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "register_space")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint RegisterSpace;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "register_binding")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint RegisterBinding;
 
 

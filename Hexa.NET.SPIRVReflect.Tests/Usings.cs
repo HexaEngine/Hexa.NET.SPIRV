@@ -1,0 +1,1 @@
+global using static Hexa.NET.SPIRVReflect.Tests.Utils;

@@ -12,28 +12,24 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// See C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_hlsl_vertex_attribute_remap")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcHlslVertexAttributeRemap
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "location")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Location;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "semantic")]
-		[NativeName(NativeNameType.Type, "char const *")]
 		public unsafe byte* Semantic;
 
 

@@ -9,42 +9,34 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_msl_shader_variable_rate")]
 	[Flags]
 	public enum SpvcMslShaderVariableRate : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SHADER_VARIABLE_RATE_PER_VERTEX")]
-		[NativeName(NativeNameType.Value, "0")]
 		PerVertex = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SHADER_VARIABLE_RATE_PER_PRIMITIVE")]
-		[NativeName(NativeNameType.Value, "1")]
 		PerPrimitive = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SHADER_VARIABLE_RATE_PER_PATCH")]
-		[NativeName(NativeNameType.Value, "2")]
 		PerPatch = unchecked(2),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SHADER_VARIABLE_RATE_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }

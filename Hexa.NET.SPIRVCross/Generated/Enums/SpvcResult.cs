@@ -9,56 +9,44 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_result")]
 	[Flags]
 	public enum SpvcResult : int
 	{
 		/// <summary>
 		/// Success. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_SUCCESS")]
-		[NativeName(NativeNameType.Value, "0")]
 		Success = unchecked(0),
 
 		/// <summary>
 		/// The SPIR-V is invalid. Should have been caught by validation ideally. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_ERROR_INVALID_SPIRV")]
-		[NativeName(NativeNameType.Value, "-1")]
 		ErrorInvalidSpirv = unchecked(-1),
 
 		/// <summary>
 		/// The SPIR-V might be valid or invalid, but SPIRV-Cross currently cannot correctly translate this to your target language. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_ERROR_UNSUPPORTED_SPIRV")]
-		[NativeName(NativeNameType.Value, "-2")]
 		ErrorUnsupportedSpirv = unchecked(-2),
 
 		/// <summary>
 		/// If for some reason we hit this, new or malloc failed. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_ERROR_OUT_OF_MEMORY")]
-		[NativeName(NativeNameType.Value, "-3")]
 		ErrorOutOfMemory = unchecked(-3),
 
 		/// <summary>
 		/// Invalid API argument. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_ERROR_INVALID_ARGUMENT")]
-		[NativeName(NativeNameType.Value, "-4")]
 		ErrorInvalidArgument = unchecked(-4),
 
 		/// <summary>
 		/// Invalid API argument. <br/>
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_ERROR_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		ErrorIntMax = unchecked(2147483647),
 	}
 }

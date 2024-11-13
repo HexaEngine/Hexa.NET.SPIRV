@@ -12,28 +12,24 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// See C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_entry_point")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcEntryPoint
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "execution_model")]
-		[NativeName(NativeNameType.Type, "SpvExecutionModel")]
 		public SpvExecutionModel ExecutionModel;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "name")]
-		[NativeName(NativeNameType.Type, "char const *")]
 		public unsafe byte* Name;
 
 

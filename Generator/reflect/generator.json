@@ -1,0 +1,28 @@
+{
+  "Namespace": "Hexa.NET.SPIRVReflect",
+  "ApiName": "SPIRVReflect",
+  "Usings": [ "Hexa.NET.SPIRV.Core" ],
+  "GenerateMetadata": true,
+  "TypeMappings": {
+    "spvc_bool": "bool",
+    "spvc_constant_id": "uint",
+    "spvc_variable_id": "uint",
+    "spvc_type_id": "uint",
+    "spvc_hlsl_binding_flags": "uint",
+    "spvc_msl_shader_input": "SpvcMslShaderInterfaceVar",
+    "spvc_msl_vertex_format": "SpvcMslShaderVariableFormat",
+    "SpvReflectModuleFlagBits": "SpvReflectModuleFlags",
+    "SpvReflectShaderStageFlagBits": "SpvReflectShaderStageFlags",
+    "SpvReflectDecorationFlagBits": "SpvReflectDecorationFlags",
+    "SpvReflectVariableFlagBits": "SpvReflectVariableFlags",
+    "SpvReflectTypeFlagBits": "SpvReflectTypeFlags",
+    "UnnamedEnum0": "SpvReflectDim",
+    "UnnamedEnum1": "SpvReflectBindingNumber",
+    "LocalSize": "LocalSizeUnion",
+    "Scalar": "ScalarUnion",
+    "Vector": "VectorUnion",
+    "Matrix": "MatrixUnion",
+    "Internal": "InternalUnion",
+    "Traits": "TraitsUnion"
+  }
+}

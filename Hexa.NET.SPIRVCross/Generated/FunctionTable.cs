@@ -11,10 +11,11 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
-	public unsafe partial class SPIRV
+	public unsafe partial class SPIRVCross
 	{
 		internal static FunctionTable funcTable;
 

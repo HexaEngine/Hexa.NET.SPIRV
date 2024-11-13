@@ -9,42 +9,34 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_msl_sampler_mip_filter")]
 	[Flags]
 	public enum SpvcMslSamplerMipFilter : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_MIP_FILTER_NONE")]
-		[NativeName(NativeNameType.Value, "0")]
 		None = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_MIP_FILTER_NEAREST")]
-		[NativeName(NativeNameType.Value, "1")]
 		Nearest = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_MIP_FILTER_LINEAR")]
-		[NativeName(NativeNameType.Value, "2")]
 		Linear = unchecked(2),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_MIP_FILTER_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }

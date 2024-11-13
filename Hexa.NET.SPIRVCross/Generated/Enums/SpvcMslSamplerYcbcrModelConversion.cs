@@ -9,56 +9,44 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_msl_sampler_ycbcr_model_conversion")]
 	[Flags]
 	public enum SpvcMslSamplerYcbcrModelConversion : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY")]
-		[NativeName(NativeNameType.Value, "0")]
 		RgbIdentity = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY")]
-		[NativeName(NativeNameType.Value, "1")]
 		Identity = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_BT_709")]
-		[NativeName(NativeNameType.Value, "2")]
 		Bt709 = unchecked(2),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_BT_601")]
-		[NativeName(NativeNameType.Value, "3")]
 		Bt601 = unchecked(3),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_BT_2020")]
-		[NativeName(NativeNameType.Value, "4")]
 		Bt2020 = unchecked(4),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_SAMPLER_YCBCR_MODEL_CONVERSION_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }

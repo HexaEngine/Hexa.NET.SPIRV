@@ -12,49 +12,39 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "spvc_msl_shader_interface_var_2")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SpvcMslShaderInterfaceVar2
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "location")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Location;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "format")]
-		[NativeName(NativeNameType.Type, "spvc_msl_shader_variable_format")]
 		public SpvcMslShaderVariableFormat Format;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "builtin")]
-		[NativeName(NativeNameType.Type, "SpvBuiltIn")]
 		public SpvBuiltIn Builtin;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "vecsize")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Vecsize;
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.Field, "rate")]
-		[NativeName(NativeNameType.Type, "spvc_msl_shader_variable_rate")]
 		public SpvcMslShaderVariableRate Rate;
 
 

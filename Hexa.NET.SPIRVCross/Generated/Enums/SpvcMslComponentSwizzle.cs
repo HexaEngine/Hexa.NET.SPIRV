@@ -9,70 +9,54 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_msl_component_swizzle")]
 	[Flags]
 	public enum SpvcMslComponentSwizzle : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_COMPONENT_SWIZZLE_IDENTITY")]
-		[NativeName(NativeNameType.Value, "0")]
 		Identity = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_COMPONENT_SWIZZLE_ZERO")]
-		[NativeName(NativeNameType.Value, "1")]
 		Zero = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_COMPONENT_SWIZZLE_ONE")]
-		[NativeName(NativeNameType.Value, "2")]
 		One = unchecked(2),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_COMPONENT_SWIZZLE_R")]
-		[NativeName(NativeNameType.Value, "3")]
 		R = unchecked(3),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_COMPONENT_SWIZZLE_G")]
-		[NativeName(NativeNameType.Value, "4")]
 		G = unchecked(4),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_COMPONENT_SWIZZLE_B")]
-		[NativeName(NativeNameType.Value, "5")]
 		B = unchecked(5),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_COMPONENT_SWIZZLE_A")]
-		[NativeName(NativeNameType.Value, "6")]
 		A = unchecked(6),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_MSL_COMPONENT_SWIZZLE_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }

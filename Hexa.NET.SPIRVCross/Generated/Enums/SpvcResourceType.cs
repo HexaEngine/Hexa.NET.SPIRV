@@ -9,133 +9,99 @@
 
 using System;
 using HexaGen.Runtime;
+using Hexa.NET.SPIRV.Core;
 
 namespace Hexa.NET.SPIRVCross
 {
 	/// <summary>
 	/// Maps to C++ API. <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "spvc_resource_type")]
 	[Flags]
 	public enum SpvcResourceType : int
 	{
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_UNKNOWN")]
-		[NativeName(NativeNameType.Value, "0")]
 		Unknown = unchecked(0),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_UNIFORM_BUFFER")]
-		[NativeName(NativeNameType.Value, "1")]
 		UniformBuffer = unchecked(1),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_STORAGE_BUFFER")]
-		[NativeName(NativeNameType.Value, "2")]
 		StorageBuffer = unchecked(2),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_STAGE_INPUT")]
-		[NativeName(NativeNameType.Value, "3")]
 		StageInput = unchecked(3),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_STAGE_OUTPUT")]
-		[NativeName(NativeNameType.Value, "4")]
 		StageOutput = unchecked(4),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_SUBPASS_INPUT")]
-		[NativeName(NativeNameType.Value, "5")]
 		SubpassInput = unchecked(5),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_STORAGE_IMAGE")]
-		[NativeName(NativeNameType.Value, "6")]
 		StorageImage = unchecked(6),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_SAMPLED_IMAGE")]
-		[NativeName(NativeNameType.Value, "7")]
 		SampledImage = unchecked(7),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_ATOMIC_COUNTER")]
-		[NativeName(NativeNameType.Value, "8")]
 		AtomicCounter = unchecked(8),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_PUSH_CONSTANT")]
-		[NativeName(NativeNameType.Value, "9")]
 		PushConstant = unchecked(9),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_SEPARATE_IMAGE")]
-		[NativeName(NativeNameType.Value, "10")]
 		SeparateImage = unchecked(10),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_SEPARATE_SAMPLERS")]
-		[NativeName(NativeNameType.Value, "11")]
 		SeparateSamplers = unchecked(11),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_ACCELERATION_STRUCTURE")]
-		[NativeName(NativeNameType.Value, "12")]
 		AccelerationStructure = unchecked(12),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_RAY_QUERY")]
-		[NativeName(NativeNameType.Value, "13")]
 		RayQuery = unchecked(13),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_SHADER_RECORD_BUFFER")]
-		[NativeName(NativeNameType.Value, "14")]
 		ShaderRecordBuffer = unchecked(14),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_GL_PLAIN_UNIFORM")]
-		[NativeName(NativeNameType.Value, "15")]
 		GlPlainUniform = unchecked(15),
 
 		/// <summary>
 		/// To be documented.
 		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SPVC_RESOURCE_TYPE_INT_MAX")]
-		[NativeName(NativeNameType.Value, "2147483647")]
 		IntMax = unchecked(2147483647),
 	}
 }
