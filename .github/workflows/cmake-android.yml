@@ -1,4 +1,4 @@
-name: Build SPIRV-Cross Library (Android)
+name: Build SPIRV-Cross Libraries (Android)
 
 on: [workflow_dispatch]
 
